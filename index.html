@@ -1,7 +1,13 @@
 <!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Raise AI | Raise Your Career Using AI</title>
+<title>Raise AI | Your Unfair Advantage in the Market</title>
+<meta name="description" content="We don't take AI motivation. We teach how to save time and increase profitability using AI tools personalized for each occupation. Join the top 1% using AI.">
+<meta property="og:title" content="Raise AI | Your Unfair Advantage">
+<meta property="og:description" content="Learn how to save time and increase profitability using personalized AI tools.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raiseai.in">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -34,6 +40,18 @@
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .growth-line-active {
+            stroke-dasharray: 2500;
+            stroke-dashoffset: 2500;
+            animation: drawGrowth 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        @keyframes drawGrowth {
+            0% { stroke-dashoffset: 2500; opacity: 0; }
+            10% { opacity: 1; }
+            70% { stroke-dashoffset: 0; opacity: 1; }
+            90% { stroke-dashoffset: 0; opacity: 0; }
+            100% { stroke-dashoffset: 2500; opacity: 0; }
         }
     </style>
 <script id="tailwind-config">
@@ -147,28 +165,45 @@
 <main>
 <!-- Hero Section -->
 <section class="relative pt-unit-xl pb-32 md:pt-32 md:pb-48 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+<!-- Decor elements: Rising Growth Graph -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-60">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    <svg class="absolute bottom-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M -50 500 Q 200 500, 400 400 T 1050 250" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
+        <path class="growth-line-active" d="M -50 500 C 300 500, 400 450, 600 250 C 750 100, 850 50, 1050 -50" stroke="url(#growth-gradient)" stroke-width="8" stroke-linecap="round" filter="url(#glow)"/>
+        <defs>
+            <linearGradient id="growth-gradient" x1="0" y1="500" x2="1000" y2="-50" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#dae2ff" stop-opacity="0"/>
+                <stop offset="40%" stop-color="#0052cc" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#003d9b" stop-opacity="1"/>
+            </linearGradient>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+        </defs>
+    </svg>
+</div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
 <div class="lg:col-span-7 z-10">
-<div class="inline-block bg-secondary-container text-on-secondary-container px-unit-md py-1 rounded-full text-label-sm font-label-sm mb-unit-lg uppercase tracking-widest">AN winner card club</div>
+<div class="inline-block bg-secondary-container text-on-secondary-container px-unit-md py-1 rounded-full text-label-sm font-label-sm mb-unit-lg uppercase tracking-widest">AN UNFAIR ADVANTAGE</div>
 <h1 class="font-display-xl text-display-xl text-on-background mb-unit-lg leading-tight"><span class="raise-effect-container">
 <span class="raise-effect-back font-display-xl text-display-xl">Raise</span>
 <span class="raise-effect-front text-primary">Raise</span>
 </span>&nbsp;To the <span class="text-primary">TOP 1%</span><div class="">Using Ai</div></h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-unit-xl max-w-xl">There is an <span class="text-primary font-bold">UNFAIR ADVANTAGE</span> in the Market Now do you want to take it and become the best in your FEILD. <span class="text-error font-bold">THEN CONTACT US</span></p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-unit-xl max-w-xl">There is an <span class="text-primary font-bold">UNFAIR ADVANTAGE</span> in the market right now. Do you want to take it and become the best in your FIELD? <span class="text-error font-bold">THEN CONTACT US</span></p>
 <div class="flex flex-wrap gap-unit-md mb-unit-xl">
 <a href="tel:+917356003301" class="bg-primary text-on-primary px-10 py-unit-md rounded-xl font-bold text-body-lg shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 inline-block">Quick call</a>
 <a href="https://wa.me/917356003301" target="_blank" rel="noopener" class="border-2 border-primary text-primary px-10 py-unit-md rounded-xl font-bold text-body-lg hover:bg-primary/5 transition-all duration-300 inline-block">
                             Chat with us&nbsp;</a>
 </div>
 </div>
-<div class="lg:col-span-5 relative">
-<!-- Decor element -->
-<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="lg:col-span-5 relative z-10">
 <div class="relative group">
 <img alt="Founder portrait" class="founder-cutout rounded-[40px] w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.01]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAgzVDnehdAoJQZF-EIiU3qOJDkL5z43RnB_ltMHiagm4GOaGyTsqwA3vc4lSSOEudWp7EAB47ZRIRWQm5nz_GC4iD2gp_ADwRFL8BM-jyE1hV8VzexzbIjSaxWUee4sTzoR85rTC9ETjht0cbL3zX6MmuLt-_3eonGpl4D6w4bBbTVzdacR3HwrFnv-dNRQ4B4qS2E81P3yiOFkaOjJ-IhMA3l0H3x6QwrA4TesyYEGd7rc2NPg1ShvnzCjn-5DqHsF-lDKkyMFKL">
 <!-- Floating Social Card -->
 <div class="absolute -bottom-10 -left-6 md:-left-12 glass-card p-unit-lg rounded-2xl shadow-xl flex flex-col gap-unit-sm">
-<span class="text-label-sm font-label-sm text-outline uppercase">Connect with HAdhi</span>
+<span class="text-label-sm font-label-sm text-outline uppercase">Connect with Hadhi</span>
 <div class="flex gap-unit-md"><a class="text-primary hover:scale-110 transition-transform" href="https://www.instagram.com/hadhi_creates_" target="_blank" rel="noopener">
 <img alt="Instagram" class="w-6 h-6" src="data:image/png;base64,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">
 </a>
@@ -178,7 +213,7 @@
 <a class="text-primary hover:scale-110 transition-transform" href="https://www.linkedin.com/in/hadhi-muhammed-p-71667b378/" target="_blank" rel="noopener">
 <img alt="LinkedIn" class="w-6 h-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEbElEQVR4AexYXWgcVRT+zmwiWq3iD7U/IhSMNhKN7c6KYoRiqU+1yU7SNyM+aIvP1teGqE/6KkX0TS0izc42LX2wVipW68/utg9ijaLVghUR8amRgmaO507YvfdOZnbHZJ1JZYf7zT3n3HPvPd8983fHwVV+/E8JeLVJlGsVlOuXFiHyWOPJ1ZgsOwN7vlwvAX8I0Fsg8kDYuAiRHX5b2k5g91e3YxUdNoEFmpGAH0uMj7AThSuHEttzaNAEvPozAD2CTgfRDniNpzu5ZdWuCTCPRyZV2RiUjAyKfUZglMAzlFxFTYDwAMyD6QAq7lyIBWfKbAJT0dJzVDSBaBABUdRk6O3aDLf/XtQEGOes6QrBNMbPDWC8vgVKthrRsNX8NE2AnDcjYUyAF74D4xuxTwh0ceg1reQraQJ+sQpmeQd0CIgxi0rx/Q5emTVrAmrKPpa3LZ9UYiwYHwD9e2PbcjI61ryHH/wVfmknApoUu2QEv0h9CeBKaKu6j6M6/JvYVk2xCTTDOlJ8B77roepukvoO+KUJKFuzfTl1sd6PsbM75HPkVcFpeLULUs+HWJRPy/fXKxirbcf2U31pp4gnkLZ3Gj8VzFj9OdyJi3CCkyDsF4wAtFnqNSEW5REQvQCHTuGWtT+h3Hg2DRFNwKtNyArMwatzW5Rr4iO+SHGMN+6XYM7DwUEQNqTo0XTZBOI3cPMNX0tMQ01jXK0JME2D6J44J8umfJSvZYxRyg0PHHwuLQOC5RWiuwH6QkiMIuHQBAj3JvgsNXfy9RplWcEKQNfBPgJ5IBwV0wHBLnlBbggB7JL3zRTAR6VmadOFIJcZHUkioQnoLiuT1GWD4NDSQfgCUHhIHgij8N2XBMehnnoKvntcHhgvwi+NIiiMSN+LArsQ3hUSSy6nZAK+SzBhDxev7eECWB65S1Zerue/6D74W2vxHQ3r7NYzKFw7JJmIfBmobNJ7kiUyvOX2MrW2corGhcY+8bpLYJaD8Ev7cMz90zS2lQ8PXZaM7BUSr1t+6tItn5V9i7YmZ0D7pJN2z62VCactZ8YP+OPW5y2bUtLuuef798uK/6i6aPDLeKK+pql3j0DhsgfCbc2BhYzcjM4kPtp8pWX7t3vuE8PzYHqq1V8JhHXoo7ISFbpHgPCoGtDAp6hu+8zQgeXsuavuJzKGehxL1SysbvRQ6R4B8GA4YuvEdvAr2XMzzrSGDQU9VxcJRN+0jr1qK9lzU2QxgPUhDzl1kQCtk/F0+Zs/1opIRA/LWRe1z069577GXgzoxeoiAVyvoxPpmPu7nM1yk6lgdtv5lm7KykjYqKoW/OGfW7ISiG5UlUI3CajxMkePQOZLHpmwl4HIgmSu9jKQ+ZJHJuxlILIgmau9DGS+5JEJkzMQ/T8U6dhRzah/MoGOEa4OB02Aob8OO8UW52vaMuyvCRBPybzfC9oX5m/lp5Xytf1y6q8J+KUZ+O6AwP4fZP4bUnK1tAXK1w4foS2H/ppANKCrRO8RyDtR/wAAAP//5XNVeAAAAAZJREFUAwAcVJpwHLMWiQAAAABJRU5ErkJggg==">
 </a>
-<a class="text-primary hover:scale-110 transition-transform" href="#">
+<a class="text-primary hover:scale-110 transition-transform cursor-pointer" onclick="event.preventDefault(); if(navigator.share) { navigator.share({title: 'Raise AI', text: 'Check out Raise AI - Your Unfair Advantage', url: window.location.href}).catch(console.error); } else { alert('Link copied to clipboard!'); navigator.clipboard.writeText(window.location.href); }">
 <img alt="Share Icon" class="w-6 h-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAC10lEQVR4AexYO2/TUBT+bijlR8CKqFgY4jDDACtJmgEkGItEi1jYkbqwMVUtAx2ZQLXDykOwJ6UjlB2o+AUgIJf72U78yrUd21cG6sgn99zz+s53T15OC//4oyGgHWB3fwu90Q/0xt9BXRtYzmFmAt3xHYjJXQixDIFTrk5buV7nZrfmWssY2WgLOxAiqEKdNvoCayVatQT643WwUV1r9DFG5y9gr46Ad7rbOXrYhhebIzQ7pBoCbIinm43nRTCWOd6u1HN5AmyEDS3aBnOYu2heLL4cATbARmJFMcF63DTXxlzWSATnNxQn0B3d0LxhNzC0Hida8GwbCTtJ9EbXE/achmIELr1dUh+TjxIYPHnb2knYpwb6GDPdT1eBh4As1EuhJB9X+qu3sDHvlL297pkxjA37Jb8owob8ejEC7y7/gpT3FMxPX9bmvmyUc+5FEsCa8vn54j7U1zUKPIoRINCwswfbWvZll6aFxLZ2/dxlOG17odxQcHECoSJ1qg2BOk+f2M0EeAp1ynGaQJ3nrMfWT6A/Gqh72o+uUNfXMOMhZm+Uia8nIMWm+r1zzhXqZtrUVyWmEJn4egIC52fVw/rMaFgJY4b1GKyeQCzwb902BOqeTDOB/3cCUh7OyIX1mbEaxdxLSLYeqLu2Q0+UXk2/iSrmCAzbz+B0VlyhnoCuxmCOQDX9ZVZpCGQekeGAZgKGDzizfDOBzCMyHJAyAXkUwb72Prg/iDgMbOJYEl91KHoCEgeRpBOTTawenI3YTGxWxysgVrT2fnQb7PQEROtJEOZqA8jfn9Afy0wpEyPxQaENlASXxFawiWp6AnbbUb9j3kTDa9hJvFD/fL/UIesJMGNJ3gTka6q1iMQr4OTtNOxWmhPPLx7B7lzBRNxScWoi+KJW09dndWh7LqZjXYVz4VsaYDqBaeaw/RS21YdjnVarMCxnYHcGIOYUP2XNRyClQN2uPwAAAP//6TNNBwAAAAZJREFUAwDs2gJwyOY2tgAAAABJRU5ErkJggg==">
 </a></div>
 </div>
@@ -214,12 +249,12 @@
 <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
 <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface mb-unit-lg italic leading-relaxed">My son in law recomended this to me .Now i can say .This is one is the most valuable section i have witch made changes in my life, Today i use AI like voice to text in all of my works and it is saving me more than 2 hours a day , the only regret i have is i didnt get hadhi to take an offline section in my school . but i am still looking forward to it&nbsp;</p>
+<p class="font-body-md text-body-md text-on-surface mb-unit-lg italic leading-relaxed">My son-in-law recommended this to me. Now I can say this is one of the most valuable sessions I have attended, which made changes in my life. Today I use AI like voice-to-text in all of my work and it is saving me more than 2 hours a day. The only regret I have is I didn't get Hadhi to take an offline session in my school, but I am still looking forward to it.&nbsp;</p>
 <div class="flex items-center gap-unit-md">
 <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-primary">B</div>
 <div>
 <p class="font-bold text-primary">Bushar TP</p>
-<p class="text-label-sm font-label-sm text-on-surface-variant">Principal of greenvally public school</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Principal of Green Valley Public School</p>
 </div>
 </div>
 </div>
@@ -233,12 +268,12 @@
 <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface mb-unit-lg italic leading-relaxed">
-                            Hadhi is one of the best mentor when coming to ai and he had taked section on our institute IIDT Escala and made our student think about ai first before taking manual efforts, and indruduced multiple ai tools that increased profitability of our company.</p>
+                            Hadhi is one of the best mentors when it comes to AI. He has taken a session at our institute, IIDT Escala, and made our students think about AI first before taking manual efforts, and introduced multiple AI tools that increased the profitability of our company.</p>
 <div class="flex items-center gap-unit-md">
 <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-primary">JA</div>
 <div>
-<p class="font-bold text-primary">Junaid ahammed KV</p>
-<p class="text-label-sm font-label-sm text-on-surface-variant">Entrepenuear and Mentorof IIDT escala</p>
+<p class="font-bold text-primary">Junaid Ahammed KV</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Entrepreneur and Mentor of IIDT Escala</p>
 </div>
 </div>
 </div>
@@ -275,10 +310,11 @@
                     © 2026 Raise AI. Built for high-performance teams.
                 </p>
 </div>
-<div class="flex gap-unit-lg">
-<a class="text-on-surface-variant hover:text-primary transition-all hover:underline font-body-md text-body-md" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant hover:text-primary transition-all hover:underline font-body-md text-body-md" href="#">Terms of Service</a>
-<a class="text-on-surface-variant hover:text-primary transition-all hover:underline font-body-md text-body-md" href="#">Contact</a>
+<div class="flex flex-wrap justify-center md:justify-center gap-unit-md md:gap-unit-lg max-w-md md:max-w-none text-center">
+<a class="text-on-surface-variant hover:text-primary transition-all hover:underline font-body-md text-body-md" href="mailto:raiseaisupport@gmail.com">raiseaisupport@gmail.com</a>
+<a class="text-on-surface-variant hover:text-primary transition-all hover:underline font-body-md text-body-md" href="tel:+917356003301">+91 7356003301</a>
+<a class="text-on-surface-variant font-body-md text-body-md opacity-50 cursor-not-allowed" onclick="event.preventDefault(); alert('Coming Soon');" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md text-body-md opacity-50 cursor-not-allowed" onclick="event.preventDefault(); alert('Coming Soon');" href="#">Terms of Service</a>
 </div>
 <div class="flex gap-unit-md">
 <a href="https://Raiseai.in" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-white transition-all">
