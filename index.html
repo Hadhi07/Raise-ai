@@ -1,0 +1,303 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Raise AI | Raise Your Career Using AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .raise-effect-container {
+            position: relative;
+            display: inline-block;
+        }
+        .raise-effect-back {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            z-index: 0;
+            -webkit-text-stroke: 1px #0052cc;
+            color: transparent;
+            opacity: 0.3;
+        }
+        .raise-effect-front {
+            position: relative;
+            z-index: 10;
+        }
+        .founder-cutout {
+            filter: drop-shadow(0 20px 40px rgba(0, 61, 155, 0.15));
+            border: 12px solid #ffffff;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f7f9fc",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface": "#f7f9fc",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d8dadd",
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#c3c6d6",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#151c25",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#001a41",
+                        "outline": "#737685",
+                        "surface-container-low": "#f2f4f7",
+                        "surface-container-high": "#e6e8eb",
+                        "surface-container-highest": "#e0e3e6",
+                        "on-primary-fixed": "#001848",
+                        "inverse-on-surface": "#eff1f4",
+                        "secondary": "#4a5e88",
+                        "on-tertiary-fixed-variant": "#404751",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#3c444e",
+                        "tertiary-container": "#545b66",
+                        "tertiary-fixed": "#dce3f0",
+                        "secondary-container": "#bacfff",
+                        "surface-container": "#eceef1",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "on-tertiary-container": "#ccd3e0",
+                        "on-secondary-container": "#435881",
+                        "on-background": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dae2ff",
+                        "inverse-primary": "#b2c5ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#c4d2ff",
+                        "on-secondary-fixed-variant": "#32466f",
+                        "surface-bright": "#f7f9fc",
+                        "surface-variant": "#e0e3e6",
+                        "primary-container": "#0052cc",
+                        "secondary-fixed-dim": "#b2c6f7",
+                        "tertiary-fixed-dim": "#c0c7d3",
+                        "primary": "#003d9b",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#0c56d0",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#434654"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit-xl": "48px",
+                        "unit-xs": "4px",
+                        "margin-mobile": "20px",
+                        "unit-lg": "24px",
+                        "container-max": "1200px",
+                        "unit-md": "16px",
+                        "unit-sm": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit-md max-w-container-max mx-auto">
+<div class="flex items-center gap-unit-sm">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">Raise ai</span>
+</div>
+<nav class="hidden md:flex items-center gap-unit-xl">
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary py-1 font-body-md text-body-md" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#testimonials">Testimonials</a>
+</nav>
+<a href="https://wa.me/917356003301" target="_blank" rel="noopener" class="bg-primary text-on-primary px-unit-lg py-unit-sm rounded-full font-bold hover:scale-[1.02] transition-transform duration-200 cursor-pointer active:scale-95 font-body-md text-body-md">Chat with us</a>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-unit-xl pb-32 md:pt-32 md:pb-48 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 z-10">
+<div class="inline-block bg-secondary-container text-on-secondary-container px-unit-md py-1 rounded-full text-label-sm font-label-sm mb-unit-lg uppercase tracking-widest">AN winner card club</div>
+<h1 class="font-display-xl text-display-xl text-on-background mb-unit-lg leading-tight"><span class="raise-effect-container">
+<span class="raise-effect-back font-display-xl text-display-xl">Raise</span>
+<span class="raise-effect-front text-primary">Raise</span>
+</span>&nbsp;To the <span class="text-primary">TOP 1%</span><div class="">Using Ai</div></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-unit-xl max-w-xl">There is an <span class="text-primary font-bold">UNFAIR ADVANTAGE</span> in the Market Now do you want to take it and become the best in your FEILD. <span class="text-error font-bold">THEN CONTACT US</span></p>
+<div class="flex flex-wrap gap-unit-md mb-unit-xl">
+<a href="tel:+917356003301" class="bg-primary text-on-primary px-10 py-unit-md rounded-xl font-bold text-body-lg shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 inline-block">Quick call</a>
+<a href="https://wa.me/917356003301" target="_blank" rel="noopener" class="border-2 border-primary text-primary px-10 py-unit-md rounded-xl font-bold text-body-lg hover:bg-primary/5 transition-all duration-300 inline-block">
+                            Chat with us&nbsp;</a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<!-- Decor element -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative group">
+<img alt="Founder portrait" class="founder-cutout rounded-[40px] w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-[1.01]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAgzVDnehdAoJQZF-EIiU3qOJDkL5z43RnB_ltMHiagm4GOaGyTsqwA3vc4lSSOEudWp7EAB47ZRIRWQm5nz_GC4iD2gp_ADwRFL8BM-jyE1hV8VzexzbIjSaxWUee4sTzoR85rTC9ETjht0cbL3zX6MmuLt-_3eonGpl4D6w4bBbTVzdacR3HwrFnv-dNRQ4B4qS2E81P3yiOFkaOjJ-IhMA3l0H3x6QwrA4TesyYEGd7rc2NPg1ShvnzCjn-5DqHsF-lDKkyMFKL">
+<!-- Floating Social Card -->
+<div class="absolute -bottom-10 -left-6 md:-left-12 glass-card p-unit-lg rounded-2xl shadow-xl flex flex-col gap-unit-sm">
+<span class="text-label-sm font-label-sm text-outline uppercase">Connect with HAdhi</span>
+<div class="flex gap-unit-md"><a class="text-primary hover:scale-110 transition-transform" href="https://www.instagram.com/hadhi_creates_" target="_blank" rel="noopener">
+<img alt="Instagram" class="w-6 h-6" src="data:image/png;base64,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">
+</a>
+<a class="text-primary hover:scale-110 transition-transform" href="https://www.facebook.com/profile.php?id=61583018664555" target="_blank" rel="noopener">
+<img alt="Facebook" class="w-6 h-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADRklEQVR4AexZP2sUQRT/vY2FQVERVPwAahIFk3jXpAp2oih7ERGsBBs7QRGEoKhYKdoGbC0sJHckfgBFROU2kKDGBLQUUqgErCR6z7e57GXndm935m6mCOzcPHben3nzfjPLm5k9D1u8FAC0FvDU+12oBFfgB7Pw68vS/i3EqeQHi6jUz2v5FSO3K3D24wEJ5gn6+1ZkrKcgnAHRYWnvFEqvhEEw3U1XJqXuAFSC09j25xtA14T6YVIIQ7rmbgBUgusSwEuhHUJOq30A/twlifiRkFqZ34FxFeyNYw37MF0ihVRrbc7TttQxnJg/CuJnCVOmm6iWx1AtTaE6+hqzpR8Jmy4FdgE01u4l4vjrlVE98TAhtySwB8Bf2A+Qj3hhnsTMaBAX2W7bA4C1iyD5bUb4AdXyg01WWn79nKTVt5L/V4XUfUDU3VR7AIgvqAHQlML7c+EeUANoDMBuISvVHgDQcSWif/xF4alxS+GzGOZPWeq4ziIAqLsr9S3HBwKT3ubEEODeHaVvBmMTgDpMbWRVERD2IF7a94GIr5aGJGtNx02z2u4AZI1qUVcAsDiZXbkyX4HwrL5+Zg96y+OVtv4tvv4T/txlXTTmAED3Zbsa1B3A3I72ghqTuv26AICBfOf8OWHDWEzIOgmYtndStcsNALR37cCz5HH2bie0xGFu/5qQpwvq6eKktHcAUf6Onp3y+HT5hZz/DwlRgsAzSmhErxQ+g+kdQIZzPRUTQCcRLw1vCwGYCIYl9tgxhH+hNrwgMq3qaVm5NGpgHPHC9AYghmbpHUArf2/kdb++JGf+5Hed9f0j1G3YRf2IHiuxGrz/Yb/eAYRe4kR0BIww48Sl0ibZP0Qnrcxq8P6HfswBsEY+JzoWOm8jjf0D31EbmW/rl8maA2jm86VMr10peQXMN0y7mgNo5vPBZC43HDraN1rP8kG5Qz839AJzAKYjOLYvADie4Fz3xQrkTpFjg2IFHE9wrvtiBXKnyLFBsQKOJzjXvZsVCIeNzvvRM5Q5IHcAHASb5tIeAJ17QhSBiW3Up8PTHoDmPSH/uw/zslx5U25sHSLMEdsD0LwnpH/3aZ355b/hankAoW1OYLpqewB0R7Rs9x8AAP//ZiYWzAAAAAZJREFUAwAU1QtwUar0igAAAABJRU5ErkJggg==">
+</a>
+<a class="text-primary hover:scale-110 transition-transform" href="https://www.linkedin.com/in/hadhi-muhammed-p-71667b378/" target="_blank" rel="noopener">
+<img alt="LinkedIn" class="w-6 h-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEbElEQVR4AexYXWgcVRT+zmwiWq3iD7U/IhSMNhKN7c6KYoRiqU+1yU7SNyM+aIvP1teGqE/6KkX0TS0izc42LX2wVipW68/utg9ijaLVghUR8amRgmaO507YvfdOZnbHZJ1JZYf7zT3n3HPvPd8983fHwVV+/E8JeLVJlGsVlOuXFiHyWOPJ1ZgsOwN7vlwvAX8I0Fsg8kDYuAiRHX5b2k5g91e3YxUdNoEFmpGAH0uMj7AThSuHEttzaNAEvPozAD2CTgfRDniNpzu5ZdWuCTCPRyZV2RiUjAyKfUZglMAzlFxFTYDwAMyD6QAq7lyIBWfKbAJT0dJzVDSBaBABUdRk6O3aDLf/XtQEGOes6QrBNMbPDWC8vgVKthrRsNX8NE2AnDcjYUyAF74D4xuxTwh0ceg1reQraQJ+sQpmeQd0CIgxi0rx/Q5emTVrAmrKPpa3LZ9UYiwYHwD9e2PbcjI61ryHH/wVfmknApoUu2QEv0h9CeBKaKu6j6M6/JvYVk2xCTTDOlJ8B77roepukvoO+KUJKFuzfTl1sd6PsbM75HPkVcFpeLULUs+HWJRPy/fXKxirbcf2U31pp4gnkLZ3Gj8VzFj9OdyJi3CCkyDsF4wAtFnqNSEW5REQvQCHTuGWtT+h3Hg2DRFNwKtNyArMwatzW5Rr4iO+SHGMN+6XYM7DwUEQNqTo0XTZBOI3cPMNX0tMQ01jXK0JME2D6J44J8umfJSvZYxRyg0PHHwuLQOC5RWiuwH6QkiMIuHQBAj3JvgsNXfy9RplWcEKQNfBPgJ5IBwV0wHBLnlBbggB7JL3zRTAR6VmadOFIJcZHUkioQnoLiuT1GWD4NDSQfgCUHhIHgij8N2XBMehnnoKvntcHhgvwi+NIiiMSN+LArsQ3hUSSy6nZAK+SzBhDxev7eECWB65S1Zerue/6D74W2vxHQ3r7NYzKFw7JJmIfBmobNJ7kiUyvOX2MrW2corGhcY+8bpLYJaD8Ev7cMz90zS2lQ8PXZaM7BUSr1t+6tItn5V9i7YmZ0D7pJN2z62VCactZ8YP+OPW5y2bUtLuuef798uK/6i6aPDLeKK+pql3j0DhsgfCbc2BhYzcjM4kPtp8pWX7t3vuE8PzYHqq1V8JhHXoo7ISFbpHgPCoGtDAp6hu+8zQgeXsuavuJzKGehxL1SysbvRQ6R4B8GA4YuvEdvAr2XMzzrSGDQU9VxcJRN+0jr1qK9lzU2QxgPUhDzl1kQCtk/F0+Zs/1opIRA/LWRe1z069577GXgzoxeoiAVyvoxPpmPu7nM1yk6lgdtv5lm7KykjYqKoW/OGfW7ISiG5UlUI3CajxMkePQOZLHpmwl4HIgmSu9jKQ+ZJHJuxlILIgmau9DGS+5JEJkzMQ/T8U6dhRzah/MoGOEa4OB02Aob8OO8UW52vaMuyvCRBPybzfC9oX5m/lp5Xytf1y6q8J+KUZ+O6AwP4fZP4bUnK1tAXK1w4foS2H/ppANKCrRO8RyDtR/wAAAP//5XNVeAAAAAZJREFUAwAcVJpwHLMWiQAAAABJRU5ErkJggg==">
+</a>
+<a class="text-primary hover:scale-110 transition-transform" href="#">
+<img alt="Share Icon" class="w-6 h-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAC10lEQVR4AexYO2/TUBT+bijlR8CKqFgY4jDDACtJmgEkGItEi1jYkbqwMVUtAx2ZQLXDykOwJ6UjlB2o+AUgIJf72U78yrUd21cG6sgn99zz+s53T15OC//4oyGgHWB3fwu90Q/0xt9BXRtYzmFmAt3xHYjJXQixDIFTrk5buV7nZrfmWssY2WgLOxAiqEKdNvoCayVatQT643WwUV1r9DFG5y9gr46Ad7rbOXrYhhebIzQ7pBoCbIinm43nRTCWOd6u1HN5AmyEDS3aBnOYu2heLL4cATbARmJFMcF63DTXxlzWSATnNxQn0B3d0LxhNzC0Hida8GwbCTtJ9EbXE/achmIELr1dUh+TjxIYPHnb2knYpwb6GDPdT1eBh4As1EuhJB9X+qu3sDHvlL297pkxjA37Jb8owob8ejEC7y7/gpT3FMxPX9bmvmyUc+5FEsCa8vn54j7U1zUKPIoRINCwswfbWvZll6aFxLZ2/dxlOG17odxQcHECoSJ1qg2BOk+f2M0EeAp1ynGaQJ3nrMfWT6A/Gqh72o+uUNfXMOMhZm+Uia8nIMWm+r1zzhXqZtrUVyWmEJn4egIC52fVw/rMaFgJY4b1GKyeQCzwb902BOqeTDOB/3cCUh7OyIX1mbEaxdxLSLYeqLu2Q0+UXk2/iSrmCAzbz+B0VlyhnoCuxmCOQDX9ZVZpCGQekeGAZgKGDzizfDOBzCMyHJAyAXkUwb72Prg/iDgMbOJYEl91KHoCEgeRpBOTTawenI3YTGxWxysgVrT2fnQb7PQEROtJEOZqA8jfn9Afy0wpEyPxQaENlASXxFawiWp6AnbbUb9j3kTDa9hJvFD/fL/UIesJMGNJ3gTka6q1iMQr4OTtNOxWmhPPLx7B7lzBRNxScWoi+KJW09dndWh7LqZjXYVz4VsaYDqBaeaw/RS21YdjnVarMCxnYHcGIOYUP2XNRyClQN2uPwAAAP//6TNNBwAAAAZJREFUAwDs2gJwyOY2tgAAAABJRU5ErkJggg==">
+</a></div>
+</div>
+</div>
+</div>
+</div>
+</section><section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-unit-xl">
+<div class="bg-white rounded-[40px] p-unit-xl md:p-20 shadow-sm border border-outline-variant/10 relative overflow-hidden">
+<!-- Subtle background decoration -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-error/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="relative z-10 max-w-4xl mx-auto text-center">
+<h2 class="text-[#E31B23] font-headline-md text-headline-md font-bold mb-unit-lg uppercase tracking-tight">
+                Our MOAT</h2>
+<p class="font-headline-lg text-headline-md md:text-headline-lg text-on-surface leading-tight italic">
+                "We don't take AI motivation. We teach how to save time and increase profitability using AI tools personalized for each occupation, for each field, for each business."<br></p>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="bg-surface-container-low py-unit-xl md:py-32 px-margin-mobile md:px-margin-desktop" id="testimonials">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-24">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-unit-md">Words by Leaders</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">See how Raise AI has transformed careers and streamlined workflows for technical professionals globally.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Testimonial 1 -->
+<div class="bg-white p-unit-xl rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10">
+<div class="flex gap-1 text-yellow-400 mb-unit-md">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-unit-lg italic leading-relaxed">My son in law recomended this to me .Now i can say .This is one is the most valuable section i have witch made changes in my life, Today i use AI like voice to text in all of my works and it is saving me more than 2 hours a day , the only regret i have is i didnt get hadhi to take an offline section in my school . but i am still looking forward to it&nbsp;</p>
+<div class="flex items-center gap-unit-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-primary">B</div>
+<div>
+<p class="font-bold text-primary">Bushar TP</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Principal of greenvally public school</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-unit-xl rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10">
+<div class="flex gap-1 text-yellow-400 mb-unit-md">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-unit-lg italic leading-relaxed">
+                            Hadhi is one of the best mentor when coming to ai and he had taked section on our institute IIDT Escala and made our student think about ai first before taking manual efforts, and indruduced multiple ai tools that increased profitability of our company.</p>
+<div class="flex items-center gap-unit-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-primary">JA</div>
+<div>
+<p class="font-bold text-primary">Junaid ahammed KV</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Entrepenuear and Mentorof IIDT escala</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-unit-xl rounded-3xl shadow-sm hover:shadow-md transition-shadow border border-outline-variant/10">
+<div class="flex gap-1 text-yellow-400 mb-unit-md">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-unit-lg italic leading-relaxed"><span class="block font-bold text-on-surface mb-2">Practical business AI that drives profit.</span></p><ul class="space-y-2 text-on-surface-variant not-italic"><li class="flex gap-2 text-sm"><span class="text-primary">•</span> Focused on solving real pain points and business tactics.</li><li class="flex gap-2 text-sm"><span class="text-primary">•</span> Reduced costs and saved significant time for the whole team.</li><li class="flex gap-2 text-sm"><span class="text-primary">•</span> Directly increased monthly profitability.</li><li class="flex gap-2 text-sm"><span class="text-primary">•</span> Highly recommended for struggling business owners.</li></ul><p class=""></p>
+<div class="flex items-center gap-unit-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-primary">SC</div>
+<div>
+<p class="font-bold text-primary">Sajeer calicut</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Agency owner</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Free Tools Section -->
+
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-inverse-surface full-width py-unit-xl border-t border-outline-variant/30">
+<div class="flex flex-col md:flex-row justify-between items-center gap-unit-md px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-unit-sm items-center md:items-start">
+<div class="font-headline-md text-headline-md text-primary font-bold">Raise AI</div>
+<p class="font-body-md text-body-md text-secondary dark:text-secondary-fixed max-w-xs text-center md:text-left">
+                    © 2026 Raise AI. Built for high-performance teams.
+                </p>
+</div>
+<div class="flex gap-unit-lg">
+<a class="text-on-surface-variant hover:text-primary transition-all hover:underline font-body-md text-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all hover:underline font-body-md text-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-all hover:underline font-body-md text-body-md" href="#">Contact</a>
+</div>
+<div class="flex gap-unit-md">
+<a href="https://Raiseai.in" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl">public</span>
+</a>
+<a href="mailto:raiseaisupport@gmail.com" class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-xl">alternate_email</span>
+</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Floating WhatsApp CTA) -->
+<div class="fixed bottom-unit-lg left-0 right-0 z-50 flex justify-center w-full pb-safe">
+<a class="text-on-primary px-unit-lg py-unit-sm rounded-full flex items-center gap-unit-sm shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 tap-highlight-transparent active:scale-95 font-body-md text-body-md font-bold hover:bg-[#128C7E]" href="https://wa.me/917356003301" target="_blank" style="background-color: rgb(37, 211, 102);"> <span class="">Chat with us</span></a>
+</div>
+
+
+
+
+
+
+</body></html>
