@@ -41,18 +41,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        .growth-line-active {
-            stroke-dasharray: 2500;
-            stroke-dashoffset: 2500;
-            animation: drawGrowth 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        }
-        @keyframes drawGrowth {
-            0% { stroke-dashoffset: 2500; opacity: 0; }
-            10% { opacity: 1; }
-            70% { stroke-dashoffset: 0; opacity: 1; }
-            90% { stroke-dashoffset: 0; opacity: 0; }
-            100% { stroke-dashoffset: 2500; opacity: 0; }
-        }
     </style>
 <script id="tailwind-config">
         tailwind.config = {
@@ -165,24 +153,9 @@
 <main>
 <!-- Hero Section -->
 <section class="relative pt-unit-xl pb-32 md:pt-32 md:pb-48 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
-<!-- Decor elements: Rising Growth Graph -->
+<!-- Decor elements: Static Grid -->
 <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-60">
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-    <svg class="absolute bottom-0 left-0 w-full h-[60%] lg:h-[110%]" preserveAspectRatio="xMaxYMax slice" viewBox="0 0 1000 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M -50 500 Q 200 500, 400 400 T 1050 250" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 10"/>
-        <path class="growth-line-active" d="M -50 500 C 300 500, 400 450, 600 250 C 750 100, 850 50, 1050 -50" stroke="url(#growth-gradient)" stroke-width="8" stroke-linecap="round" filter="url(#glow)"/>
-        <defs>
-            <linearGradient id="growth-gradient" x1="0" y1="500" x2="1000" y2="-50" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#dae2ff" stop-opacity="0"/>
-                <stop offset="40%" stop-color="#0052cc" stop-opacity="0.8"/>
-                <stop offset="100%" stop-color="#003d9b" stop-opacity="1"/>
-            </linearGradient>
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="8" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-        </defs>
-    </svg>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
 <div class="lg:col-span-7 relative z-10">
