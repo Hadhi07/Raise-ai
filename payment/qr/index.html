@@ -164,15 +164,15 @@
 <div class="absolute inset-0 z-10 pointer-events-none border-2 border-emerald-500/20 rounded-lg"></div>
 <!-- Animated Scan Line -->
 <div class="scan-line absolute left-0 right-0 h-0.5 bg-secondary shadow-[0_0_8px_#10B981] z-20"></div>
-<img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBercc1HRt7NeLIkqpSAKSZBZRwwj5_Pij9f1a9kmfNppYm8m6UjsfMerfGndamakthTvaiTL4I_5X16BTkgnel_WWqdAsNHZtYwvCqVE5UsNQ_oVnHdgXvR1g-3BthX3mRdpuYOwMRsoMKwAXoWaDCp2WsJ-8ofwDi3p4ICMbDVhrgaUZWRQSLKu8lUzaooadX3Zjvkzxf0mOg6H9sHm7jmUE5fzUdxJFHU0EMyGduUvqfXZodOSSwdGM8lFAA1DTfAk7YtEmbL8ih">
+<img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
 </div>
-<a href="gpay://upi/pay?pa=hadhinoushad43%40okaxis&amp;cu=INR&amp;pn=Hadhi&amp;am=99.00&amp;tn=Ai+Webinar" class="w-24 h-24 bg-primary text-on-primary flex flex-col items-center justify-center gap-1 rounded-xl font-label-sm hover:opacity-90 transition-all active:scale-95 shadow-lg mb-2 text-center">
+<a href="gpay://upi/pay?pa=hadhinoushad43-1@oksbi&amp;cu=INR&amp;pn=Hadhi&amp;am=99.00&amp;tn=Ai+Webinar" class="w-24 h-24 bg-primary text-on-primary flex flex-col items-center justify-center gap-1 rounded-xl font-label-sm hover:opacity-90 transition-all active:scale-95 shadow-lg mb-2 text-center">
     <span class="material-symbols-outlined text-[32px]">payments</span>
     <span class="leading-tight">Google<br>Pay</span>
 </a><div class="flex flex-col items-center gap-2 p-3 bg-surface-container rounded-lg border border-outline-variant w-full max-w-[240px] mb-2">
     <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">UPI ID</span>
     <div class="flex items-center gap-2">
-        <code class="font-body-md font-semibold text-primary">hadhinoushad43@okaxis</code>
+        <code class="font-body-md font-semibold text-primary">hadhinoushad43-1@oksbi</code>
         <button id="copy-upi-btn" class="material-symbols-outlined text-secondary text-[20px] hover:text-primary transition-colors active:scale-90" title="Copy UPI ID">content_copy</button>
     </div>
 </div><div class="flex flex-col items-center gap-1 mt-2">
@@ -227,7 +227,7 @@
         if (copyBtn) {
             copyBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const upiId = 'hadhinoushad43@okaxis';
+                const upiId = 'hadhinoushad43-1@oksbi';
                 navigator.clipboard.writeText(upiId).then(() => {
                     // Change icon to checkmark and color to green for 2 seconds
                     const originalText = copyBtn.textContent;
