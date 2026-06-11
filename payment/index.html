@@ -1,0 +1,285 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Raise AI | Empowering Educators with AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2d3133",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#b87500",
+                    "tertiary-container": "#2a1700",
+                    "on-error-container": "#93000a",
+                    "secondary": "#006c49",
+                    "on-surface-variant": "#45464d",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-fixed": "#002113",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-secondary-fixed-variant": "#005236",
+                    "background": "#f7f9fb",
+                    "inverse-primary": "#bec6e0",
+                    "outline": "#76777d",
+                    "surface": "#f7f9fb",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#6cf8bb",
+                    "surface-dim": "#d8dadc",
+                    "secondary-fixed-dim": "#4edea3",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-highest": "#e0e3e5",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-primary-container": "#7c839b",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container-high": "#e6e8ea",
+                    "on-background": "#191c1e",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-tint": "#565e74",
+                    "primary-fixed": "#dae2fd",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-surface": "#191c1e",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed": "#6ffbbe",
+                    "primary-container": "#131b2e",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary": "#000000",
+                    "primary": "#000000",
+                    "surface-container": "#eceef0",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#00714d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-lg": "48px",
+                    "base": "8px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "12px",
+                    "stack-md": "24px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "headline-sm": ["Montserrat"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-grid-slate {
+        background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+      .ai-gradient-text {
+        background: linear-gradient(135deg, #10B981, #006c49);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }</style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-background">Raise AI</span>
+</div>
+<a class="px-6 py-2 rounded-xl font-label-md hover:opacity-80 transition-opacity bg-blue-600 text-white" href="/payment/qr/">Join Now for ₹99</a>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative flex items-center overflow-hidden bg-grid-slate px-margin-mobile md:px-margin-desktop py-stack-md">
+<div class="container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-stack-md items-center relative z-10">
+<div class="flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm uppercase tracking-wider">AI for Educators</span>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg leading-tight text-primary-container">
+                    Master AI: Save <span class="text-[#10B981]" style="color: rgb(37, 99, 235);">10+ Hours</span> Weekly.
+                </h1>
+<p class="font-body-md text-on-surface-variant max-w-xl">
+                    The ultimate AI toolkit for educators. From lesson planning to grading, work smarter, not harder.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 mt-2 relative">
+<div class="absolute -top-6 left-0 bg-[#F59E0B] text-primary-container px-3 py-0.5 rounded-full font-label-sm text-[10px] uppercase tracking-widest shadow-sm -top-4 -right-2">Limited Slots Only&nbsp;</div><a class="text-white px-8 py-4 rounded-xl font-headline-sm flex items-center justify-center gap-2 shadow-lg hover:brightness-105 transition-all animate-pulse bg-blue-600" href="/payment/qr/">Join Now for ₹99<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span></a><div class="mt-2 text-error font-bold text-center w-full flex items-center justify-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span>Offer ends in: <span class="countdown-timer">04:59:59</span></div>
+<div class="flex items-center gap-3 px-4 py-2 bg-surface rounded-xl border border-outline-variant">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">person</span></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">person</span></div>
+</div>
+<span class="font-label-sm text-on-surface-variant" style="color: rgb(220, 38, 38); animation: 1s linear 0s infinite normal none running blink;">23 seat left&nbsp;</span>
+</div>
+</div>
+</div>
+<div class="relative mt-8 md:mt-0 hidden md:block">
+<div class="relative z-10 rounded-xl overflow-hidden border border-outline-variant shadow-xl">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAgzVDnehdAoJQZF-EIiU3qOJDkL5z43RnB_ltMHiagm4GOaGyTsqwA3vc4lSSOEudWp7EAB47ZRIRWQm5nz_GC4iD2gp_ADwRFL8BM-jyE1hV8VzexzbIjSaxWUee4sTzoR85rTC9ETjht0cbL3zX6MmuLt-_3eonGpl4D6w4bBbTVzdacR3HwrFnv-dNRQ4B4qS2E81P3yiOFkaOjJ-IhMA3l0H3x6QwrA4TesyYEGd7rc2NPg1ShvnzCjn-5DqHsF-lDKkyMFKL" alt="Founder" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" />
+</div>
+</div>
+</div>
+</section>
+<!-- Simplified Why Raise AI Section -->
+<section class="py-stack-md bg-surface-container-low px-margin-mobile md:px-margin-desktop">
+<div class="container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="py-stack-md bg-surface-container-low px-margin-mobile md:px-margin-desktop" id="pricing">
+<div class="container-max mx-auto max-w-2xl">
+<div class="bg-surface-container-lowest p-8 md:p-12 rounded-xl border border-outline-variant shadow-xl relative"><div class="absolute bg-[#F59E0B] text-primary-container px-4 py-1 rounded-full font-label-md shadow-lg font-bold w-fit z-10 -top-4 -right-2">85% OFF</div>
+
+<h2 class="font-headline-sm text-headline-sm text-center mb-8 text-primary-container">What you're actually getting</h2>
+<ul class="space-y-6 mb-10">
+<li class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-outline-variant pb-4 gap-2">
+<span class="font-bold text-body-lg text-on-surface">AI Presentation Masterclass</span>
+<span class="font-label-md text-secondary bg-secondary-container/20 px-3 py-1 rounded-full">Worth ₹1,999</span>
+</li>
+<li class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-outline-variant pb-4 gap-2">
+<span class="font-bold text-body-lg text-on-surface">Generative AI Toolkit &amp; Pro-Prompts</span>
+<span class="font-label-md text-secondary bg-secondary-container/20 px-3 py-1 rounded-full">Worth ₹2,499</span>
+</li>
+<li class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-outline-variant pb-4 gap-2">
+<span class="font-bold text-body-lg text-on-surface">Exclusive Educator AI Resources &amp; Templates</span>
+<span class="font-label-md text-secondary bg-secondary-container/20 px-3 py-1 rounded-full">Worth ₹1,499</span>
+</li>
+</ul>
+<div class="bg-surface-container-low rounded-xl p-8 text-center">
+<div class="mb-4">
+<span class="font-label-md text-on-surface-variant uppercase tracking-widest font-bold">TOTAL VALUE:</span>
+<span class="font-headline-sm text-error line-through ml-2">₹5,997</span>
+</div>
+<div class="mb-6">
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Final Offer</p>
+<p class="font-headline-lg text-5xl md:text-6xl text-primary-container font-bold">₹99</p>
+</div>
+<a class="w-full text-white py-5 rounded-xl font-headline-sm hover:brightness-110 shadow-lg transition-all flex items-center justify-center gap-3 group animate-pulse bg-blue-600" href="/payment/qr/">
+          Join Now for ₹99 
+          <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="payments">payments</span>
+</a>
+<div class="mt-6 text-error font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span>
+          Offer ends in: <span class="countdown-timer">04:59:59</span>
+        </div>
+<p class="mt-4 text-[10px] uppercase font-label-sm text-on-surface-variant tracking-widest opacity-70">Secure Payment via Razorpay</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Brief FAQ Section -->
+<section class="px-margin-mobile md:px-margin-desktop bg-surface">
+<div class="container-max mx-auto max-w-2xl">
+<h2 class="font-headline-md text-headline-sm text-center mb-6">Quick Questions</h2>
+<div class="space-y-4">
+<div class="p-5 bg-surface-container-low rounded-xl border border-outline-variant">
+<h4 class="font-label-md mb-2">Do I need&nbsp; any&nbsp; paid Tool or account?</h4>
+<p class="font-body-sm text-on-surface-variant">No! We teach you how to use free tools and do all the task. The paid version are completly optional.</p>
+</div>
+<div class="p-5 bg-surface-container-low rounded-xl border border-outline-variant">
+<h4 class="font-label-md mb-2">What if I'm not "tech-savvy"?</h4>
+<p class="font-body-sm text-on-surface-variant">If you can use WhatsApp, you can use this. We provide simple, jargon-free instructions.</p>
+</div>
+</div>
+<div class="mt-8 text-center">
+<a class="text-secondary font-label-md flex items-center justify-center gap-2 hover:underline" href="#">
+                    Contact Support for more help
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_outward">arrow_outward</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface py-4">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop container-max mx-auto gap-4">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-surface-container-lowest">Raise AI</span>
+</div>
+<p class="font-body-sm text-surface-variant opacity-70 text-[12px]">
+            © 2026 Raise AI. Empowering educators.
+        </p>
+<div class="flex gap-4">
+<a class="text-[12px] text-surface-variant hover:text-white" href="#">Privacy</a>
+<a class="text-[12px] text-surface-variant hover:text-white" href="#">Terms</a>
+</div>
+</div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+<script>
+    (function() {
+        let time = 300 * 60 - 1; // 4 hours 59 minutes 59 seconds to look like "04:59:59"
+        const displays = document.querySelectorAll('.countdown-timer');
+        const interval = setInterval(() => {
+            const hours = Math.floor(time / 3600);
+            const minutes = Math.floor((time % 3600) / 60);
+            const seconds = time % 60;
+            const timeString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            displays.forEach(display => {
+                display.textContent = timeString;
+            });
+            if (time <= 0) {
+                clearInterval(interval);
+            } else {
+                time--;
+            }
+        }, 1000);
+    })();
+</script>
+</html>
