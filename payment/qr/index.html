@@ -143,27 +143,27 @@ src="https://www.facebook.com/tr?id=958547097011254&ev=PageView&noscript=1"
 </head>
 <body class="bg-background text-on-background min-h-screen font-body-md flex flex-col">
 <!-- TopAppBar -->
-<header class="w-full top-0 sticky z-50 bg-surface dark:bg-background border-b border-surface-variant dark:border-outline-variant flex items-center justify-between px-margin-mobile h-14">
-<div class="flex items-center gap-4">
-<button aria-label="Go back" onclick="window.location.href='../'" class="cursor-pointer active:opacity-70 flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-primary dark:text-on-background">arrow_back</span>
+<header class="w-full top-0 sticky z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-margin-mobile h-16 shadow-sm">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" onclick="window.location.href='../'" class="cursor-pointer active:opacity-70 flex items-center justify-center w-9 h-9 rounded-full hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-slate-800">arrow_back</span>
 </button>
-<h1 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-on-background">Checkout</h1>
+<img src="../logo.png" alt="Raise AI Logo" class="h-7 object-contain" />
 </div>
-<div class="w-10"></div> <!-- Spacer for centering title if needed, or trailing action -->
+<span class="font-bold text-[11px] uppercase tracking-wider text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 flex items-center gap-1">🔒 256-Bit Encrypted</span>
 </header>
 <!-- Main Content -->
 <main class="flex-grow w-full max-w-container-max md:max-w-md mx-auto px-margin-mobile py-stack-md flex flex-col gap-stack-md">
 <!-- Order Summary Section -->
-<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex justify-between items-center">
-<div class="flex flex-col">
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Order Detail</span>
-<h2 class="font-body-lg text-body-lg font-semibold text-on-background">AI Educator Webinar</h2>
-<span class="font-label-sm text-on-surface-variant mt-0.5">📅 14th June | 1:00 PM Starting</span>
+<section class="bg-gradient-to-r from-slate-900 to-slate-950 text-white border border-slate-800 rounded-2xl p-5 flex justify-between items-center shadow-lg relative overflow-hidden">
+<div class="flex flex-col gap-0.5">
+<span class="text-[11px] font-bold text-blue-400 uppercase tracking-widest">Order Summary</span>
+<h2 class="font-bold text-base md:text-lg text-white">AI Videography & UGC Masterclass</h2>
+<span class="text-xs text-slate-300 flex items-center gap-1 mt-1">📅 Live 2-Hour Interactive Session</span>
 </div>
 <div class="text-right">
-<p class="font-headline-sm text-headline-sm text-secondary font-bold">₹99</p>
-<p class="font-label-sm text-label-sm text-outline">Incl. taxes</p>
+<p class="text-2xl md:text-3xl text-emerald-400 font-extrabold">₹99</p>
+<p class="text-[10px] text-slate-400 uppercase font-semibold">Incl. All Taxes</p>
 </div>
 </section>
 <!-- QR Code Scan Section -->
