@@ -1,128 +1,128 @@
-<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Checkout | Raise AI</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Complete Registration | Raise AI Masterclass</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-primary-fixed-variant": "#3f465c",
-                        "tertiary-fixed": "#ffddb8",
-                        "on-error-container": "#93000a",
-                        "primary-fixed": "#dae2fd",
-                        "on-primary-container": "#7c839b",
-                        "surface-dim": "#d8dadc",
-                        "primary-fixed-dim": "#bec6e0",
-                        "outline-variant": "#c6c6cd",
-                        "surface-bright": "#f7f9fb",
-                        "secondary-fixed": "#6ffbbe",
-                        "on-background": "#191c1e",
-                        "on-tertiary": "#ffffff",
-                        "on-error": "#ffffff",
-                        "error-container": "#ffdad6",
-                        "background": "#f7f9fb",
-                        "tertiary": "#000000",
-                        "surface-container-high": "#e6e8ea",
-                        "tertiary-container": "#2a1700",
-                        "surface-container": "#eceef0",
-                        "inverse-surface": "#2d3133",
-                        "on-secondary-fixed": "#002113",
-                        "inverse-primary": "#bec6e0",
-                        "on-primary-fixed": "#131b2e",
-                        "error": "#ba1a1a",
-                        "on-secondary-container": "#00714d",
-                        "on-primary": "#ffffff",
-                        "surface-tint": "#565e74",
-                        "on-tertiary-fixed": "#2a1700",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-highest": "#e0e3e5",
-                        "secondary-container": "#6cf8bb",
-                        "on-secondary": "#ffffff",
-                        "surface-container-low": "#f2f4f6",
-                        "primary-container": "#131b2e",
-                        "on-secondary-fixed-variant": "#005236",
-                        "secondary": "#006c49",
-                        "tertiary-fixed-dim": "#ffb95f",
-                        "secondary-fixed-dim": "#4edea3",
-                        "on-tertiary-container": "#b87500",
-                        "on-surface-variant": "#45464d",
-                        "surface": "#f7f9fb",
-                        "surface-variant": "#e0e3e5",
-                        "on-surface": "#191c1e",
-                        "primary": "#000000",
-                        "on-tertiary-fixed-variant": "#653e00",
-                        "inverse-on-surface": "#eff1f3",
-                        "outline": "#76777d"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "base": "8px",
-                        "stack-md": "24px",
-                        "stack-sm": "12px",
-                        "margin-mobile": "16px",
-                        "margin-desktop": "40px",
-                        "stack-lg": "48px",
-                        "container-max": "1280px",
-                        "gutter": "24px"
-                    },
-                    "fontFamily": {
-                        "body-md": ["Inter"],
-                        "headline-md": ["Montserrat"],
-                        "headline-sm": ["Montserrat"],
-                        "headline-lg": ["Montserrat"],
-                        "headline-lg-mobile": ["Montserrat"],
-                        "body-lg": ["Inter"],
-                        "label-md": ["Inter"],
-                        "label-sm": ["Inter"],
-                        "body-sm": ["Inter"]
-                    },
-                    "fontSize": {
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
-                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
-                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
-                    }
-                }
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                background: "#000000",
+                surface: "#0a0a0a",
+                neon: "#a3fd00",
+                urgency: "#ff2a40"
+            },
+            fontFamily: {
+                sans: ["Inter", "sans-serif"],
+                headline: ["Montserrat", "sans-serif"]
             }
         }
-    </script>
+    }
+}
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .timer-glow {
-            animation: pulse-red 2s infinite;
-        }
-        @keyframes pulse-red {
-            0%, 100% { color: #ba1a1a; opacity: 1; }
-            50% { color: #ba1a1a; opacity: 0.6; }
-        }
-        .scan-line {
-            animation: scan 3s ease-in-out infinite;
-        }
-        @keyframes scan {
-            0%, 100% { top: 0%; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
-    </style>
+* {
+    box-sizing: border-box;
+}
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+.neon-text {
+    color: #a3fd00;
+}
+.timer-red {
+    color: #ff2a40;
+    text-shadow: 0 0 10px rgba(255, 42, 64, 0.5);
+}
+.timer-red-bg {
+    background-color: #1a0507;
+    border-color: rgba(255, 42, 64, 0.4);
+    color: #ff2a40;
+}
+/* Sparky shimmer effect on CTA buttons every 2 seconds */
+@keyframes sparkShimmer {
+    0% {
+        transform: translateX(-150%) skewX(-20deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.8;
+    }
+    30% {
+        transform: translateX(250%) skewX(-20deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(250%) skewX(-20deg);
+        opacity: 0;
+    }
+}
+@keyframes pulseButton {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(163, 253, 0, 0.4);
+        transform: scale(1);
+    }
+    15% {
+        box-shadow: 0 0 35px rgba(163, 253, 0, 0.75);
+        transform: scale(1.02);
+    }
+    30% {
+        box-shadow: 0 0 20px rgba(163, 253, 0, 0.4);
+        transform: scale(1);
+    }
+}
+.neon-btn {
+    position: relative;
+    background-color: #a3fd00;
+    color: #000000;
+    font-weight: 800;
+    overflow: hidden;
+    animation: pulseButton 2s infinite ease-in-out;
+    transition: all 0.2s ease;
+}
+.neon-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.7) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: sparkShimmer 2s infinite linear;
+    pointer-events: none;
+}
+.neon-btn:hover {
+    background-color: #b5ff1a;
+    box-shadow: 0 0 35px rgba(163, 253, 0, 0.8);
+    transform: translateY(-2px);
+}
+.scan-line {
+    animation: scan 2.8s ease-in-out infinite;
+}
+@keyframes scan {
+    0%, 100% { top: 0%; opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+</style>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -135,150 +135,256 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '958547097011254');
 fbq('track', 'PageView');
+fbq('track', 'InitiateCheckout', {
+    content_name: 'Flow Fundamentals with 100% free tools',
+    value: 99.00,
+    currency: 'INR'
+});
+
+function trackPurchaseEvent(method) {
+    if (typeof fbq === 'function') {
+        fbq('track', 'Purchase', {
+            content_name: 'Flow Fundamentals with 100% free tools',
+            value: 99.00,
+            currency: 'INR',
+            payment_method: method
+        });
+    }
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=958547097011254&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
-<body class="bg-background text-on-background min-h-screen font-body-md flex flex-col">
+<body class="bg-black text-white min-h-screen font-sans flex flex-col antialiased selection:bg-neon selection:text-black w-full overflow-x-hidden">
+
 <!-- TopAppBar -->
-<header class="w-full top-0 sticky z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-margin-mobile py-3 h-24 shadow-sm">
-<div class="flex items-center gap-3">
-<button aria-label="Go back" onclick="window.location.href='../'" class="cursor-pointer active:opacity-70 flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 transition-colors">
-<span class="material-symbols-outlined text-slate-800">arrow_back</span>
-</button>
-<img src="../logo.png" alt="Raise AI Logo" class="h-12 md:h-16 w-auto object-contain max-w-[200px] md:max-w-[260px]" />
-</div>
-<span class="font-bold text-[11px] uppercase tracking-wider text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 flex items-center gap-1">🔒 256-Bit Encrypted</span>
-</header>
-<!-- Main Content -->
-<main class="flex-grow w-full max-w-container-max md:max-w-md mx-auto px-margin-mobile py-stack-md flex flex-col gap-stack-md">
-<!-- Order Summary Section -->
-<section class="bg-gradient-to-r from-slate-900 to-slate-950 text-white border border-slate-800 rounded-2xl p-5 flex justify-between items-center shadow-lg relative overflow-hidden">
-<div class="flex flex-col gap-0.5">
-<span class="text-[11px] font-bold text-blue-400 uppercase tracking-widest">Order Summary</span>
-<h2 class="font-bold text-base md:text-lg text-white">AI Videography & UGC Masterclass</h2>
-<span class="text-xs text-slate-300 flex items-center gap-1 mt-1">📅 Live 2-Hour Interactive Session</span>
-</div>
-<div class="text-right">
-<p class="text-2xl md:text-3xl text-emerald-400 font-extrabold">₹99</p>
-<p class="text-[10px] text-slate-400 uppercase font-semibold">Incl. All Taxes</p>
-</div>
-</section>
-<!-- QR Code Scan Section -->
-<section class="flex flex-col gap-stack-sm items-center">
-<div class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col items-center gap-4 relative overflow-hidden"><div class="flex flex-col items-center gap-1 mb-2">
-    <span class="font-label-sm text-label-sm text-error uppercase tracking-wider font-bold">link expires in:</span>
-    <div id="urgency-timer" class="font-headline-sm text-headline-sm text-error font-bold timer-glow">05:00</div>
-</div>
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: &quot;FILL&quot; 1;">qr_code_scanner</span>
-<h3 class="font-label-md text-label-md text-on-surface-variant">Scan to Pay</h3>
-</div>
-<!-- QR Image Container -->
-<div class="relative w-64 h-64 bg-white border border-outline-variant rounded-lg">
-<div class="absolute inset-0 z-10 pointer-events-none border-2 border-emerald-500/20 rounded-lg"></div>
-<!-- Animated Scan Line -->
-<div class="scan-line absolute left-0 right-0 h-0.5 bg-secondary shadow-[0_0_8px_#10B981] z-20"></div>
-<img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
-</div>
-<a href="gpay://upi/pay?pa=hadhip6252@sbi&amp;cu=INR&amp;pn=hadhi&amp;am=99.00&amp;tn=Ai+Webinar" class="w-24 h-24 bg-primary text-on-primary flex flex-col items-center justify-center gap-1 rounded-xl font-label-sm hover:opacity-90 transition-all active:scale-95 shadow-lg mb-2 text-center">
-    <span class="material-symbols-outlined text-[32px]">payments</span>
-    <span class="leading-tight">Google<br>Pay</span>
-</a><div class="flex flex-col items-center gap-2 p-3 bg-surface-container rounded-lg border border-outline-variant w-full max-w-[240px] mb-2">
-    <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">UPI ID</span>
+<header class="w-full top-0 sticky z-50 bg-black/95 backdrop-blur-md border-b border-[#1c1c1c] flex items-center justify-between px-3 md:px-8 py-2.5 shadow-md">
     <div class="flex items-center gap-2">
-        <code class="font-body-md font-semibold text-primary">hadhip6252@sbi</code>
-        <button id="copy-upi-btn" class="material-symbols-outlined text-secondary text-[20px] hover:text-primary transition-colors active:scale-90" title="Copy UPI ID">content_copy</button>
+        <button aria-label="Go back" onclick="window.location.href='../'" class="cursor-pointer active:opacity-70 flex items-center justify-center w-9 h-9 rounded-full hover:bg-[#1c1c1c] transition-colors text-white">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <img src="../logo.png" alt="Raise AI Logo" class="h-8 md:h-11 w-auto object-contain brightness-110" />
     </div>
-</div><div class="flex flex-col items-center gap-1 mt-2">
-<div class="flex items-center gap-2">
+    <span class="font-bold text-[10px] md:text-[11px] uppercase tracking-wider text-neutral-300 bg-[#0f0f0f] px-2.5 py-1 rounded-full border border-[#222222] flex items-center gap-1">
+        🔒 256-Bit Encrypted
+    </span>
+</header>
 
-<span class="font-body-sm text-body-sm font-semibold text-error timer-glow">After payment sent screenshot to whatsapp for&nbsp;<span style="white-space: pre-wrap;" class="">Confirmation </span></span>
-</div>
-<p class="font-label-sm text-label-sm text-outline text-center">Open any UPI app to scan and pay instantly</p>
-</div>
-</div>
-</section>
-<!-- UPI Apps Section -->
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-md mx-auto px-3.5 py-5 flex flex-col gap-4">
+    <!-- Order Summary Section with RED 10-Min Timer on Top -->
+    <section class="bg-[#0d0d0d] border border-neon/40 rounded-2xl p-4 md:p-5 flex flex-col gap-2.5 shadow-[0_0_25px_rgba(163,253,0,0.15)] relative overflow-hidden">
+        <!-- RED 10-Minute Countdown Clock near Price on Top -->
+        <div class="flex items-center justify-between border-b border-[#222222] pb-2">
+            <span class="text-[10px] md:text-[11px] font-extrabold text-neutral-300 uppercase tracking-widest flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#ff2a40] animate-ping"></span>
+                Offer Reserved For:
+            </span>
+            <span id="top-urgency-timer" class="font-mono font-bold timer-red text-xs md:text-sm timer-red-bg px-2.5 py-0.5 rounded border">10:00</span>
+        </div>
 
-<!-- Trust & Footer Section -->
-<section class="mt-auto pt-stack-md flex flex-col items-center gap-stack-sm">
-<div class="flex items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
-<div class="flex items-center gap-1">
+        <div class="flex justify-between items-center">
+            <div class="flex flex-col gap-0.5">
+                <span class="text-[10px] md:text-[11px] font-extrabold text-neon uppercase tracking-widest">You're Registering For</span>
+                <!-- Updated course name as requested -->
+                <h2 class="font-headline font-bold text-sm md:text-base text-white">Flow Fundamentals with 100% free tools</h2>
+                <span class="text-[11px] md:text-xs text-neutral-300 flex items-center gap-1 mt-0.5">🗓️ Sunday, 16 Aug 2026 • 7:00 PM IST</span>
+                <span class="text-[10px] md:text-[11px] text-neon font-semibold flex items-center gap-1">📹 HD Recording + 15,000 Credits Included</span>
+            </div>
+            <div class="text-right">
+                <p class="text-2xl md:text-3xl text-neon font-headline font-black">₹99</p>
+                <p class="text-[9px] md:text-[10px] text-neutral-400 uppercase font-semibold">One-Time Fee</p>
+            </div>
+        </div>
+    </section>
 
+    <!-- QR Code Scan Section -->
+    <section class="flex flex-col gap-4 items-center">
+        <div class="w-full bg-[#0a0a0a] border border-[#222222] rounded-2xl p-4 md:p-6 flex flex-col items-center gap-3.5 relative overflow-hidden shadow-2xl">
+            <!-- RED 10-Minute Countdown Header -->
+            <div class="flex flex-col items-center gap-0.5 mb-1">
+                <span class="text-[11px] text-neutral-300 uppercase tracking-wider font-extrabold flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-[#ff2a40] animate-pulse"></span>
+                    Link & Discount Expires In:
+                </span>
+                <div id="urgency-timer" class="font-headline text-2xl md:text-3xl timer-red font-black font-mono">10:00</div>
+            </div>
 
-</div>
-<div class="flex items-center gap-1">
+            <div class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-neon" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+                <h3 class="font-headline font-bold text-xs md:text-sm text-white">Scan QR to Pay Instantly</h3>
+            </div>
 
+            <!-- QR Image Container -->
+            <div class="relative w-56 h-56 md:w-64 md:h-64 bg-white p-2 rounded-xl border-2 border-neutral-700 shadow-inner">
+                <!-- Animated Scan Line -->
+                <div class="scan-line absolute left-2 right-2 h-0.5 bg-neon shadow-[0_0_12px_#a3fd00] z-20"></div>
+                <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
+            </div>
 
-</div>
-</div>
-<p class="font-body-sm text-body-sm text-on-surface-variant text-center px-4">
-                By completing the payment, you agree to our <a class="text-secondary underline" href="#">Terms of Service</a>.
-            </p>
-</section>
+            <!-- Universal UPI Intent CTA Button with Sparkle Shimmer -->
+            <a onclick="trackPurchaseEvent('UPI_App')" href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95">
+                <span class="material-symbols-outlined text-xl md:text-2xl font-bold">payments</span>
+                <span>Pay via UPI App / GPay (₹99)</span>
+            </a>
+
+            <!-- UPI ID Box -->
+            <div class="flex flex-col items-center gap-1 p-2.5 bg-[#0d0d0d] rounded-xl border border-[#222222] w-full">
+                <span class="text-[10px] md:text-[11px] text-neutral-400 uppercase tracking-wider font-semibold">Or Copy UPI ID</span>
+                <div class="flex items-center gap-2">
+                    <code class="font-mono font-bold text-xs md:text-sm text-neon bg-black px-2 py-0.5 rounded border border-neon/30">hadhip6252@sbi</code>
+                    <button id="copy-upi-btn" class="material-symbols-outlined text-neutral-300 hover:text-neon transition-colors p-1 active:scale-90" title="Copy UPI ID">content_copy</button>
+                </div>
+            </div>
+
+            <!-- DEDICATED WHATSAPP SCREENSHOT & DETAILS REDIRECTION BUTTON -->
+            <a onclick="trackPurchaseEvent('WhatsApp_Handoff')" href="https://wa.me/917356003301?text=Hi%20Hadhi%2C%20I%20have%20completed%20the%20payment%20of%20%E2%82%B999%20for%20the%20AI%20Videography%20Masterclass.%20Here%20are%20my%20details%20and%20payment%20screenshot%3A%0A%0AName%3A%20%0AEmail%3A%20%0APhone%3A%20" target="_blank" rel="noopener" class="w-full py-3.5 px-4 bg-[#25D366] hover:bg-[#22bf5b] text-white flex items-center justify-center gap-2 rounded-xl font-sans font-bold text-xs md:text-sm shadow-lg transition-transform active:scale-95 text-center">
+                <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                <span>Share screenshot and details here</span>
+            </a>
+
+            <!-- 3-Step Clear Confirmation Instructions -->
+            <div class="p-3 md:p-4 bg-[#121c08] border border-neon/30 rounded-xl w-full text-left">
+                <p class="text-[11px] md:text-xs font-bold text-neon uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                    <span>⚡ Quick Confirmation Steps:</span>
+                </p>
+                <ol class="text-[11px] md:text-xs text-neutral-200 space-y-1 font-medium pl-4 list-decimal">
+                    <li>Pay <strong>₹99</strong> using UPI app or QR scan above.</li>
+                    <li>Click the green button above or message: <a href="https://wa.me/917356003301" class="text-neon underline font-bold" target="_blank" rel="noopener">+91 73560 03301</a>.</li>
+                    <li>You will receive your <strong>private Zoom link & confirmation within minutes</strong>!</li>
+                </ol>
+            </div>
+            <p class="text-[10px] md:text-[11px] text-neutral-400 text-center">Compatible with GPay, PhonePe, Paytm, CRED & all UPI apps</p>
+        </div>
+    </section>
+
+    <!-- Trust Section with Legal Modals -->
+    <section class="mt-auto pt-1 flex flex-col items-center gap-1">
+        <p class="text-[11px] text-neutral-400 text-center px-4">
+            By completing payment, you agree to our 
+            <button onclick="openModal('terms-modal')" class="text-neon underline cursor-pointer">Terms of Service</button> & 
+            <button onclick="openModal('privacy-modal')" class="text-neon underline cursor-pointer">Privacy Policy</button>.
+        </p>
+    </section>
 </main>
-<!-- Bottom Navigation Mock (Only if needed, but per prompt we need a "Need help?" link) -->
-<footer class="w-full bg-surface-container-low border-t border-outline-variant py-4 px-margin-mobile flex justify-center">
-<a class="flex items-center gap-2 text-secondary font-label-md text-label-md hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-[20px]">help_outline</span>
-            Need help with your payment?
-        </a>
+
+<!-- Footer Help -->
+<footer class="w-full bg-black border-t border-[#1c1c1c] py-3.5 px-4 flex justify-center text-center">
+    <a class="flex items-center gap-1.5 text-neutral-300 text-xs font-semibold hover:text-neon transition-colors" href="https://wa.me/917356003301" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined text-sm md:text-base text-neon">help_outline</span>
+        <span>Need help with your payment? Chat with support on +91 73560 03301</span>
+    </a>
 </footer>
-<!-- Fixed Bottom NavBar (Mandated by JSON but suppressed if Transactional - Following "The Filter" rule for Transactional pages) -->
-<!-- The prompt asks for a "Checkout" screen, which is Transactional/Task-focused. -->
-<!-- Per "Shell Visibility & Relevance" rule: suppress the BottomNavBar on Transactional/Checkout pages. -->
+
+<!-- Privacy Policy Modal -->
+<div id="privacy-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0d0d0d] border border-[#262626] rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 text-left relative shadow-2xl">
+        <button onclick="closeModal('privacy-modal')" class="absolute top-4 right-4 text-neutral-400 hover:text-white">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="text-xl font-headline font-bold text-white mb-4">Privacy Policy</h3>
+        <div class="text-xs text-neutral-300 space-y-3 leading-relaxed">
+            <p><strong>1. Information We Collect:</strong> When you register for the masterclass, we collect your name, phone number, and email address solely to send session join links, event reminders, recordings, and workshop materials.</p>
+            <p><strong>2. Payment Information:</strong> Payments are processed directly through secure UPI networks. We never store or collect your banking credentials or UPI PIN.</p>
+            <p><strong>3. Communications:</strong> We use WhatsApp and email to provide workshop access links, session recordings, and customer support. You may opt out of promotional messages at any time.</p>
+            <p><strong>4. Contact Us:</strong> For any privacy questions, contact our support team at <a href="https://wa.me/917356003301" class="text-neon underline">+91 73560 03301</a>.</p>
+        </div>
+        <button onclick="closeModal('privacy-modal')" class="mt-6 w-full py-2.5 rounded-xl bg-[#222222] hover:bg-[#333333] text-white font-bold text-xs">Close</button>
+    </div>
+</div>
+
+<!-- Terms of Service Modal -->
+<div id="terms-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0d0d0d] border border-[#262626] rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 text-left relative shadow-2xl">
+        <button onclick="closeModal('terms-modal')" class="absolute top-4 right-4 text-neutral-400 hover:text-white">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="text-xl font-headline font-bold text-white mb-4">Terms of Service</h3>
+        <div class="text-xs text-neutral-300 space-y-3 leading-relaxed">
+            <p><strong>1. Masterclass Access:</strong> Admission grants single-user access to the live Zoom session on Sunday, 16 August 2026 at 7:00 PM IST, plus lifetime access to the full HD recording and toolkit.</p>
+            <p><strong>2. Recording Delivery:</strong> The complete recorded masterclass and prompt resources will be delivered to your registered WhatsApp/email within 24 hours of session completion.</p>
+            <p><strong>3. Satisfaction Guarantee:</strong> If you face technical issues or are dissatisfied with the workshop content, reach out to our WhatsApp support (+91 73560 03301) for assistance.</p>
+        </div>
+        <button onclick="closeModal('terms-modal')" class="mt-6 w-full py-2.5 rounded-xl bg-[#222222] hover:bg-[#333333] text-white font-bold text-xs">Close</button>
+    </div>
+</div>
+
+<!-- Floating WhatsApp Support Button -->
+<a href="https://wa.me/917356003301" target="_blank" rel="noopener" class="fixed bottom-5 right-5 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full shadow-2xl transition-all active:scale-95 hover:scale-105 bg-[#25D366] text-white font-bold text-xs" title="Chat on WhatsApp">
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+</svg>
+<span>WhatsApp Support</span>
+</a>
+
 <script>
-        // Micro-interactions for buttons
-        document.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Mock feedback
-                console.log('Payment method selected');
-            });
-        });
+function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+}
+function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+}
 
-        // Copy UPI ID functionality
-        const copyBtn = document.getElementById('copy-upi-btn');
-        if (copyBtn) {
-            copyBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const upiId = 'hadhip6252@sbi';
-                navigator.clipboard.writeText(upiId).then(() => {
-                    // Change icon to checkmark and color to green for 2 seconds
-                    const originalText = copyBtn.textContent;
-                    copyBtn.textContent = 'done';
-                    copyBtn.classList.remove('text-secondary');
-                    copyBtn.classList.add('text-emerald-500');
-                    setTimeout(() => {
-                        copyBtn.textContent = originalText;
-                        copyBtn.classList.remove('text-emerald-500');
-                        copyBtn.classList.add('text-secondary');
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            });
-        }
-    </script>
-
-
-<a href="https://wa.me/916282717132" class="fixed bottom-24 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full shadow-lg transition-all active:scale-95 hover:opacity-90" style="background-color: rgb(37, 211, 102); color: white;"><svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg><span class="font-label-md"><br></span></a><script class="">
+// Synchronized RED 10-Minute Countdown Timer
 (function() {
-    let time = 300;
-    const display = document.getElementById('urgency-timer');
-    const interval = setInterval(() => {
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        if (display) {
-            display.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    const TEN_MINUTES_MS = 10 * 60 * 1000;
+    let endTime = localStorage.getItem('raise_offer_end_time');
+
+    if (!endTime || isNaN(endTime) || (Number(endTime) - Date.now() <= 0)) {
+        endTime = Date.now() + TEN_MINUTES_MS;
+        localStorage.setItem('raise_offer_end_time', endTime);
+    } else {
+        endTime = Number(endTime);
+    }
+
+    const displayMain = document.getElementById('urgency-timer');
+    const displayTop = document.getElementById('top-urgency-timer');
+
+    function updateTimer() {
+        let remaining = endTime - Date.now();
+        if (remaining <= 0) {
+            endTime = Date.now() + TEN_MINUTES_MS;
+            localStorage.setItem('raise_offer_end_time', endTime);
+            remaining = TEN_MINUTES_MS;
         }
-        if (time <= 0) {
-            clearInterval(interval);
-        } else {
-            time--;
-        }
-    }, 1000);
+
+        const totalSec = Math.floor(remaining / 1000);
+        const minutes = Math.floor(totalSec / 60);
+        const seconds = totalSec % 60;
+        const formatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        
+        if (displayMain) displayMain.textContent = formatted;
+        if (displayTop) displayTop.textContent = formatted;
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
 })();
-</script></body></html>
+
+// Copy UPI ID with feedback
+const copyBtn = document.getElementById('copy-upi-btn');
+if (copyBtn) {
+    copyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const upiId = 'hadhip6252@sbi';
+        navigator.clipboard.writeText(upiId).then(() => {
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'done';
+            copyBtn.classList.add('text-neon');
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.classList.remove('text-neon');
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    });
+}
+</script>
+
+</body>
+</html>
