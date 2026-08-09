@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Contact Us | Raise AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                background: "#000000",
+                surface: "#080808",
+                "surface-card": "#0d0d0d",
+                neon: "#a3fd00",
+            },
+            fontFamily: {
+                sans: ["Inter", "sans-serif"],
+                headline: ["Montserrat", "sans-serif"],
+            }
+        }
+    }
+}
+</script>
+</head>
+<body class="bg-black text-white font-sans antialiased min-h-screen flex flex-col">
+
+<!-- Top Bar / Header -->
+<header class="w-full z-40 bg-black/90 backdrop-blur-md border-b border-[#1a1a1a] sticky top-0">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2">
+            <img src="/logo.png" alt="Raise AI Logo" class="h-9 md:h-11 w-auto object-contain brightness-110" />
+        </a>
+        <a href="/payment/" class="px-4 py-2 rounded-xl font-headline font-bold text-xs md:text-sm bg-neon text-black hover:bg-[#b5ff1a] transition-all">
+            Join Webinar
+        </a>
+    </div>
+</header>
+
+<main class="flex-grow max-w-4xl mx-auto px-4 md:px-8 py-10 md:py-16 w-full">
+    <div class="mb-10 text-center">
+        <span class="text-xs uppercase tracking-widest text-neon font-extrabold">Support & Inquiries</span>
+        <h1 class="font-headline text-3xl md:text-5xl font-black text-white mt-1">Contact Us</h1>
+        <p class="text-neutral-400 text-sm md:text-base mt-2 max-w-xl mx-auto">
+            Have questions about the masterclass, payment, or webinar access? Our team is here to assist you.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <!-- WhatsApp Support Card -->
+        <div class="bg-[#0d0d0d] border border-[#222222] hover:border-neon/40 p-6 rounded-2xl transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#25D366]/10 text-[#25D366] flex items-center justify-center text-2xl mb-4">
+                💬
+            </div>
+            <h3 class="font-headline font-bold text-lg text-white mb-1">WhatsApp Support</h3>
+            <p class="text-xs text-neutral-400 mb-4">Fastest response for payment confirmations and webinar link queries.</p>
+            <a href="https://wa.me/917356003301" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-neon hover:underline font-bold text-sm">
+                <span>+91 73560 03301</span>
+                <span class="material-symbols-outlined text-sm">arrow_outward</span>
+            </a>
+            <p class="text-[11px] text-neutral-500 mt-2">Available: Mon - Sun (9:00 AM - 10:00 PM IST)</p>
+        </div>
+
+        <!-- Email Support Card -->
+        <div class="bg-[#0d0d0d] border border-[#222222] hover:border-neon/40 p-6 rounded-2xl transition-all">
+            <div class="w-12 h-12 rounded-xl bg-neon/10 text-neon flex items-center justify-center text-2xl mb-4">
+                ✉️
+            </div>
+            <h3 class="font-headline font-bold text-lg text-white mb-1">Email Support</h3>
+            <p class="text-xs text-neutral-400 mb-4">For general business inquiries, partnerships, and invoice requests.</p>
+            <a href="mailto:support@raiseai.in" class="inline-flex items-center gap-2 text-neon hover:underline font-bold text-sm">
+                <span>support@raiseai.in</span>
+                <span class="material-symbols-outlined text-sm">arrow_outward</span>
+            </a>
+            <p class="text-[11px] text-neutral-500 mt-2">Response time: Within 24 hours</p>
+        </div>
+    </div>
+
+    <!-- Business Details Table / Section -->
+    <div class="bg-[#0a0a0a] border border-[#1f1f1f] rounded-2xl p-6 md:p-8 space-y-4">
+        <h3 class="font-headline font-bold text-lg text-white border-b border-[#222222] pb-3">Business Information</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm">
+            <div>
+                <p class="text-neutral-500 font-semibold uppercase tracking-wider text-[11px]">Brand / Business Name</p>
+                <p class="text-neutral-200 font-bold mt-0.5">Raise AI</p>
+            </div>
+            <div>
+                <p class="text-neutral-500 font-semibold uppercase tracking-wider text-[11px]">Operating Location</p>
+                <p class="text-neutral-200 font-bold mt-0.5">Kerala, India</p>
+            </div>
+            <div>
+                <p class="text-neutral-500 font-semibold uppercase tracking-wider text-[11px]">Official Website</p>
+                <p class="text-neutral-200 font-bold mt-0.5"><a href="https://www.raiseai.in" class="text-neon underline">https://www.raiseai.in</a></p>
+            </div>
+            <div>
+                <p class="text-neutral-500 font-semibold uppercase tracking-wider text-[11px]">Services Offered</p>
+                <p class="text-neutral-200 font-bold mt-0.5">Online AI Video Masterclasses & Digital Training</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-black py-8 border-t border-[#1c1c1c] text-center mt-auto">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
+        <p>© 2026 Raise AI. All rights reserved.</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="/terms/" class="hover:text-neon transition-colors">Terms of Service</a>
+            <a href="/privacy/" class="hover:text-neon transition-colors">Privacy Policy</a>
+            <a href="/refund/" class="hover:text-neon transition-colors">Refund Policy</a>
+            <a href="/delivery/" class="hover:text-neon transition-colors">Delivery Policy</a>
+            <a href="/contact/" class="text-neon font-bold">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
