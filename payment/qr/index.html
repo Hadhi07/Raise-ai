@@ -233,18 +233,19 @@ function openGPayModal() {
 function triggerGPayRedirect() {
     const upiId = 'hadhip6252@sbi';
     copyToClipboard(upiId);
-    trackPurchaseEvent('Auto_GPay_Redirect');
+    trackPurchaseEvent('Auto_GPay_Home_Redirect');
     
     const ua = navigator.userAgent || '';
     const isAndroid = /Android/i.test(ua);
     const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
     if (isAndroid) {
-        window.location.href = 'intent://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end';
+        // Direct Android launcher intent to open Google Pay's MAIN HOME SCREEN directly
+        window.location.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end';
     } else if (isIOS) {
-        window.location.href = 'tez://upi/pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR';
+        window.location.href = 'tez://';
     } else {
-        window.location.href = 'upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR';
+        window.location.href = 'https://pay.google.com';
     }
 }
 
