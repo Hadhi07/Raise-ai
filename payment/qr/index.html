@@ -158,30 +158,51 @@ function trackGPayClick(method = 'UPI_GPay_Direct') {
 }
 
 function payViaGPay() {
+    const upiId = 'hadhip6252@sbi';
     if (navigator.clipboard) {
-        navigator.clipboard.writeText('hadhip6252@sbi').catch(() => {});
+        navigator.clipboard.writeText(upiId).catch(() => {});
     }
-    trackGPayClick('GooglePay');
+    trackGPayClick('GooglePay_Direct_QR_URI');
+    showCopyToast();
 
-    const upiUri = "pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Flow%20AI%20Webinar";
+    const qrParam = "pa=hadhinoushad43-1%40oksbi&cu=INR&pn=hadhi&am=99.00&tn=Ai+Webinar";
     const isAndroid = /Android/i.test(navigator.userAgent);
-    
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
     if (isAndroid) {
-        // Direct intent specifically targeting Google Pay app
-        window.location.href = `intent://pay?${upiUri}#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end`;
-    } else {
-        // iOS GPay scheme
-        window.location.href = `tez://upi/pay?${upiUri}`;
+        // Direct intent explicitly targeting Google Pay app with exact QR URI parameters
+        window.location.href = `intent://pay?${qrParam}#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end`;
+    } else if (isIOS) {
+        // iOS Google Pay scheme
+        window.location.href = `tez://upi/pay?${qrParam}`;
         setTimeout(() => {
-            window.location.href = `gpay://upi/pay?${upiUri}`;
+            window.location.href = `gpay://upi/pay?${qrParam}`;
         }, 300);
+    } else {
+        window.location.href = `upi://pay?${qrParam}`;
     }
+}
+
+function showCopyToast() {
+    const status = document.getElementById('copy-status');
+    const copyText = document.getElementById('copy-text');
+    const copyIcon = document.getElementById('copy-icon');
+    if (status) {
+        status.classList.remove('hidden');
+    }
+    if (copyText) copyText.textContent = 'Copied!';
+    if (copyIcon) copyIcon.textContent = 'check';
+    setTimeout(() => {
+        if (copyText) copyText.textContent = 'Copy UPI ID';
+        if (copyIcon) copyIcon.textContent = 'content_copy';
+    }, 4000);
 }
 
 function handleUPIPayment() {
     if (navigator.clipboard) {
         navigator.clipboard.writeText('hadhip6252@sbi').catch(() => {});
     }
+    showCopyToast();
     trackGPayClick('Universal_UPI');
 }
 
@@ -258,25 +279,25 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 
             <div class="flex items-center gap-1.5">
                 <span class="material-symbols-outlined text-neon" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
-                <h3 class="font-headline font-bold text-xs md:text-sm text-white">Scan QR to Pay Instantly</h3>
+                <h3 class="font-headline font-bold text-xs md:text-sm text-white">Scan or Tap QR to Pay</h3>
             </div>
 
-            <!-- QR Image Container -->
-            <div class="relative w-56 h-56 md:w-64 md:h-64 bg-white p-2 rounded-xl border-2 border-neutral-700 shadow-inner">
+            <!-- QR Image Container (Clickable to open GPay on mobile) -->
+            <div onclick="payViaGPay()" class="relative w-56 h-56 md:w-64 md:h-64 bg-white p-2 rounded-xl border-2 border-neutral-700 shadow-inner cursor-pointer hover:border-neon transition-colors group" title="Tap to Pay via Google Pay">
                 <!-- Animated Scan Line -->
                 <div class="scan-line absolute left-2 right-2 h-0.5 bg-neon shadow-[0_0_12px_#a3fd00] z-20"></div>
-                <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
+                <img alt="Secure Payment QR Code" class="w-full h-full object-contain group-hover:scale-[1.02] transition-transform" src="./qr-code.png">
             </div>
 
-            <!-- STEP 1: GOOGLE PAY PAYMENT -->
+            <!-- STEP 1: GOOGLE PAY PAYMENT (NEON THEME) -->
             <div class="w-full flex flex-col gap-2.5">
                 <span class="text-[10px] md:text-[11px] font-extrabold text-neon uppercase tracking-wider flex items-center gap-1">
                     <span class="w-4 h-4 rounded-full bg-neon text-black flex items-center justify-center text-[10px] font-black">1</span>
                     Step 1: Pay via Google Pay (₹99)
                 </span>
 
-                <!-- Google Pay CTA Button with Neon Theme -->
-                <a onclick="payViaGPay()" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2.5 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95 text-center cursor-pointer">
+                <!-- Google Pay Direct Button (White Style) -->
+                <a onclick="payViaGPay()" class="w-full py-3.5 md:py-4 px-4 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2.5 rounded-xl font-headline font-black text-sm md:text-base shadow-[0_4px_25px_rgba(255,255,255,0.25)] hover:shadow-[0_4px_35px_rgba(255,255,255,0.4)] active:scale-95 text-center cursor-pointer border-none transition-all no-underline">
                     <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                         <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -286,24 +307,24 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <span>Pay via Google Pay (₹99)</span>
                 </a>
 
-                <!-- 1-Tap Copy UPI ID Box for Other Apps -->
-                <div class="flex flex-col items-center gap-1.5 p-3 bg-[#0d0d0d] rounded-xl border border-neon/30 w-full mt-0.5">
-                    <span class="text-[10px] md:text-[11px] text-neutral-300 uppercase tracking-wider font-semibold">For Other UPI Apps (PhonePe, Paytm, etc.)</span>
-                    <div class="flex items-center justify-between gap-2 w-full bg-black px-3 py-1.5 rounded-lg border border-[#222222]">
-                        <code class="font-mono font-bold text-xs md:text-sm text-neon">hadhip6252@sbi</code>
-                        <button id="copy-upi-btn" class="flex items-center gap-1 text-xs font-bold text-black bg-neon px-2.5 py-1 rounded hover:bg-[#b5ff1a] transition-all active:scale-90" title="Copy UPI ID">
+                <!-- 1-Tap Copy UPI ID Box (Hero Box) -->
+                <div class="flex flex-col items-center gap-1.5 p-3 bg-[#0d0d0d] rounded-xl border border-neon/30 hover:border-neon/50 w-full mt-0.5">
+                    <span class="text-[10px] md:text-[11px] text-neutral-300 uppercase tracking-wider font-semibold">Or Pay Directly to UPI ID</span>
+                    <div class="flex items-center justify-between gap-2 w-full bg-black px-3 py-2 rounded-lg border border-[#222222]">
+                        <code class="font-mono font-bold text-xs md:text-sm text-neon select-all">hadhip6252@sbi</code>
+                        <button id="copy-upi-btn" class="flex items-center gap-1 text-xs font-bold text-black bg-neon px-2.5 py-1.5 rounded hover:bg-[#b5ff1a] transition-all active:scale-90" title="Copy UPI ID">
                             <span class="material-symbols-outlined text-sm" id="copy-icon">content_copy</span>
                             <span id="copy-text">Copy UPI ID</span>
                         </button>
                     </div>
-                    <p id="copy-status" class="hidden text-[10px] text-neon font-semibold text-center mt-0.5">✅ UPI ID copied! Paste in your app to pay ₹99</p>
+                    <p id="copy-status" class="hidden text-[10px] text-neon font-semibold text-center mt-0.5">✅ UPI ID copied! Paste in Google Pay to pay ₹99</p>
                 </div>
             </div>
 
-            <!-- STEP 2: WHATSAPP CONFIRMATION (AFTER PAYMENT) -->
+            <!-- STEP 2: WHATSAPP CONFIRMATION (NEON THEME) -->
             <div class="w-full flex flex-col gap-2 pt-3 border-t border-[#1f1f1f]">
-                <span class="text-[10px] md:text-[11px] font-extrabold text-[#25D366] uppercase tracking-wider flex items-center gap-1">
-                    <span class="w-4 h-4 rounded-full bg-[#25D366] text-black flex items-center justify-center text-[10px] font-black">2</span>
+                <span class="text-[10px] md:text-[11px] font-extrabold text-neon uppercase tracking-wider flex items-center gap-1">
+                    <span class="w-4 h-4 rounded-full bg-neon text-black flex items-center justify-center text-[10px] font-black">2</span>
                     Step 2: After Payment (Send Screenshot)
                 </span>
 
@@ -322,12 +343,12 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <span>⚡ Quick Confirmation Steps:</span>
                 </p>
                 <ol class="text-[11px] md:text-xs text-neutral-200 space-y-1 font-medium pl-4 list-decimal">
-                    <li>Pay <strong>₹99</strong> using UPI app or QR scan above.</li>
+                    <li>Pay <strong>₹99</strong> using Google Pay or scan QR code above.</li>
                     <li>Click the green button above or message: <a href="https://wa.me/917356003301" class="text-neon underline font-bold" target="_blank" rel="noopener">+91 73560 03301</a>.</li>
                     <li>You will receive your <strong>booking confirmation instantly</strong>, and your <strong>private Zoom link will be sent on 15 August 2026</strong>!</li>
                 </ol>
             </div>
-            <p class="text-[10px] md:text-[11px] text-neutral-400 text-center">Compatible with GPay, PhonePe, Paytm, CRED & all UPI apps</p>
+            <p class="text-[10px] md:text-[11px] text-neutral-400 text-center">Compatible with Google Pay & all UPI apps</p>
         </div>
     </section>
 
