@@ -233,23 +233,51 @@ function handleTouchGPay(e) {
     trackPurchaseEvent('GPay_Manual_Copy_Launch');
 }
 
-function downloadQRAndShowGuide() {
-    // Trigger QR code download
-    const link = document.createElement('a');
-    link.href = './qr-code.png';
-    link.download = 'Raise-AI-Payment-QR.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+async function downloadQRAndShowGuide() {
+    const qrUrl = './qr-code.png';
+    const fileName = 'Raise-AI-Payment-QR.png';
+    let sharedSuccessfully = false;
 
-    // Show a green toast notification for download
+    // Try Web Share API first if supported
+    if (navigator.share && navigator.canShare) {
+        try {
+            const response = await fetch(qrUrl);
+            const blob = await response.blob();
+            const file = new File([blob], fileName, { type: blob.type });
+
+            if (navigator.canShare({ files: [file] })) {
+                await navigator.share({
+                    files: [file],
+                    title: 'Raise AI Payment QR',
+                    text: 'Scan this QR code in Google Pay, PhonePe, or Paytm to complete your ₹99 payment.'
+                });
+                sharedSuccessfully = true;
+            }
+        } catch (err) {
+            console.log("Web Share API failed or user cancelled, falling back...", err);
+        }
+    }
+
+    // Fallback to standard download if Web Share is unsupported or failed
+    if (!sharedSuccessfully) {
+        const link = document.createElement('a');
+        link.href = qrUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Show a green toast notification
     const existingToast = document.getElementById('copy-toast');
     if (existingToast) existingToast.remove();
     
     const toast = document.createElement('div');
     toast.id = 'copy-toast';
     toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 bg-neon text-black px-4 py-3 rounded-xl font-headline font-bold text-sm shadow-[0_4px_20px_rgba(163,253,0,0.4)] z-[9999] flex items-center gap-2 transform transition-all duration-300 translate-y-[-100%] opacity-0';
-    toast.innerHTML = `<span class="material-symbols-outlined text-base">download_done</span> QR Saved to Gallery!`;
+    toast.innerHTML = sharedSuccessfully 
+        ? `<span class="material-symbols-outlined text-base">ios_share</span> Shared Successfully!`
+        : `<span class="material-symbols-outlined text-base">download_done</span> QR Downloaded!`;
     document.body.appendChild(toast);
     
     // Animate in
@@ -266,7 +294,7 @@ function downloadQRAndShowGuide() {
     }, 3000);
 
     // Track event
-    trackPurchaseEvent('QR_Code_Downloaded');
+    trackPurchaseEvent(sharedSuccessfully ? 'QR_Code_Native_Shared' : 'QR_Code_Downloaded');
 
     // Open scanner modal
     openModal('gpay-scanner-modal');
@@ -451,8 +479,10 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             <div class="relative w-56 h-56 md:w-64 md:h-64 bg-white p-2 rounded-xl border-2 border-neutral-700 shadow-inner">
                 <!-- Animated Scan Line -->
                 <div class="scan-line absolute left-2 right-2 h-0.5 bg-neon shadow-[0_0_12px_#a3fd00] z-20"></div>
-                <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
+                <img alt="Secure Payment QR Code" class="w-full h-full object-contain pointer-events-auto select-auto touch-callout" src="./qr-code.png">
             </div>
+            
+            <p class="text-[10px] text-neutral-400 font-medium -mt-2 mb-1 animate-pulse">👆 Long-press QR to save image</p>
 
             <!-- DOWNLOAD QR & SCAN (Main CTA Theme) -->
             <button onclick="downloadQRAndShowGuide()" class="w-full py-3.5 md:py-4 px-4 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2.5 rounded-xl font-headline font-black text-sm md:text-base shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:shadow-[0_0_35px_rgba(255,255,255,0.4)] transition-all active:scale-95 text-center cursor-pointer border border-neutral-200">
