@@ -74,15 +74,31 @@ body {
         box-shadow: 0 0 20px rgba(163, 253, 0, 0.4);
         transform: scale(1);
     }
-    15% {
-        box-shadow: 0 0 35px rgba(163, 253, 0, 0.75);
+    50% {
+        box-shadow: 0 0 35px rgba(163, 253, 0, 0.8);
         transform: scale(1.02);
     }
-    30% {
-        box-shadow: 0 0 20px rgba(163, 253, 0, 0.4);
-        transform: scale(1);
-    }
 }
+.shimmer-badge {
+    position: relative;
+    overflow: hidden;
+}
+.shimmer-badge::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9), transparent);
+    transform: skewX(-20deg);
+    animation: badgeSweep 1s infinite;
+}
+@keyframes badgeSweep {
+    0% { left: -100%; }
+    50%, 100% { left: 200%; }
+}
+
 .neon-btn {
     position: relative;
     background-color: #a3fd00;
@@ -486,7 +502,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 
             <!-- DOWNLOAD QR & SCAN (Main CTA Theme) -->
             <button onclick="downloadQRAndShowGuide()" class="relative w-full py-3.5 md:py-4 px-4 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2.5 rounded-xl font-headline font-black text-sm md:text-base shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:shadow-[0_0_35px_rgba(255,255,255,0.4)] transition-all active:scale-95 text-center cursor-pointer border border-neutral-200">
-                <span class="absolute -top-2.5 right-4 bg-neon text-black text-[10px] font-black px-2 py-0.5 rounded-full shadow-md uppercase tracking-wider animate-bounce border border-black/20">⚡ Fastest</span>
+                <span class="absolute -top-2.5 right-4 bg-neon text-black text-[10px] font-black px-2 py-0.5 rounded-full shadow-md uppercase tracking-wider border border-black/20 shimmer-badge overflow-hidden">⚡ Fastest</span>
                 <span class="material-symbols-outlined font-black">download</span>
                 <span>Download QR & Scan</span>
             </button>
