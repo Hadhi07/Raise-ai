@@ -141,20 +141,28 @@ fbq('track', 'InitiateCheckout', {
     currency: 'INR'
 });
 
-function trackPaymentClick() {
+function trackGPayClick() {
     if (typeof fbq === 'function') {
         fbq('track', 'Purchase', {
             content_name: 'Flow Fundamentals with 100% free tools',
             value: 99.00,
             currency: 'INR',
-            payment_method: 'Instamojo_Gateway'
+            payment_method: 'UPI_GPay_Direct'
         });
-        fbq('trackCustom', 'Instamojo_Checkout_Click', {
+        fbq('trackCustom', 'GPay_Payment_Click', {
             content_name: 'Flow Fundamentals with 100% free tools',
             value: 99.00,
             currency: 'INR'
         });
     }
+}
+
+function handleUPIPayment() {
+    // Auto-copy UPI ID to clipboard for zero friction
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText('hadhip6252@sbi').catch(() => {});
+    }
+    trackGPayClick();
 }
 
 function trackPurchaseEvent(method) {
@@ -240,19 +248,23 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
             </div>
 
-            <!-- Instamojo Smart Gateway Checkout CTA Button with Sparkle Shimmer -->
-            <a onclick="trackPaymentClick()" href="https://www.instamojo.com/@RaiseAi/lf13bd2669b664184acaa83b75028c346/" rel="im-checkout" data-text="Pay ₹99 Now" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95 text-center cursor-pointer">
-                <span class="material-symbols-outlined text-xl md:text-2xl font-bold">lock</span>
-                <span>Pay ₹99 Securely (GPay / Cards / UPI)</span>
+            <!-- Universal UPI / GPay Intent CTA Button with Auto-Copy -->
+            <a onclick="handleUPIPayment()" href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95 text-center">
+                <span class="material-symbols-outlined text-xl md:text-2xl font-bold">payments</span>
+                <span>Pay via UPI App / GPay (₹99)</span>
             </a>
 
-            <!-- UPI ID Box -->
-            <div class="flex flex-col items-center gap-1 p-2.5 bg-[#0d0d0d] rounded-xl border border-[#222222] w-full">
-                <span class="text-[10px] md:text-[11px] text-neutral-400 uppercase tracking-wider font-semibold">Or Copy UPI ID</span>
-                <div class="flex items-center gap-2">
-                    <code class="font-mono font-bold text-xs md:text-sm text-neon bg-black px-2 py-0.5 rounded border border-neon/30">hadhip6252@sbi</code>
-                    <button id="copy-upi-btn" class="material-symbols-outlined text-neutral-300 hover:text-neon transition-colors p-1 active:scale-90" title="Copy UPI ID">content_copy</button>
+            <!-- 1-Tap Copy UPI ID Box -->
+            <div class="flex flex-col items-center gap-1.5 p-3 bg-[#0d0d0d] rounded-xl border border-neon/30 w-full">
+                <span class="text-[10px] md:text-[11px] text-neutral-300 uppercase tracking-wider font-semibold">Or Pay Directly to UPI ID</span>
+                <div class="flex items-center justify-between gap-2 w-full bg-black px-3 py-1.5 rounded-lg border border-[#222222]">
+                    <code class="font-mono font-bold text-xs md:text-sm text-neon">hadhip6252@sbi</code>
+                    <button id="copy-upi-btn" class="flex items-center gap-1 text-xs font-bold text-black bg-neon px-2.5 py-1 rounded hover:bg-[#b5ff1a] transition-all active:scale-90" title="Copy UPI ID">
+                        <span class="material-symbols-outlined text-sm" id="copy-icon">content_copy</span>
+                        <span id="copy-text">Copy</span>
+                    </button>
                 </div>
+                <p id="copy-status" class="hidden text-[10px] text-neon font-semibold text-center mt-0.5">✅ UPI ID copied! Paste in GPay/PhonePe to pay ₹99</p>
             </div>
 
             <!-- DEDICATED WHATSAPP SCREENSHOT & DETAILS REDIRECTION BUTTON -->
@@ -375,27 +387,29 @@ function closeModal(id) {
 
 // Copy UPI ID with feedback
 const copyBtn = document.getElementById('copy-upi-btn');
+const copyText = document.getElementById('copy-text');
+const copyIcon = document.getElementById('copy-icon');
+const copyStatus = document.getElementById('copy-status');
+
 if (copyBtn) {
     copyBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         const upiId = 'hadhip6252@sbi';
         navigator.clipboard.writeText(upiId).then(() => {
-            const originalText = copyBtn.textContent;
-            copyBtn.textContent = 'done';
-            copyBtn.classList.add('text-neon');
+            if (copyText) copyText.textContent = 'Copied!';
+            if (copyIcon) copyIcon.textContent = 'check';
+            if (copyStatus) copyStatus.classList.remove('hidden');
             setTimeout(() => {
-                copyBtn.textContent = originalText;
-                copyBtn.classList.remove('text-neon');
-            }, 2000);
+                if (copyText) copyText.textContent = 'Copy';
+                if (copyIcon) copyIcon.textContent = 'content_copy';
+                if (copyStatus) copyStatus.classList.add('hidden');
+            }, 3000);
         }).catch(err => {
             console.error('Failed to copy: ', err);
         });
     });
 }
 </script>
-
-<!-- Instamojo Smart Button Library -->
-<script src="https://js.instamojo.com/v1/button.js"></script>
 
 </body>
 </html>
