@@ -229,16 +229,8 @@ function handleGPayHomeLaunch(e) {
     copyToClipboard(upiId);
     trackPurchaseEvent('Launch_GPay_Home');
     
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-    if (isAndroid) {
-        // Direct Android launcher intent to open Google Pay's Home screen directly (no prefill)
-        e.currentTarget.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end';
-    } else if (isIOS) {
-        e.currentTarget.href = 'tez://';
-    } else {
-        e.currentTarget.href = 'https://pay.google.com';
+    if (e && e.currentTarget) {
+        e.currentTarget.href = 'upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR';
     }
 }
 
@@ -510,8 +502,8 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 
         <!-- Action Buttons -->
         <div class="w-full flex flex-col gap-2 pt-0.5">
-            <!-- Google Pay Native Home Launcher -->
-            <a href="intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end" onclick="handleGPayHomeLaunch(event)" class="w-full py-2.5 px-3 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2 rounded-xl font-headline font-bold text-xs shadow-md active:scale-95 transition-all no-underline">
+            <!-- Google Pay Clean Native Launcher -->
+            <a href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR" onclick="handleGPayHomeLaunch(event)" class="w-full py-2.5 px-3 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2 rounded-xl font-headline font-bold text-xs shadow-md active:scale-95 transition-all no-underline">
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
