@@ -141,15 +141,15 @@ fbq('track', 'InitiateCheckout', {
     currency: 'INR'
 });
 
-function trackGPayClick() {
+function trackPaymentClick() {
     if (typeof fbq === 'function') {
         fbq('track', 'Purchase', {
             content_name: 'Flow Fundamentals with 100% free tools',
             value: 99.00,
             currency: 'INR',
-            payment_method: 'UPI_GPay_Redirection'
+            payment_method: 'Instamojo_Gateway'
         });
-        fbq('trackCustom', 'GPay_Redirection_Click', {
+        fbq('trackCustom', 'Instamojo_Checkout_Click', {
             content_name: 'Flow Fundamentals with 100% free tools',
             value: 99.00,
             currency: 'INR'
@@ -240,10 +240,10 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
             </div>
 
-            <!-- Universal UPI Intent CTA Button with Sparkle Shimmer -->
-            <a onclick="trackGPayClick()" href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95">
-                <span class="material-symbols-outlined text-xl md:text-2xl font-bold">payments</span>
-                <span>Pay via UPI App / GPay (₹99)</span>
+            <!-- Instamojo Smart Gateway Checkout CTA Button with Sparkle Shimmer -->
+            <a onclick="trackPaymentClick()" href="https://www.instamojo.com/@RaiseAi/lf13bd2669b664184acaa83b75028c346/" rel="im-checkout" data-text="Pay ₹99 Now" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95 text-center cursor-pointer">
+                <span class="material-symbols-outlined text-xl md:text-2xl font-bold">lock</span>
+                <span>Pay ₹99 Securely (GPay / Cards / UPI)</span>
             </a>
 
             <!-- UPI ID Box -->
@@ -393,6 +393,9 @@ if (copyBtn) {
     });
 }
 </script>
+
+<!-- Instamojo Smart Button Library -->
+<script src="https://js.instamojo.com/v1/button.js"></script>
 
 </body>
 </html>
