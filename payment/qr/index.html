@@ -133,6 +133,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1012292705138034');
 fbq('init', '958547097011254');
 fbq('track', 'PageView');
 fbq('track', 'InitiateCheckout', {
@@ -140,6 +141,22 @@ fbq('track', 'InitiateCheckout', {
     value: 99.00,
     currency: 'INR'
 });
+
+function trackGPayClick() {
+    if (typeof fbq === 'function') {
+        fbq('track', 'Purchase', {
+            content_name: 'Flow Fundamentals with 100% free tools',
+            value: 99.00,
+            currency: 'INR',
+            payment_method: 'GPay_UPI_Redirection'
+        });
+        fbq('trackCustom', 'GPay_Redirection_Click', {
+            content_name: 'Flow Fundamentals with 100% free tools',
+            value: 99.00,
+            currency: 'INR'
+        });
+    }
+}
 
 function trackPurchaseEvent(method) {
     if (typeof fbq === 'function') {
@@ -152,9 +169,10 @@ function trackPurchaseEvent(method) {
     }
 }
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=958547097011254&ev=PageView&noscript=1"
-/></noscript>
+<noscript>
+<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1012292705138034&ev=PageView&noscript=1" />
+<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=958547097011254&ev=PageView&noscript=1" />
+</noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body class="bg-black text-white min-h-screen font-sans flex flex-col antialiased selection:bg-neon selection:text-black w-full overflow-x-hidden">
@@ -225,7 +243,7 @@ src="https://www.facebook.com/tr?id=958547097011254&ev=PageView&noscript=1"
             </div>
 
             <!-- Universal UPI Intent CTA Button with Sparkle Shimmer -->
-            <a onclick="trackPurchaseEvent('UPI_App')" href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95">
+            <a onclick="trackGPayClick()" href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95">
                 <span class="material-symbols-outlined text-xl md:text-2xl font-bold">payments</span>
                 <span>Pay via UPI App / GPay (₹99)</span>
             </a>
