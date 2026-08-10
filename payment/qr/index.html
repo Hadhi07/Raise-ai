@@ -224,16 +224,17 @@ function copyModalUPI(textId = 'modal-copy-text', iconId = 'modal-copy-icon', st
     }, 3000);
 }
 
-function handleGPayLinkClick(e) {
+function handleGPayHomeLaunch(e) {
     const upiId = 'hadhip6252@sbi';
     copyToClipboard(upiId);
-    trackPurchaseEvent('Launch_gpay');
+    trackPurchaseEvent('Launch_GPay_Home');
     
     const isAndroid = /Android/i.test(navigator.userAgent);
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isAndroid) {
-        e.currentTarget.href = 'intent://pay#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end';
+        // Direct Android launcher intent to open Google Pay's Home screen directly (no prefill)
+        e.currentTarget.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end';
     } else if (isIOS) {
         e.currentTarget.href = 'tez://';
     } else {
@@ -241,8 +242,12 @@ function handleGPayLinkClick(e) {
     }
 }
 
+function handleGPayLinkClick(e) {
+    handleGPayHomeLaunch(e);
+}
+
 function launchApp(app) {
-    handleGPayLinkClick({ currentTarget: {} });
+    handleGPayHomeLaunch({ currentTarget: {} });
 }
 
 function launchOtherUPI() {
@@ -373,8 +378,8 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
             </div>
 
-            <!-- GOOGLE PAY MAIN CTA BUTTON (WHITE BACKGROUND) -->
-            <button onclick="handleCopyAndOpenModal()" class="w-full py-3.5 md:py-4 px-4 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2.5 rounded-xl font-headline font-black text-sm md:text-base shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:shadow-[0_0_35px_rgba(255,255,255,0.4)] transition-all active:scale-95 text-center cursor-pointer border border-neutral-200">
+            <!-- GOOGLE PAY MAIN CTA BUTTON (OPEN VISUAL GUIDE MODAL) -->
+            <button onclick="openGPayModal()" class="w-full py-3.5 md:py-4 px-4 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2.5 rounded-xl font-headline font-black text-sm md:text-base shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:shadow-[0_0_35px_rgba(255,255,255,0.4)] transition-all active:scale-95 text-center cursor-pointer border border-neutral-200">
                 <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -505,8 +510,8 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 
         <!-- Action Buttons -->
         <div class="w-full flex flex-col gap-2 pt-0.5">
-            <!-- Google Pay Native Touch Launcher -->
-            <a href="intent://pay#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end" onclick="handleGPayLinkClick(event)" class="w-full py-2.5 px-3 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2 rounded-xl font-headline font-bold text-xs shadow-md active:scale-95 transition-all no-underline">
+            <!-- Google Pay Native Home Launcher -->
+            <a href="intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end" onclick="handleGPayHomeLaunch(event)" class="w-full py-2.5 px-3 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2 rounded-xl font-headline font-bold text-xs shadow-md active:scale-95 transition-all no-underline">
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
