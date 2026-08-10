@@ -248,32 +248,73 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
             </div>
 
-            <!-- Universal UPI / GPay Intent CTA Button with Auto-Copy -->
-            <a onclick="handleUPIPayment()" href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95 text-center">
-                <span class="material-symbols-outlined text-xl md:text-2xl font-bold">payments</span>
-                <span>Pay via UPI App / GPay (₹99)</span>
-            </a>
+            <!-- STEP 1: CHOOSE PAYMENT METHOD (PROMINENTLY HIGHLIGHTED) -->
+            <div class="w-full flex flex-col gap-3">
+                <span class="text-[10px] md:text-[11px] font-extrabold text-neon uppercase tracking-wider flex items-center gap-1">
+                    <span class="w-4 h-4 rounded-full bg-neon text-black flex items-center justify-center text-[10px] font-black">1</span>
+                    Step 1: Pay ₹99 via UPI ID or QR Scan
+                </span>
 
-            <!-- 1-Tap Copy UPI ID Box -->
-            <div class="flex flex-col items-center gap-1.5 p-3 bg-[#0d0d0d] rounded-xl border border-neon/30 w-full">
-                <span class="text-[10px] md:text-[11px] text-neutral-300 uppercase tracking-wider font-semibold">Or Pay Directly to UPI ID</span>
-                <div class="flex items-center justify-between gap-2 w-full bg-black px-3 py-1.5 rounded-lg border border-[#222222]">
-                    <code class="font-mono font-bold text-xs md:text-sm text-neon">hadhip6252@sbi</code>
-                    <button id="copy-upi-btn" class="flex items-center gap-1 text-xs font-bold text-black bg-neon px-2.5 py-1 rounded hover:bg-[#b5ff1a] transition-all active:scale-90" title="Copy UPI ID">
-                        <span class="material-symbols-outlined text-sm" id="copy-icon">content_copy</span>
-                        <span id="copy-text">Copy</span>
-                    </button>
+                <!-- HERO BOX: 1-TAP COPY UPI ID & PAY (HIGHLY HIGHLIGHTED) -->
+                <div class="flex flex-col items-center gap-2.5 p-4 bg-[#0e1408] rounded-2xl border-2 border-neon shadow-[0_0_30px_rgba(163,253,0,0.2)] w-full relative overflow-hidden">
+                    <div class="flex items-center justify-between w-full">
+                        <span class="text-[11px] md:text-xs font-headline font-black text-neon uppercase tracking-wider flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-neon animate-ping"></span>
+                            Recommended (Fastest):
+                        </span>
+                        <span class="text-[10px] bg-neon text-black px-2 py-0.5 rounded-full font-bold uppercase">1-Tap Copy</span>
+                    </div>
+
+                    <!-- UPI ID Box with Large Copy Button -->
+                    <div class="flex items-center justify-between gap-2 w-full bg-black/90 px-3.5 py-2.5 rounded-xl border border-neon/40">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-neutral-400 font-bold">UPI ID:</span>
+                            <code class="font-mono font-black text-sm md:text-base text-neon select-all">hadhip6252@sbi</code>
+                        </div>
+                        <button id="copy-upi-btn" class="flex items-center gap-1.5 text-xs font-black text-black bg-neon px-3.5 py-2 rounded-lg hover:bg-[#b5ff1a] transition-all active:scale-95 shadow-lg" title="Copy UPI ID">
+                            <span class="material-symbols-outlined text-base font-black" id="copy-icon">content_copy</span>
+                            <span id="copy-text">Copy UPI ID</span>
+                        </button>
+                    </div>
+
+                    <!-- Copy Confirmation Status -->
+                    <p id="copy-status" class="hidden text-xs text-neon font-bold text-center bg-neon/15 py-1.5 px-3 rounded-lg border border-neon/40 w-full animate-pulse">
+                        ✅ UPI ID Copied! Paste <span class="font-mono underline">hadhip6252@sbi</span> in Google Pay / PhonePe & pay ₹99
+                    </p>
+
+                    <!-- Simple 3-Step Flow Guide -->
+                    <div class="w-full grid grid-cols-3 gap-1.5 pt-1 text-center">
+                        <div class="bg-black/50 border border-neutral-800 rounded-lg p-1.5 flex flex-col items-center">
+                            <span class="text-xs">📋</span>
+                            <span class="text-[9px] text-neutral-300 font-semibold mt-0.5">1. Copy ID</span>
+                        </div>
+                        <div class="bg-black/50 border border-neutral-800 rounded-lg p-1.5 flex flex-col items-center">
+                            <span class="text-xs">📲</span>
+                            <span class="text-[9px] text-neutral-300 font-semibold mt-0.5">2. Paste in App</span>
+                        </div>
+                        <div class="bg-black/50 border border-neutral-800 rounded-lg p-1.5 flex flex-col items-center">
+                            <span class="text-xs">💳</span>
+                            <span class="text-[9px] text-neutral-300 font-semibold mt-0.5">3. Pay ₹99</span>
+                        </div>
+                    </div>
                 </div>
-                <p id="copy-status" class="hidden text-[10px] text-neon font-semibold text-center mt-0.5">✅ UPI ID copied! Paste in GPay/PhonePe to pay ₹99</p>
             </div>
 
-            <!-- DEDICATED WHATSAPP SCREENSHOT & DETAILS REDIRECTION BUTTON -->
-            <a onclick="trackPurchaseEvent('WhatsApp_Handoff')" href="https://wa.me/917356003301?text=Hai%20Team%20Raise%20AI%2C%20I%20have%20completed%20the%20payment%20of%20%E2%82%B999%20for%20the%20AI%20video%20creation%20Flow%20fundamentals%20webinar.%20Here%20are%20my%20details%20and%20payment%20screenshot%3A%0A%0AName%3A%20%0AEmail%3A%20%0APhone%3A%20" target="_blank" rel="noopener" class="w-full py-3.5 px-4 bg-[#25D366] hover:bg-[#22bf5b] text-white flex items-center justify-center gap-2 rounded-xl font-sans font-bold text-xs md:text-sm shadow-lg transition-transform active:scale-95 text-center">
-                <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
-                <span>Share screenshot and details here</span>
-            </a>
+            <!-- STEP 2: WHATSAPP CONFIRMATION (AFTER PAYMENT) -->
+            <div class="w-full flex flex-col gap-2 pt-3 border-t border-[#1f1f1f]">
+                <span class="text-[10px] md:text-[11px] font-extrabold text-neon uppercase tracking-wider flex items-center gap-1">
+                    <span class="w-4 h-4 rounded-full bg-neon text-black flex items-center justify-center text-[10px] font-black">2</span>
+                    Step 2: After Payment (Send Screenshot)
+                </span>
+
+                <!-- Prominent Solid Green WhatsApp Button -->
+                <a onclick="trackPurchaseEvent('WhatsApp_Handoff')" href="https://wa.me/917356003301?text=Hai%20Team%20Raise%20AI%2C%20I%20have%20completed%20the%20payment%20of%20%E2%82%B999%20for%20the%20AI%20video%20creation%20Flow%20fundamentals%20webinar.%20Here%20are%20my%20details%20and%20payment%20screenshot%3A%0A%0AName%3A%20%0AEmail%3A%20%0APhone%3A%20" target="_blank" rel="noopener" class="w-full py-3.5 px-4 bg-[#25D366] hover:bg-[#22bf5b] text-white flex items-center justify-center gap-2 rounded-xl font-sans font-bold text-xs md:text-sm shadow-xl transition-transform active:scale-95 text-center">
+                    <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    <span>Share screenshot and details here</span>
+                </a>
+            </div>
 
             <!-- 3-Step Clear Confirmation Instructions -->
             <div class="p-3 md:p-4 bg-[#121c08] border border-neon/30 rounded-xl w-full text-left">
