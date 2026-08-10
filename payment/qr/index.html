@@ -147,13 +147,38 @@ function trackGPayClick() {
             content_name: 'Flow Fundamentals with 100% free tools',
             value: 99.00,
             currency: 'INR',
-            payment_method: 'GPay_UPI_Redirection'
+            payment_method: 'GooglePay_Direct_Intent'
         });
         fbq('trackCustom', 'GPay_Redirection_Click', {
             content_name: 'Flow Fundamentals with 100% free tools',
             value: 99.00,
             currency: 'INR'
         });
+    }
+}
+
+function openDirectGPay(e) {
+    if (e) e.preventDefault();
+    trackGPayClick();
+
+    const upiParams = "pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar";
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isAndroid) {
+        // Direct Android Intent strictly targeting Google Pay (com.google.android.apps.nbu.paisa.user)
+        window.location.href = `intent://pay?${upiParams}#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end`;
+    } else if (isIOS) {
+        // iOS Google Pay URL Scheme
+        window.location.href = `gpay://upi/pay?${upiParams}`;
+        setTimeout(() => {
+            window.location.href = `tez://upi/pay?${upiParams}`;
+        }, 500);
+    } else {
+        window.location.href = `gpay://upi/pay?${upiParams}`;
+        setTimeout(() => {
+            window.location.href = `upi://pay?${upiParams}`;
+        }, 500);
     }
 }
 
@@ -240,10 +265,10 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
             </div>
 
-            <!-- Universal UPI Intent CTA Button with Sparkle Shimmer -->
-            <a onclick="trackGPayClick()" href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95">
+            <!-- Dedicated Strict Google Pay Direct Intent CTA Button -->
+            <a onclick="openDirectGPay(event)" href="intent://pay?pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95">
                 <span class="material-symbols-outlined text-xl md:text-2xl font-bold">payments</span>
-                <span>Pay via UPI App / GPay (₹99)</span>
+                <span>Pay via Google Pay (₹99)</span>
             </a>
 
             <!-- UPI ID Box -->
