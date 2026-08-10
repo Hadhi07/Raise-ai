@@ -170,12 +170,17 @@ function copyToClipboard(text) {
 function fallbackCopyTextToClipboard(text) {
     const textArea = document.createElement("textarea");
     textArea.value = text;
+    textArea.setAttribute("readonly", "");
     textArea.style.position = "fixed";
-    textArea.style.left = "-999999px";
-    textArea.style.top = "-999999px";
+    textArea.style.opacity = "0";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "-9999px";
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
+    if (textArea.setSelectionRange) {
+        textArea.setSelectionRange(0, 99999);
+    }
     try {
         document.execCommand('copy');
     } catch (err) {
@@ -229,11 +234,8 @@ function launchApp(app) {
         const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
         if (isAndroid) {
-            // Direct Android Launcher Intent for Google Pay (Tez)
-            window.location.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end';
-            setTimeout(() => {
-                window.location.href = 'tez://';
-            }, 500);
+            // Robust Android intent with explicit fallback URL to prevent ERR_UNKNOWN_URL_SCHEME or browser refresh error
+            window.location.href = 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.google.android.apps.nbu.paisa.user;end';
         } else if (isIOS) {
             window.location.href = 'tez://';
         } else {
