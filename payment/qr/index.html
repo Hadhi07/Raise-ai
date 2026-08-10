@@ -184,20 +184,31 @@ function fallbackCopyTextToClipboard(text) {
     document.body.removeChild(textArea);
 }
 
-function handleCopyAndOpenModal() {
+function openGPayModal() {
+    const upiId = 'hadhip6252@sbi';
+    copyToClipboard(upiId);
+    openModal('gpay-modal');
+    trackPurchaseEvent('GPay_Visual_Modal_Open');
+}
+
+function openAllAppsModal() {
     const upiId = 'hadhip6252@sbi';
     copyToClipboard(upiId);
     showCopyToast();
-    openModal('upi-apps-modal');
-    trackPurchaseEvent('UPI_Copy_Modal_Open');
+    openModal('all-apps-modal');
+    trackPurchaseEvent('All_Apps_Modal_Open');
 }
 
-function copyModalUPI() {
+function handleCopyAndOpenModal() {
+    openGPayModal();
+}
+
+function copyModalUPI(textId = 'modal-copy-text', iconId = 'modal-copy-icon', statusId = 'modal-copy-status') {
     const upiId = 'hadhip6252@sbi';
     copyToClipboard(upiId);
-    const btnText = document.getElementById('modal-copy-text');
-    const btnIcon = document.getElementById('modal-copy-icon');
-    const modalStatus = document.getElementById('modal-copy-status');
+    const btnText = document.getElementById(textId);
+    const btnIcon = document.getElementById(iconId);
+    const modalStatus = document.getElementById(statusId);
     if (btnText) btnText.textContent = 'Copied!';
     if (btnIcon) btnIcon.textContent = 'check';
     if (modalStatus) modalStatus.classList.remove('hidden');
@@ -213,36 +224,45 @@ function launchApp(app) {
     copyToClipboard(upiId);
     trackPurchaseEvent(`Launch_${app}`);
     
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
     if (app === 'gpay') {
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
         if (isAndroid) {
+            // Direct Android Launcher Intent for Google Pay (Tez)
             window.location.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end';
+            setTimeout(() => {
+                window.location.href = 'tez://';
+            }, 500);
         } else if (isIOS) {
             window.location.href = 'tez://';
         } else {
-            window.location.href = 'upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR';
+            window.location.href = 'https://pay.google.com';
         }
-    } else if (app === 'phonepe') {
-        if (isAndroid) {
-            window.location.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.phonepe.app;end';
-        } else if (isIOS) {
-            window.location.href = 'phonepe://';
-        } else {
-            window.location.href = 'upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR';
-        }
-    } else if (app === 'paytm') {
-        if (isAndroid) {
-            window.location.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=net.one97.paytm;end';
-        } else if (isIOS) {
-            window.location.href = 'paytmmp://';
-        } else {
-            window.location.href = 'upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR';
-        }
-    } else {
-        window.location.href = 'upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR';
     }
+}
+
+function launchOtherUPI() {
+    const upiId = 'hadhip6252@sbi';
+    copyToClipboard(upiId);
+    trackPurchaseEvent('Launch_Other_UPI');
+    
+    const otherBtnText = document.getElementById('other-btn-text');
+    const otherBtnIcon = document.getElementById('other-btn-icon');
+    const otherStatus = document.getElementById('other-copy-status');
+    const otherBtn = document.getElementById('other-upi-btn');
+    
+    if (otherBtn) otherBtn.classList.add('border-neon', 'bg-neon/10');
+    if (otherBtnText) otherBtnText.textContent = '✅ UPI ID Copied to Clipboard!';
+    if (otherBtnIcon) otherBtnIcon.textContent = 'check_circle';
+    if (otherStatus) otherStatus.classList.remove('hidden');
+    
+    setTimeout(() => {
+        if (otherBtn) otherBtn.classList.remove('border-neon', 'bg-neon/10');
+        if (otherBtnText) otherBtnText.textContent = 'Other UPI Apps (PhonePe, Paytm, CRED)';
+        if (otherBtnIcon) otherBtnIcon.textContent = 'account_balance_wallet';
+        if (otherStatus) otherStatus.classList.add('hidden');
+    }, 3500);
 }
 
 function payViaGooglePay() {
@@ -350,18 +370,23 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <img alt="Secure Payment QR Code" class="w-full h-full object-contain" src="./qr-code.png">
             </div>
 
-            <!-- Universal UPI Intent CTA Button (Glowing Neon) -->
-            <a onclick="trackGPayClick()" href="upi://pay?pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar" class="w-full py-3.5 md:py-4 px-4 neon-btn text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-sm md:text-base shadow-xl active:scale-95 text-center no-underline cursor-pointer">
-                <span class="material-symbols-outlined text-xl md:text-2xl font-bold">payments</span>
-                <span>Pay via UPI App / GPay (₹99)</span>
-            </a>
+            <!-- GOOGLE PAY MAIN CTA BUTTON (WHITE BACKGROUND) -->
+            <button onclick="handleCopyAndOpenModal()" class="w-full py-3.5 md:py-4 px-4 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2.5 rounded-xl font-headline font-black text-sm md:text-base shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:shadow-[0_0_35px_rgba(255,255,255,0.4)] transition-all active:scale-95 text-center cursor-pointer border border-neutral-200">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                </svg>
+                <span>Pay ₹99 with Google Pay</span>
+            </button>
 
             <!-- OR PASTE THIS UPI ID TO PREFERRED PLATFORM -->
             <div class="flex flex-col items-center gap-1.5 p-3 bg-[#0d0d0d] rounded-xl border border-[#222222] w-full">
                 <span class="text-[10px] uppercase tracking-wider text-neutral-400 font-bold">Or paste this UPI ID to preferred platform</span>
                 <div class="flex items-center justify-between gap-2 w-full bg-black px-3.5 py-2 rounded-lg border border-neutral-800">
                     <code class="font-mono font-black text-xs md:text-sm text-neon select-all">hadhip6252@sbi</code>
-                    <button onclick="handleCopyAndOpenModal()" class="flex items-center gap-1 text-xs font-bold text-black bg-neon px-3 py-1.5 rounded-lg hover:bg-[#b5ff1a] transition-all active:scale-95 shadow-md" title="Copy UPI ID & Open App">
+                    <button onclick="openAllAppsModal()" class="flex items-center gap-1 text-xs font-bold text-black bg-neon px-3 py-1.5 rounded-lg hover:bg-[#b5ff1a] transition-all active:scale-95 shadow-md" title="Copy UPI ID & Choose App">
                         <span class="material-symbols-outlined text-sm font-black" id="copy-icon">content_copy</span>
                         <span>Copy & Choose App</span>
                     </button>
@@ -410,10 +435,103 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
     </a>
 </footer>
 
-<!-- UPI App Selector Modal -->
-<div id="upi-apps-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+<!-- Google Pay Visual Guide Modal -->
+<div id="gpay-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3.5">
+    <div class="bg-[#0e0e0e] border border-neon/40 rounded-2xl max-w-sm w-full p-4 text-center relative shadow-[0_0_40px_rgba(163,253,0,0.25)] flex flex-col items-center gap-2.5 max-h-[92vh] overflow-y-auto">
+        <button onclick="closeModal('gpay-modal')" class="absolute top-3 right-3 text-neutral-400 hover:text-white p-1">
+            <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+
+        <!-- Header -->
+        <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow-md shrink-0">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                </svg>
+            </div>
+            <h3 class="text-sm font-headline font-bold text-white">How to Pay ₹99 in Google Pay</h3>
+        </div>
+
+        <!-- 1-Tap Copy Box -->
+        <div class="flex flex-col gap-1 w-full">
+            <div class="flex items-center justify-between gap-2 w-full bg-black px-3 py-1.5 rounded-xl border border-neon/40">
+                <div class="flex flex-col text-left">
+                    <span class="text-[9px] uppercase tracking-wider text-neutral-400 font-bold">UPI ID:</span>
+                    <code class="font-mono font-black text-xs md:text-sm text-neon select-all">hadhip6252@sbi</code>
+                </div>
+                <button onclick="copyModalUPI('gpay-copy-text', 'gpay-copy-icon', 'gpay-copy-status')" class="flex items-center gap-1 text-xs font-black text-black bg-neon px-2.5 py-1.5 rounded-lg hover:bg-[#b5ff1a] transition-all active:scale-90 shadow-md">
+                    <span class="material-symbols-outlined text-sm font-black" id="gpay-copy-icon">content_copy</span>
+                    <span id="gpay-copy-text">Copy UPI ID</span>
+                </button>
+            </div>
+            <p id="gpay-copy-status" class="hidden text-[10px] text-neon font-bold text-center">✅ UPI ID copied to clipboard!</p>
+        </div>
+
+        <!-- Focused Visual Image Container Showing "Pay anyone" Clearly -->
+        <div class="w-full bg-[#121212] border border-[#222222] rounded-xl p-2.5 flex flex-col items-center gap-1.5">
+            <div class="flex items-center justify-between w-full text-left">
+                <span class="text-[10px] uppercase tracking-wider text-neon font-extrabold flex items-center gap-1">
+                    <span>👉 In GPay, tap "Pay anyone":</span>
+                </span>
+                <span class="text-[9px] text-neutral-400 font-medium">Visual Guide</span>
+            </div>
+
+            <!-- Annotated Focused Crop Container -->
+            <div class="relative w-full h-36 rounded-lg overflow-hidden border-2 border-neutral-700 bg-black">
+                <img src="./gpay-guide.png" alt="Google Pay Pay Anyone Screen Guide" class="w-full h-full object-cover" style="object-position: center 36%;">
+                
+                <!-- Glowing Focus Ring directly over "Pay anyone" icon -->
+                <div class="absolute top-[8%] left-[26%] w-[23%] h-[82%] rounded-xl border-2 border-neon bg-neon/20 shadow-[0_0_20px_#a3fd00] pointer-events-none animate-pulse"></div>
+                
+                <!-- Floating Callout Badge -->
+                <div class="absolute top-1 left-[27%] bg-neon text-black text-[8px] font-black px-1.5 py-0.5 rounded shadow-lg uppercase tracking-tight pointer-events-none">
+                    👆 1. TAP HERE
+                </div>
+            </div>
+
+            <!-- Steps Summary -->
+            <p class="text-[10px] md:text-[11px] text-neutral-200 leading-tight font-medium text-left pt-0.5">
+                1. Tap <strong>"Pay anyone"</strong> inside Google Pay.<br>
+                2. Paste <strong class="text-neon font-mono">hadhip6252@sbi</strong> & pay <strong>₹99</strong>.<br>
+                3. Send payment screenshot on WhatsApp below.
+            </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="w-full flex flex-col gap-2 pt-0.5">
+            <!-- Google Pay Launcher -->
+            <button onclick="launchApp('gpay')" class="w-full py-2.5 px-3 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2 rounded-xl font-headline font-bold text-xs shadow-md active:scale-95 transition-all">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                </svg>
+                <span>Open Google Pay App</span>
+            </button>
+
+            <!-- Send Screenshot WhatsApp Button -->
+            <a href="https://wa.me/917356003301?text=Hai%20Team%20Raise%20AI%2C%20I%20have%20completed%20the%20payment%20of%20%E2%82%B999%20for%20the%20AI%20video%20creation%20Flow%20fundamentals%20webinar.%20Here%20are%20my%20details%20and%20payment%20screenshot%3A%0A%0AName%3A%20%0AEmail%3A%20%0APhone%3A%20" target="_blank" rel="noopener" class="w-full py-2.5 px-3 bg-[#25D366] hover:bg-[#22bf5b] text-white flex items-center justify-center gap-2 rounded-xl font-sans font-bold text-xs shadow-md transition-transform active:scale-95 no-underline">
+                <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                <span>Share Screenshot on WhatsApp</span>
+            </a>
+        </div>
+
+        <button onclick="closeModal('gpay-modal')" class="text-[11px] text-neutral-400 hover:text-white underline pt-0.5">
+            I will scan QR code on screen instead
+        </button>
+    </div>
+</div>
+
+<!-- All Payment Apps Chooser Modal -->
+<div id="all-apps-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-[#0e0e0e] border border-neon/50 rounded-2xl max-w-sm w-full p-5 text-center relative shadow-[0_0_40px_rgba(163,253,0,0.25)] flex flex-col items-center gap-3.5">
-        <button onclick="closeModal('upi-apps-modal')" class="absolute top-3 right-3 text-neutral-400 hover:text-white p-1">
+        <button onclick="closeModal('all-apps-modal')" class="absolute top-3 right-3 text-neutral-400 hover:text-white p-1">
             <span class="material-symbols-outlined text-lg">close</span>
         </button>
 
@@ -421,18 +539,18 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             <span class="material-symbols-outlined text-2xl">check_circle</span>
         </div>
 
-        <div class="flex flex-col gap-1.5 w-full">
+        <div class="flex flex-col gap-1 w-full">
             <h3 class="text-base font-headline font-bold text-white">UPI ID Ready to Paste!</h3>
             
             <!-- Modal Dedicated Copy Bar -->
             <div class="flex items-center justify-between gap-2 w-full bg-black px-3 py-2 rounded-xl border border-neon/40">
                 <code class="font-mono font-black text-xs md:text-sm text-neon select-all">hadhip6252@sbi</code>
-                <button onclick="copyModalUPI()" id="modal-copy-btn" class="flex items-center gap-1 text-[11px] font-black text-black bg-neon px-2.5 py-1.5 rounded-lg hover:bg-[#b5ff1a] transition-all active:scale-90">
-                    <span class="material-symbols-outlined text-sm font-black" id="modal-copy-icon">content_copy</span>
-                    <span id="modal-copy-text">Copy UPI ID</span>
+                <button onclick="copyModalUPI('all-copy-text', 'all-copy-icon', 'all-copy-status')" class="flex items-center gap-1 text-[11px] font-black text-black bg-neon px-2.5 py-1.5 rounded-lg hover:bg-[#b5ff1a] transition-all active:scale-90">
+                    <span class="material-symbols-outlined text-sm font-black" id="all-copy-icon">content_copy</span>
+                    <span id="all-copy-text">Copy UPI ID</span>
                 </button>
             </div>
-            <p id="modal-copy-status" class="hidden text-[10px] text-neon font-bold text-center">✅ UPI ID copied to clipboard!</p>
+            <p id="all-copy-status" class="hidden text-[10px] text-neon font-bold text-center">✅ UPI ID copied to clipboard!</p>
         </div>
 
         <div class="w-full bg-[#141414] border border-[#262626] rounded-xl p-3 text-left">
@@ -441,11 +559,11 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             </p>
         </div>
 
-        <div class="w-full flex flex-col gap-2 pt-1">
+        <div class="w-full flex flex-col gap-2.5 pt-1">
             <span class="text-[10px] text-neutral-400 uppercase tracking-wider font-bold">Choose Payment App:</span>
             
             <div class="grid grid-cols-1 gap-2 w-full">
-                <!-- Google Pay -->
+                <!-- 1. Google Pay -->
                 <button onclick="launchApp('gpay')" class="w-full py-2.5 px-3 bg-white hover:bg-neutral-100 text-black flex items-center justify-center gap-2 rounded-xl font-headline font-bold text-xs shadow-md active:scale-95 transition-all">
                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -456,21 +574,14 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <span>Open Google Pay</span>
                 </button>
 
-                <!-- PhonePe -->
-                <button onclick="launchApp('phonepe')" class="w-full py-2.5 px-3 bg-[#5f259f] hover:bg-[#521f8a] text-white flex items-center justify-center gap-2 rounded-xl font-headline font-bold text-xs shadow-md active:scale-95 transition-all">
-                    <span>🟣 Open PhonePe</span>
-                </button>
-
-                <!-- Paytm -->
-                <button onclick="launchApp('paytm')" class="w-full py-2.5 px-3 bg-[#002970] hover:bg-[#002058] text-white flex items-center justify-center gap-2 rounded-xl font-headline font-bold text-xs shadow-md active:scale-95 transition-all">
-                    <span>🔷 Open Paytm</span>
-                </button>
-
-                <!-- Other UPI -->
-                <button onclick="launchApp('other')" class="w-full py-2 px-3 bg-[#1c1c1c] hover:bg-[#282828] text-neutral-300 flex items-center justify-center gap-1.5 rounded-xl font-sans font-semibold text-xs transition-all">
-                    <span>Other UPI Apps (CRED / BHIM)</span>
+                <!-- 2. Other UPI Apps (PhonePe, Paytm, CRED) with Instant Copy Animation -->
+                <button onclick="launchOtherUPI()" id="other-upi-btn" class="w-full py-2.5 px-3 bg-[#181818] hover:bg-[#242424] border border-[#333333] text-white flex items-center justify-center gap-2 rounded-xl font-sans font-bold text-xs shadow-md active:scale-95 transition-all">
+                    <span class="material-symbols-outlined text-base text-neon" id="other-btn-icon">account_balance_wallet</span>
+                    <span id="other-btn-text">Other UPI Apps (PhonePe, Paytm, CRED)</span>
                 </button>
             </div>
+            
+            <p id="other-copy-status" class="hidden text-[10px] text-neon font-bold text-center animate-bounce">📋 UPI ID copied! Open your UPI app and paste to pay ₹99.</p>
 
             <!-- In-Modal Direct WhatsApp Button -->
             <div class="w-full pt-2 border-t border-[#222222] flex flex-col gap-1.5 mt-1">
@@ -484,7 +595,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             </div>
         </div>
 
-        <button onclick="closeModal('upi-apps-modal')" class="text-[11px] text-neutral-400 hover:text-white underline pt-0.5">
+        <button onclick="closeModal('all-apps-modal')" class="text-[11px] text-neutral-400 hover:text-white underline pt-0.5">
             I will scan QR code on screen instead
         </button>
     </div>
