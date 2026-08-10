@@ -242,6 +242,7 @@ function handleGPayHomeLaunch(e) {
     trackPurchaseEvent('Launch_GPay_Home');
     
     const ua = navigator.userAgent || '';
+    const isInstagram = /Instagram/i.test(ua) || /FBAN|FBAV/i.test(ua);
     const isAndroid = /Android/i.test(ua);
     const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
@@ -249,7 +250,14 @@ function handleGPayHomeLaunch(e) {
         if (isAndroid) {
             e.currentTarget.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end';
         } else if (isIOS) {
-            e.currentTarget.href = 'tez://';
+            if (isInstagram) {
+                // On Instagram iOS Webview, custom schemes throw 'There was a problem loading this website'.
+                // Using valid HTTPS URL prevents error screen while UPI ID is safely copied to clipboard.
+                e.currentTarget.href = 'https://pay.google.com';
+                e.currentTarget.target = '_blank';
+            } else {
+                e.currentTarget.href = 'tez://';
+            }
         } else {
             e.currentTarget.href = 'https://pay.google.com';
         }
