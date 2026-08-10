@@ -125,6 +125,18 @@ body {
 </style>
 <!-- Meta Pixel Code -->
 <script>
+// Instagram / Facebook In-App Browser Breakout Engine for 100% GPay & UPI Link Compatibility
+(function() {
+    const ua = navigator.userAgent || '';
+    const isInstagram = /Instagram/i.test(ua) || /FBAN|FBAV/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+
+    if (isInstagram && isAndroid && !window.location.hash.includes('in_chrome')) {
+        const cleanUrl = window.location.href.replace(/^https?:\/\//, '');
+        window.location.href = `intent://${cleanUrl}#Intent;scheme=https;package=com.android.chrome;end`;
+    }
+})();
+
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -229,9 +241,18 @@ function handleGPayHomeLaunch(e) {
     copyToClipboard(upiId);
     trackPurchaseEvent('Launch_GPay_Home');
     
+    const ua = navigator.userAgent || '';
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+
     if (e && e.currentTarget) {
-        // tez:// opens Google Pay's main home screen directly
-        e.currentTarget.href = 'tez://';
+        if (isAndroid) {
+            e.currentTarget.href = 'intent:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;end';
+        } else if (isIOS) {
+            e.currentTarget.href = 'tez://';
+        } else {
+            e.currentTarget.href = 'https://pay.google.com';
+        }
     }
 }
 
