@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Payment Successful! | Raise AI Masterclass</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Canvas Confetti for grand celebration -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                background: "#000000",
+                surface: "#080808",
+                "surface-card": "#0d0d0d",
+                neon: "#a3fd00",
+                "neon-glow": "rgba(163, 253, 0, 0.4)",
+            },
+            fontFamily: {
+                sans: ["Inter", "sans-serif"],
+                headline: ["Montserrat", "sans-serif"],
+            }
+        }
+    }
+}
+</script>
+<style>
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+@keyframes pulseCheck {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); box-shadow: 0 0 35px rgba(163, 253, 0, 0.8); }
+}
+.check-glow {
+    animation: pulseCheck 2.5s infinite ease-in-out;
+}
+</style>
+
+<!-- Meta Pixel Code for Purchase Conversion Tracking -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '958547097011254');
+fbq('track', 'PageView');
+
+// Fire Meta Pixel Purchase Event on successful landing
+fbq('track', 'Purchase', {
+    content_name: 'Flow Fundamentals with 100% free tools',
+    value: 99.00,
+    currency: 'INR'
+});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=958547097011254&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body class="bg-black text-white font-sans antialiased min-h-screen flex flex-col selection:bg-neon selection:text-black">
+
+<!-- Header -->
+<header class="w-full z-40 bg-black/95 backdrop-blur-md border-b border-[#1c1c1c] sticky top-0 py-3 px-4 md:px-8">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+        <a href="/" class="flex items-center gap-2">
+            <img src="/logo.png" alt="Raise AI Logo" class="h-9 md:h-11 w-auto object-contain brightness-110" />
+        </a>
+        <span class="text-[11px] md:text-xs font-bold text-neon bg-[#121c08] border border-neon/40 px-3 py-1 rounded-full flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-neon animate-ping"></span>
+            Registration Confirmed
+        </span>
+    </div>
+</header>
+
+<main class="flex-grow max-w-2xl mx-auto px-4 py-8 md:py-12 w-full flex flex-col items-center text-center">
+    <!-- Success Animated Badge -->
+    <div class="relative mb-5">
+        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-neon text-black flex items-center justify-center text-4xl md:text-5xl font-black check-glow shadow-[0_0_40px_rgba(163,253,0,0.5)]">
+            ✓
+        </div>
+    </div>
+
+    <!-- Main Title -->
+    <span class="text-xs uppercase tracking-widest text-neon font-extrabold mb-1">Payment Received</span>
+    <h1 class="font-headline text-2xl md:text-4xl font-black text-white mb-2">You're Officially Registered! 🎉</h1>
+    <p class="text-neutral-300 text-xs md:text-sm max-w-lg mb-6 leading-relaxed">
+        Thank you for your payment. Your seat is confirmed for the live AI video creation masterclass.
+    </p>
+
+    <!-- Order / Booking Summary Card -->
+    <div class="w-full bg-[#0d0d0d] border border-neon/40 rounded-2xl p-5 md:p-6 text-left space-y-4 shadow-[0_0_30px_rgba(163,253,0,0.12)] mb-6">
+        <div class="flex justify-between items-start border-b border-[#222222] pb-3">
+            <div>
+                <span class="text-[10px] md:text-[11px] text-neon uppercase tracking-wider font-extrabold">Session Details</span>
+                <h3 class="font-headline font-bold text-sm md:text-base text-white mt-0.5">Flow Fundamentals with 100% free tools</h3>
+            </div>
+            <div class="text-right">
+                <span class="text-[10px] text-neutral-400 uppercase font-semibold block">Status</span>
+                <span class="text-xs font-bold text-neon bg-[#121c08] border border-neon/30 px-2 py-0.5 rounded">PAID • ₹99</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="flex items-center gap-2 text-neutral-200">
+                <span class="material-symbols-outlined text-neon text-base">calendar_month</span>
+                <span><strong>Date:</strong> Sunday, 16 Aug 2026</span>
+            </div>
+            <div class="flex items-center gap-2 text-neutral-200">
+                <span class="material-symbols-outlined text-neon text-base">schedule</span>
+                <span><strong>Time:</strong> 7:00 PM IST (Live)</span>
+            </div>
+            <div class="flex items-center gap-2 text-neutral-200">
+                <span class="material-symbols-outlined text-neon text-base">videocam</span>
+                <span><strong>Platform:</strong> Zoom (Private Session)</span>
+            </div>
+            <div class="flex items-center gap-2 text-neutral-200">
+                <span class="material-symbols-outlined text-neon text-base">video_library</span>
+                <span><strong>Recording:</strong> Full HD Included</span>
+            </div>
+        </div>
+
+        <div class="pt-2 border-t border-[#1f1f1f] flex justify-between items-center text-[11px] text-neutral-400">
+            <span>Booking ID: <strong id="booking-id" class="font-mono text-neutral-200">RAISE-2026-CONFIRMED</strong></span>
+            <span class="flex items-center gap-1 text-neon font-semibold">🔒 100% Secured</span>
+        </div>
+    </div>
+
+    <!-- 3 Actionable Next Steps -->
+    <div class="w-full bg-[#0a0a0a] border border-[#222222] rounded-2xl p-5 text-left mb-6">
+        <h4 class="font-headline font-bold text-xs md:text-sm text-white mb-3 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-neon text-base">info</span>
+            <span>Important Next Steps & Delivery</span>
+        </h4>
+        <div class="space-y-3 text-xs text-neutral-300">
+            <div class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#1c1c1c] text-neon flex items-center justify-center font-bold text-[11px] shrink-0 mt-0.5">1</span>
+                <div>
+                    <strong class="text-white">Save Confirmation on WhatsApp:</strong> Send a quick screenshot/message to our WhatsApp team for instant attendee records.
+                </div>
+            </div>
+            <div class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#1c1c1c] text-neon flex items-center justify-center font-bold text-[11px] shrink-0 mt-0.5">2</span>
+                <div>
+                    <strong class="text-white">Private Zoom Link Delivery:</strong> Your direct Zoom joining credentials will be sent to your registered WhatsApp/email on <strong>15 August 2026</strong>.
+                </div>
+            </div>
+            <div class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-[#1c1c1c] text-neon flex items-center justify-center font-bold text-[11px] shrink-0 mt-0.5">3</span>
+                <div>
+                    <strong class="text-white">Full HD Recording Delivery:</strong> The complete recorded masterclass and prompt resources will be delivered within 24 hours of session completion.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Primary Action CTAs -->
+    <div class="w-full space-y-3">
+        <!-- WhatsApp Connect CTA -->
+        <a href="https://wa.me/917356003301?text=Hai%20Team%20Raise%20AI%2C%20I%20have%20completed%20my%20payment%20of%20%E2%82%B999%20for%20the%20AI%20video%20creation%20webinar.%20Please%20confirm%20my%20registration%21" target="_blank" rel="noopener" class="w-full py-4 px-6 bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center gap-2 rounded-xl font-bold text-sm md:text-base shadow-xl transition-transform active:scale-95">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.431 5.63 1.432h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span>Confirm & Chat on WhatsApp (+91 73560 03301)</span>
+        </a>
+
+        <!-- Add to Google Calendar CTA -->
+        <a id="calendar-btn" target="_blank" rel="noopener" class="w-full py-3 px-4 bg-[#141414] hover:bg-[#1f1f1f] text-neutral-200 border border-[#262626] flex items-center justify-center gap-2 rounded-xl font-semibold text-xs md:text-sm transition-all">
+            <span class="material-symbols-outlined text-neon text-base">event</span>
+            <span>Add Event to Google Calendar (16 Aug, 7 PM)</span>
+        </a>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-black py-6 border-t border-[#1c1c1c] text-center mt-auto">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-neutral-400">
+        <p>© 2026 Raise AI. All rights reserved.</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="/terms/" class="hover:text-neon transition-colors">Terms of Service</a>
+            <a href="/privacy/" class="hover:text-neon transition-colors">Privacy Policy</a>
+            <a href="/refund/" class="hover:text-neon transition-colors">Refund Policy</a>
+            <a href="/contact/" class="hover:text-neon transition-colors">Contact Support</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Grand Confetti Blast on page load
+(function() {
+    if (typeof confetti === 'function') {
+        const count = 250;
+        const defaults = {
+            origin: { y: 0.6 },
+            colors: ['#a3fd00', '#ffffff', '#ffd700', '#00e5ff', '#25D366']
+        };
+
+        function fire(particleRatio, opts) {
+            confetti(Object.assign({}, defaults, opts, {
+                particleCount: Math.floor(count * particleRatio)
+            }));
+        }
+
+        fire(0.25, { spread: 26, startVelocity: 55 });
+        fire(0.2, { spread: 60 });
+        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+        fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92 });
+        fire(0.1, { spread: 120, startVelocity: 45 });
+
+        setTimeout(() => {
+            confetti({
+                particleCount: 120,
+                angle: 60,
+                spread: 60,
+                origin: { x: 0, y: 0.65 },
+                colors: ['#a3fd00', '#ffffff', '#ffd700']
+            });
+            confetti({
+                particleCount: 120,
+                angle: 120,
+                spread: 60,
+                origin: { x: 1, y: 0.65 },
+                colors: ['#a3fd00', '#ffffff', '#ffd700']
+            });
+        }, 300);
+    }
+
+    // Dynamic Google Calendar Add Link generator
+    const title = encodeURIComponent("Raise AI: Flow AI Video Creation Masterclass");
+    const details = encodeURIComponent("Live 2-Hour Beginner Masterclass on Flow AI Video Creation + 15,000 Free Credits & Recording.\nZoom join link sent on 15 August.\nSupport: +91 73560 03301");
+    const location = encodeURIComponent("Zoom (Online Live Webinar)");
+    // 16 August 2026, 7:00 PM IST (13:30 UTC) to 9:00 PM IST (15:30 UTC)
+    const dates = "20260816T133000Z/20260816T153000Z";
+    const calUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+    
+    const calBtn = document.getElementById('calendar-btn');
+    if (calBtn) {
+        calBtn.href = calUrl;
+    }
+
+    // Display payment ID if present in query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentId = urlParams.get('payment_id') || urlParams.get('payment_request_id') || urlParams.get('order_id');
+    if (paymentId) {
+        const idElem = document.getElementById('booking-id');
+        if (idElem) {
+            idElem.textContent = paymentId;
+        }
+    }
+})();
+</script>
+
+</body>
+</html>
