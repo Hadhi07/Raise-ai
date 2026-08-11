@@ -254,13 +254,16 @@ async function downloadQRAndShowGuide() {
     const fileName = 'Raise-AI-Payment-QR.png';
     let successEvent = 'QR_Code_Downloaded';
 
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
     try {
-        // Fetch the image as a Blob first to prevent standard URL navigation
         const response = await fetch(qrUrl);
         const blob = await response.blob();
         
-        // 1. Try Native Share Sheet (Best for mobile)
-        if (navigator.share && navigator.canShare) {
+        // ON iOS: We MUST use the Native Share Sheet because Apple's Share Sheet has a clean "Save Image" button.
+        // Direct downloads on iOS Webviews often redirect to a big image screen.
+        if (isIOS && navigator.share && navigator.canShare) {
             const file = new File([blob], fileName, { type: blob.type });
             if (navigator.canShare({ files: [file] })) {
                 await navigator.share({
@@ -272,13 +275,12 @@ async function downloadQRAndShowGuide() {
                 throw new Error("Share API doesn't support files here");
             }
         } else {
-            throw new Error("Share API not available");
+            // ON ANDROID/DESKTOP: Skip Share Sheet entirely! 
+            // The Android share sheet confuses users. Direct download works perfectly in the background on Android.
+            throw new Error("Bypassing share sheet for direct download");
         }
     } catch (err) {
-        console.log("Using Blob Download Fallback:", err);
-        // 2. Fallback: Force a file download using an Object URL
-        // This stops iPhones from navigating away to a big white image page.
-        // It forces the browser to treat it as a file download prompt.
+        console.log("Using Direct Download:", err);
         try {
             const response = await fetch(qrUrl);
             const blob = await response.blob();
@@ -287,14 +289,13 @@ async function downloadQRAndShowGuide() {
             const link = document.createElement('a');
             link.href = objectUrl;
             link.download = fileName;
-            link.target = '_blank'; // Extra safety to prevent current-tab navigation
+            link.target = '_blank';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
             
             setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
         } catch (fallbackErr) {
-            // Ultimate fallback if fetch fails completely
             const link = document.createElement('a');
             link.href = qrUrl;
             link.download = fileName;
@@ -314,7 +315,7 @@ async function downloadQRAndShowGuide() {
     toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 bg-neon text-black px-4 py-3 rounded-xl font-headline font-bold text-sm shadow-[0_4px_20px_rgba(163,253,0,0.4)] z-[9999] flex items-center gap-2 transform transition-all duration-300 translate-y-[-100%] opacity-0';
     toast.innerHTML = successEvent === 'QR_Code_Native_Shared' 
         ? `<span class="material-symbols-outlined text-base">ios_share</span> Shared Successfully!`
-        : `<span class="material-symbols-outlined text-base">download_done</span> QR Download Triggered!`;
+        : `<span class="material-symbols-outlined text-base">download_done</span> QR Downloaded Successfully!`;
     document.body.appendChild(toast);
     
     // Animate in
