@@ -274,17 +274,47 @@ async function downloadQRAndShowGuide() {
         }
     }
 
-    // Fallback to standard download if Web Share is unsupported or failed
+    // Fallback logic
     if (!sharedSuccessfully) {
-        const link = document.createElement('a');
-        link.href = qrUrl;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const ua = navigator.userAgent || '';
+        const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        
+        if (isIOS) {
+            // On iOS, force download navigates away and ruins the page. Just show toast and don't open modal so they can long-press.
+            const existingToast = document.getElementById('copy-toast');
+            if (existingToast) existingToast.remove();
+            
+            const toast = document.createElement('div');
+            toast.id = 'copy-toast';
+            toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 bg-neon text-black px-4 py-3 rounded-xl font-headline font-bold text-sm shadow-[0_4px_20px_rgba(163,253,0,0.4)] z-[9999] flex items-center gap-2 transform transition-all duration-300 translate-y-[-100%] opacity-0';
+            toast.innerHTML = `<span class="material-symbols-outlined text-base">touch_app</span> 👆 Long-press QR to save!`;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-[-100%]', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-100%]', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+            
+            trackPurchaseEvent('QR_Code_iOS_Fallback');
+            return; // Do NOT open the scanner modal, keep the QR visible for long-pressing
+        } else {
+            // Normal download for Android/Desktop
+            const link = document.createElement('a');
+            link.href = qrUrl;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     }
 
-    // Show a green toast notification
+    // Show a green toast notification (for successful share or android download)
     const existingToast = document.getElementById('copy-toast');
     if (existingToast) existingToast.remove();
     
