@@ -252,78 +252,69 @@ function handleTouchGPay(e) {
 async function downloadQRAndShowGuide() {
     const qrUrl = './qr-code.png';
     const fileName = 'Raise-AI-Payment-QR.png';
-    let sharedSuccessfully = false;
+    let successEvent = 'QR_Code_Downloaded';
 
-    // Try Web Share API first if supported
-    if (navigator.share && navigator.canShare) {
-        try {
-            const response = await fetch(qrUrl);
-            const blob = await response.blob();
+    try {
+        // Fetch the image as a Blob first to prevent standard URL navigation
+        const response = await fetch(qrUrl);
+        const blob = await response.blob();
+        
+        // 1. Try Native Share Sheet (Best for mobile)
+        if (navigator.share && navigator.canShare) {
             const file = new File([blob], fileName, { type: blob.type });
-
             if (navigator.canShare({ files: [file] })) {
                 await navigator.share({
                     files: [file],
-                    title: 'Raise AI Payment QR',
-                    text: 'Scan this QR code in Google Pay, PhonePe, or Paytm to complete your ₹99 payment.'
+                    title: 'Raise AI Payment QR'
                 });
-                sharedSuccessfully = true;
+                successEvent = 'QR_Code_Native_Shared';
+            } else {
+                throw new Error("Share API doesn't support files here");
             }
-        } catch (err) {
-            console.log("Web Share API failed or user cancelled, falling back...", err);
-        }
-    }
-
-    // Fallback logic
-    if (!sharedSuccessfully) {
-        const ua = navigator.userAgent || '';
-        const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-        
-        if (isIOS) {
-            // On iOS, force download navigates away and ruins the page. Just show toast and don't open modal so they can long-press.
-            const existingToast = document.getElementById('copy-toast');
-            if (existingToast) existingToast.remove();
-            
-            const toast = document.createElement('div');
-            toast.id = 'copy-toast';
-            toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 bg-neon text-black px-4 py-3 rounded-xl font-headline font-bold text-sm shadow-[0_4px_20px_rgba(163,253,0,0.4)] z-[9999] flex items-center gap-2 transform transition-all duration-300 translate-y-[-100%] opacity-0';
-            toast.innerHTML = `<span class="material-symbols-outlined text-base">touch_app</span> 👆 Long-press QR to save!`;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.remove('translate-y-[-100%]', 'opacity-0');
-                toast.classList.add('translate-y-0', 'opacity-100');
-            }, 10);
-            
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-[-100%]', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 4000);
-            
-            trackPurchaseEvent('QR_Code_iOS_Fallback');
-            return; // Do NOT open the scanner modal, keep the QR visible for long-pressing
         } else {
-            // Normal download for Android/Desktop
+            throw new Error("Share API not available");
+        }
+    } catch (err) {
+        console.log("Using Blob Download Fallback:", err);
+        // 2. Fallback: Force a file download using an Object URL
+        // This stops iPhones from navigating away to a big white image page.
+        // It forces the browser to treat it as a file download prompt.
+        try {
+            const response = await fetch(qrUrl);
+            const blob = await response.blob();
+            const objectUrl = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = objectUrl;
+            link.download = fileName;
+            link.target = '_blank'; // Extra safety to prevent current-tab navigation
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+        } catch (fallbackErr) {
+            // Ultimate fallback if fetch fails completely
             const link = document.createElement('a');
             link.href = qrUrl;
             link.download = fileName;
+            link.target = '_blank';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
     }
 
-    // Show a green toast notification (for successful share or android download)
+    // Show a green toast notification
     const existingToast = document.getElementById('copy-toast');
     if (existingToast) existingToast.remove();
     
     const toast = document.createElement('div');
     toast.id = 'copy-toast';
     toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 bg-neon text-black px-4 py-3 rounded-xl font-headline font-bold text-sm shadow-[0_4px_20px_rgba(163,253,0,0.4)] z-[9999] flex items-center gap-2 transform transition-all duration-300 translate-y-[-100%] opacity-0';
-    toast.innerHTML = sharedSuccessfully 
+    toast.innerHTML = successEvent === 'QR_Code_Native_Shared' 
         ? `<span class="material-symbols-outlined text-base">ios_share</span> Shared Successfully!`
-        : `<span class="material-symbols-outlined text-base">download_done</span> QR Downloaded!`;
+        : `<span class="material-symbols-outlined text-base">download_done</span> QR Download Triggered!`;
     document.body.appendChild(toast);
     
     // Animate in
@@ -340,9 +331,9 @@ async function downloadQRAndShowGuide() {
     }, 3000);
 
     // Track event
-    trackPurchaseEvent(sharedSuccessfully ? 'QR_Code_Native_Shared' : 'QR_Code_Downloaded');
+    trackPurchaseEvent(successEvent);
 
-    // Open scanner modal
+    // Open scanner modal so they know what to do next
     openModal('gpay-scanner-modal');
 }
 
