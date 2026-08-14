@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Raise AI | Learn Flow AI Video Creation (16 Aug, 7 PM)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Canvas Confetti for celebration effect -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<!-- Modern Fonts: Montserrat for bold headlines, Inter for UI -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                background: "#000000",
+                surface: "#080808",
+                "surface-card": "#0d0d0d",
+                "surface-card-hover": "#141414",
+                neon: "#a3fd00",
+                "neon-glow": "rgba(163, 253, 0, 0.4)",
+                urgency: "#ff2a40",
+            },
+            fontFamily: {
+                sans: ["Inter", "sans-serif"],
+                headline: ["Montserrat", "sans-serif"],
+            }
+        }
+    }
+}
+</script>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+.neon-text {
+    color: #a3fd00;
+}
+.timer-red {
+    color: #ff2a40;
+    text-shadow: 0 0 10px rgba(255, 42, 64, 0.5);
+}
+.timer-red-bg {
+    background-color: #1a0507;
+    border-color: rgba(255, 42, 64, 0.4);
+    color: #ff2a40;
+}
+/* Sparky shimmer effect on CTA buttons every 2 seconds */
+@keyframes sparkShimmer {
+    0% {
+        transform: translateX(-150%) skewX(-20deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.8;
+    }
+    30% {
+        transform: translateX(250%) skewX(-20deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(250%) skewX(-20deg);
+        opacity: 0;
+    }
+}
+@keyframes pulseButton {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(163, 253, 0, 0.4);
+        transform: scale(1);
+    }
+    15% {
+        box-shadow: 0 0 35px rgba(163, 253, 0, 0.75), 0 0 50px rgba(163, 253, 0, 0.3);
+        transform: scale(1.02);
+    }
+    30% {
+        box-shadow: 0 0 20px rgba(163, 253, 0, 0.4);
+        transform: scale(1);
+    }
+}
+.neon-btn {
+    position: relative;
+    background-color: #a3fd00;
+    color: #000000;
+    font-weight: 800;
+    overflow: hidden;
+    animation: pulseButton 2s infinite ease-in-out;
+    transition: all 0.2s ease;
+}
+.neon-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.7) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: sparkShimmer 2s infinite linear;
+    pointer-events: none;
+}
+.neon-btn:hover {
+    background-color: #b5ff1a;
+    box-shadow: 0 0 45px rgba(163, 253, 0, 0.8);
+    transform: translateY(-2px) scale(1.02);
+}
+.tool-card {
+    background-color: #0c0f17;
+    border: 1px solid #1a2233;
+    transition: all 0.2s ease;
+}
+.tool-card:hover {
+    border-color: rgba(163, 253, 0, 0.5);
+    background-color: #101624;
+    transform: translateX(4px);
+}
+.value-card {
+    background-color: #0d0d0d;
+    border: 1px solid #222222;
+    transition: all 0.25s ease;
+}
+.value-card:hover {
+    border-color: rgba(163, 253, 0, 0.45);
+    transform: translateY(-3px);
+}
+@keyframes bannerSlideDown {
+    0% { transform: translate(-50%, -120%); opacity: 0; }
+    100% { transform: translate(-50%, 0); opacity: 1; }
+}
+@keyframes bannerSlideUp {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, -120%); opacity: 0; }
+}
+.toast-in {
+    animation: bannerSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.toast-out {
+    animation: bannerSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2034324397452606');
+fbq('track', 'PageView');
+
+// Helper to track InitiateCheckout on CTA click
+function trackCheckoutClick(e) {
+    if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+            content_name: 'Flow Fundamentals with 100% free tools',
+            value: 99.00,
+            currency: 'INR'
+        });
+    }
+}
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body class="bg-black text-white font-sans selection:bg-neon selection:text-black antialiased overflow-x-hidden w-full">
+
+<!-- Top Bar: Real Date Urgency Banner with RED 10-Min Urgency Clock -->
+<div class="bg-black border-b border-[#1f1f1f] text-white py-2 px-3 text-center text-xs font-medium sticky top-0 z-50 flex items-center justify-center gap-2 flex-wrap w-full">
+    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#a3fd00]/10 text-neon border border-neon/40 uppercase">⚡ LIVE WEBINAR</span>
+    <span class="text-neutral-300">Registration closes 16 August, 7 PM IST</span>
+    <div class="hidden timer-container inline-flex items-center gap-1.5">
+        <span class="text-neutral-500">•</span>
+        <span class="text-neutral-300">Offer ends in:</span>
+        <span class="countdown-timer font-mono font-bold tracking-wider px-2.5 py-0.5 rounded border timer-red-bg timer-red">10:00</span>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="w-full z-40 bg-black/90 backdrop-blur-md border-b border-[#1a1a1a] sticky top-[37px]">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+        <a href="/webinar/" class="flex items-center gap-2">
+            <img src="./logo.png" alt="Raise AI Logo" class="h-9 md:h-11 w-auto object-contain brightness-110" />
+        </a>
+        <div class="flex items-center gap-3">
+            <a onclick="trackCheckoutClick()" class="cta-dynamic-btn px-4 md:px-6 py-2 rounded-xl font-headline font-extrabold text-xs md:text-sm neon-btn flex items-center gap-1.5 shrink-0" href="/payment/qr/">
+                <span class="btn-text">Join Webinar — ₹199</span>
+                <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="relative w-full max-w-full overflow-hidden">
+    <!-- Hero Section -->
+    <section class="relative pt-8 pb-14 md:pt-16 md:pb-24 px-4 md:px-8 max-w-4xl mx-auto text-center">
+        <!-- Live Badge -->
+        <div class="inline-flex items-center gap-2 bg-[#121c08] border border-neon/40 text-neon px-3.5 py-1 rounded-full text-xs font-bold mb-4">
+            <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
+            <span>Live 2-Hour Interactive Masterclass + Full Recording</span>
+        </div>
+
+        <!-- Date & Time Bar -->
+        <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-xs md:text-sm text-neutral-300 mb-5 font-semibold bg-[#0d0d0d] border border-[#222222] py-2 px-3.5 rounded-xl w-fit mx-auto">
+            <span class="flex items-center gap-1 text-white">🗓️ <strong>Sunday, 16 August 2026</strong></span>
+            <span class="text-neutral-500">•</span>
+            <span class="flex items-center gap-1 text-white">⏰ <strong>7:00 PM IST</strong></span>
+            <span class="text-neutral-500">•</span>
+            <span class="flex items-center gap-1 text-neon">📹 <strong>Recording Included</strong></span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.15] tracking-tight text-white mb-5">
+            Learn Flow AI Video Creation — <br class="hidden sm:inline"/><span class="text-neon">Using 100% Free Tools</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-neutral-300 text-sm md:text-lg max-w-2xl mx-auto mb-7 leading-relaxed">
+            In this live 2-hour beginner webinar (admission <span id="subtitle-price-display"><strong class="text-white">₹199</strong></span>), learn Flow AI fundamentals from scratch, claim <strong class="text-neon">15,000+ free Flow credits</strong>, and unlock 1.5 years of Google Gemini Pro for free.
+        </p>
+
+        <!-- Objection Remover Badges -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-7 text-xs font-bold text-neutral-300">
+            <span class="bg-[#111111] border border-[#262626] px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+                <span class="text-neon">✅</span> No camera needed
+            </span>
+            <span class="bg-[#111111] border border-[#262626] px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+                <span class="text-neon">✅</span> 100% Free cloud tools
+            </span>
+            <span class="bg-[#111111] border border-[#262626] px-3 py-1.5 rounded-lg flex items-center gap-1.5">
+                <span class="text-neon">✅</span> Zero video editing experience needed
+            </span>
+        </div>
+
+        <!-- Standard Admission Price Badge -->
+        <div class="flex flex-col items-center justify-center mb-6">
+            <div class="flex items-center justify-center gap-2.5">
+                <span id="hero-badge-tag" class="bg-[#e11d48] text-white px-2.5 py-0.5 rounded text-xs font-extrabold uppercase tracking-wide">STANDARD ADMISSION</span>
+                <span id="hero-price-display" class="font-headline font-black text-2xl md:text-4xl text-white">₹199</span>
+            </div>
+            <div id="flash-banner" class="hidden mt-2 text-xs font-extrabold text-neon bg-neon/10 border border-neon/30 px-3 py-1 rounded-full animate-bounce">
+                🎉 Flash ₹99 Price Unlocked on Registration Buttons!
+            </div>
+        </div>
+
+        <!-- CTA Button & RED 10-Minute Countdown Directly Under CTA -->
+        <div class="max-w-md mx-auto flex flex-col items-center gap-3 mb-4 w-full">
+            <a onclick="trackCheckoutClick()" class="cta-dynamic-btn w-full py-4 px-6 rounded-xl font-headline font-black text-base md:text-xl neon-btn flex items-center justify-center gap-2 shadow-2xl" href="/payment/qr/">
+                <span class="btn-text">Register for Live Session — ₹199</span>
+                <span class="material-symbols-outlined text-2xl font-bold">arrow_forward</span>
+            </a>
+
+            <!-- RED 10-Minute Countdown Clock near CTA -->
+            <div class="hidden timer-container flex items-center justify-center gap-2 timer-red-bg border py-2 px-4 rounded-xl text-xs md:text-sm font-semibold w-full">
+                <span class="material-symbols-outlined text-base timer-red">schedule</span>
+                <span class="text-neutral-200">Offer ends in:</span>
+                <span class="countdown-timer font-mono font-bold timer-red text-sm md:text-base tracking-wider">10:00</span>
+                <span class="text-neutral-500">|</span>
+                <span class="text-neon text-[11px] font-bold">Live 16 Aug, 7 PM</span>
+            </div>
+
+            <p class="text-xs text-neutral-400 font-medium mt-1">
+                🗓️ Sunday, 16 August, 7:00 PM • <strong class="text-neutral-200">Full recording sent to every attendee</strong>
+            </p>
+        </div>
+
+        <p class="text-[11px] md:text-xs text-neutral-500 mt-2">
+            🛡️ 100% Satisfaction Guarantee • No hidden charges • Instant WhatsApp confirmation (+91 73560 03301)
+        </p>
+    </section>
+
+    <!-- Section Divider Quote -->
+    <section class="py-10 md:py-12 border-y border-[#181818] bg-[#050505] text-center px-4">
+        <h2 class="font-headline text-xl sm:text-3xl md:text-4xl font-black text-white mb-2">
+            Everything taught is practical & actionable.
+        </h2>
+        <p class="font-headline text-lg sm:text-2xl font-bold text-neon">
+            Join live on 16th August to master the complete workflow.
+        </p>
+    </section>
+
+    <!-- CORE VALUE & WHAT YOU GET SECTION -->
+    <section class="py-14 md:py-20 px-4 md:px-8 max-w-5xl mx-auto" id="curriculum">
+        <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+            <span class="text-xs uppercase tracking-widest text-neon font-extrabold">Complete Value Package</span>
+            <h2 class="font-headline font-black text-2xl md:text-3xl lg:text-4xl text-white mt-1">What You Get With Your Registration</h2>
+            <p class="text-neutral-400 text-xs md:text-sm mt-2">A massive starter bundle combining live training, 1.5 years software access, and free credits:</p>
+        </div>
+
+        <!-- 4 Grid Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+            <!-- Value Item 1: Flow AI Fundamentals (₹1,799) -->
+            <div class="value-card p-5 md:p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="w-11 h-11 rounded-xl bg-neon/10 text-neon border border-neon/30 flex items-center justify-center font-bold text-xl shrink-0">
+                        🎬
+                    </div>
+                    <span class="text-[11px] font-bold text-neon bg-black border border-neon/40 px-2.5 py-1 rounded-full whitespace-nowrap">Core Webinar</span>
+                </div>
+                <div>
+                    <h3 class="font-headline font-bold text-base md:text-lg text-white mb-2">Flow AI Fundamentals & Workflow</h3>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed">Step-by-step beginner guide to creating AI videos, controlling camera angles, motion physics, structuring prompts, and generating clean visual assets inside Flow.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-[#222222] flex items-center justify-between text-xs">
+                    <span class="text-neutral-400">Standard Value:</span>
+                    <span class="font-bold text-white font-mono text-sm">₹1,799</span>
+                </div>
+            </div>
+
+            <!-- Value Item 2: Gemini Pro 1.5 Years (₹17,000) -->
+            <div class="value-card p-5 md:p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden border-neon/40 shadow-[0_0_25px_rgba(163,253,0,0.1)]">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="w-11 h-11 rounded-xl bg-[#14232b] text-neon border border-neon/30 flex items-center justify-center font-bold text-xl shrink-0">
+                        🚀
+                    </div>
+                    <span class="text-[11px] font-bold text-black bg-neon px-2.5 py-1 rounded-full whitespace-nowrap font-extrabold">Massive Bonus</span>
+                </div>
+                <div>
+                    <h3 class="font-headline font-bold text-base md:text-lg text-white mb-2">1.5 Years Free Google Gemini Pro</h3>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed">Learn the step-by-step method to claim 1.5 years of Google Gemini Pro access at zero cost. Ideal for advanced AI reasoning, creative prompting, and workflows.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-[#222222] flex items-center justify-between text-xs">
+                    <span class="text-neutral-400">Subscription Value:</span>
+                    <span class="font-bold text-neon font-mono text-sm">₹17,000</span>
+                </div>
+            </div>
+
+            <!-- Value Item 3: 15,000 Flow AI Credits (₹15,000) -->
+            <div class="value-card p-5 md:p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="w-11 h-11 rounded-xl bg-neon/10 text-neon border border-neon/30 flex items-center justify-center font-bold text-xl shrink-0">
+                        ⚡
+                    </div>
+                    <span class="text-[11px] font-bold text-neon bg-black border border-neon/40 px-2.5 py-1 rounded-full whitespace-nowrap">Secret Method</span>
+                </div>
+                <div>
+                    <h3 class="font-headline font-bold text-base md:text-lg text-white mb-2">15,000+ Free Credits Method (Flow AI)</h3>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed">Live walkthrough on how to claim 15,000+ free generation credits (1 credit = ₹1) so you can create dozens of videos without paying for software.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-[#222222] flex items-center justify-between text-xs">
+                    <span class="text-neutral-400">Direct Credit Value:</span>
+                    <span class="font-bold text-neon font-mono text-sm">₹15,000</span>
+                </div>
+            </div>
+
+            <!-- Value Item 4: Full HD Recording & Toolkit (₹999) -->
+            <div class="value-card p-5 md:p-6 rounded-2xl flex flex-col justify-between relative overflow-hidden">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div class="w-11 h-11 rounded-xl bg-neon/10 text-neon border border-neon/30 flex items-center justify-center font-bold text-xl shrink-0">
+                        📹
+                    </div>
+                    <span class="text-[11px] font-bold text-neon bg-black border border-neon/40 px-2.5 py-1 rounded-full whitespace-nowrap">Lifetime Access</span>
+                </div>
+                <div>
+                    <h3 class="font-headline font-bold text-base md:text-lg text-white mb-2">Full Session HD Recording</h3>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed">Get the complete HD video recording of the live 2-hour masterclass to keep forever, plus copy-paste prompt templates for cinematic visual styles.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-[#222222] flex items-center justify-between text-xs">
+                    <span class="text-neutral-400">Deliverable Value:</span>
+                    <span class="font-bold text-white font-mono text-sm">₹999</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Summary & Checkout CTA Box -->
+        <div class="bg-[#0a0a0a] rounded-3xl border border-neon/40 p-5 md:p-10 shadow-[0_0_40px_rgba(163,253,0,0.15)] text-center max-w-2xl mx-auto w-full">
+            <div class="flex items-center justify-center gap-2 mb-2 text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                <span>TOTAL COMBINED VALUE:</span>
+                <span class="line-through text-neutral-400 font-extrabold text-sm md:text-base">₹34,798</span>
+            </div>
+
+            <div class="my-3 flex flex-col items-center justify-center">
+                <span id="summary-price-label" class="text-xs font-bold text-neutral-300 uppercase tracking-wider mb-1">Standard Admission Fee</span>
+                <div class="flex items-baseline justify-center gap-3">
+                    <p id="summary-price-display" class="text-3xl md:text-5xl text-white font-headline font-black tracking-tight">
+                        ₹199
+                    </p>
+                </div>
+            </div>
+
+            <a onclick="trackCheckoutClick()" class="cta-dynamic-btn w-full py-3.5 md:py-4 px-6 rounded-xl font-headline font-black text-base md:text-lg neon-btn flex items-center justify-center gap-2 group mt-2" href="/payment/qr/">
+                <span class="btn-text">Register Now for ₹199</span>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform font-bold">payments</span>
+            </a>
+
+            <!-- RED 10-Minute Urgency Timer near CTA -->
+            <div class="hidden timer-container mt-4 timer-red font-semibold text-xs md:text-sm flex items-center justify-center gap-2 timer-red-bg border px-4 py-2.5 rounded-xl w-full">
+                <span class="material-symbols-outlined text-base timer-red">schedule</span>
+                <span class="text-neutral-200">Special Offer Ends In:</span>
+                <span class="countdown-timer font-mono font-bold timer-red text-sm md:text-base tracking-wider">10:00</span>
+            </div>
+
+            <p class="mt-3 text-[11px] text-neutral-400 flex items-center justify-center gap-1.5">
+                <span class="material-symbols-outlined text-xs text-neon">verified_user</span>
+                100% Satisfaction Guarantee • Instant WhatsApp Confirmation
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION: "Total Cost of AI Tools: ₹0" -->
+    <section class="py-14 md:py-16 px-4 md:px-8 bg-black relative border-t border-[#1a1a1a]">
+        <div class="max-w-2xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8 md:mb-10">
+                <p class="text-xs md:text-sm font-semibold text-neutral-400 uppercase tracking-widest mb-2">
+                    Total Cost of AI Tools Taught
+                </p>
+                <div class="font-headline font-black text-6xl md:text-8xl text-neon tracking-tighter my-2 drop-shadow-[0_0_30px_rgba(163,253,0,0.4)]">
+                    ₹0
+                </div>
+                <p class="text-xs md:text-sm text-neutral-400 mt-2">
+                    Not free trials. Genuinely free tiers. No credit card needed.
+                </p>
+            </div>
+
+            <!-- List of Tools Stack -->
+            <div class="space-y-3 mb-6">
+                <!-- Tool 1: Flow AI & Google Veo -->
+                <div class="tool-card p-3.5 md:p-4 rounded-xl flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-[#141b2b] border border-[#25324d] flex items-center justify-center text-lg shrink-0">
+                            🎥
+                        </div>
+                        <div>
+                            <h4 class="font-headline font-bold text-xs md:text-base text-white">Flow AI & Google Veo</h4>
+                            <p class="text-[11px] md:text-xs text-neutral-400">AI video generation — cinematic camera motion, smooth physics</p>
+                        </div>
+                    </div>
+                    <span class="font-headline font-black text-xs md:text-base text-neon shrink-0">₹0</span>
+                </div>
+
+                <!-- Tool 2: Google Gemini Pro -->
+                <div class="tool-card p-3.5 md:p-4 rounded-xl flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-[#14232b] border border-[#25444d] flex items-center justify-center text-lg shrink-0">
+                            🚀
+                        </div>
+                        <div>
+                            <h4 class="font-headline font-bold text-xs md:text-base text-white">Google Gemini Pro (1.5 Years Free)</h4>
+                            <p class="text-[11px] md:text-xs text-neutral-400">Advanced AI reasoning, prompt formulation & concept structuring</p>
+                        </div>
+                    </div>
+                    <span class="font-headline font-black text-xs md:text-base text-neon shrink-0">₹0</span>
+                </div>
+
+                <!-- Tool 3: ChatGPT -->
+                <div class="tool-card p-3.5 md:p-4 rounded-xl flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-[#142b1f] border border-[#254d38] flex items-center justify-center text-lg shrink-0">
+                            🤖
+                        </div>
+                        <div>
+                            <h4 class="font-headline font-bold text-xs md:text-base text-white">ChatGPT</h4>
+                            <p class="text-[11px] md:text-xs text-neutral-400">Concept development, visual descriptions & brainstorming</p>
+                        </div>
+                    </div>
+                    <span class="font-headline font-black text-xs md:text-base text-neon shrink-0">₹0</span>
+                </div>
+
+                <!-- Tool 4: Nano Banana Pro -->
+                <div class="tool-card p-3.5 md:p-4 rounded-xl flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-[#2b2114] border border-[#4d3a25] flex items-center justify-center text-lg shrink-0">
+                            🍌
+                        </div>
+                        <div>
+                            <h4 class="font-headline font-bold text-xs md:text-base text-white">Nano Banana Pro</h4>
+                            <p class="text-[11px] md:text-xs text-neutral-400">Hyper-realistic initial image frames for video animations</p>
+                        </div>
+                    </div>
+                    <span class="font-headline font-black text-xs md:text-base text-neon shrink-0">₹0</span>
+                </div>
+
+                <!-- Tool 5: Meta AI -->
+                <div class="tool-card p-3.5 md:p-4 rounded-xl flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-[#141d2b] border border-[#25394d] flex items-center justify-center text-lg shrink-0">
+                            👤
+                        </div>
+                        <div>
+                            <h4 class="font-headline font-bold text-xs md:text-base text-white">Meta AI</h4>
+                            <p class="text-[11px] md:text-xs text-neutral-400">Ultra-realistic character images & natural lighting presets</p>
+                        </div>
+                    </div>
+                    <span class="font-headline font-black text-xs md:text-base text-neon shrink-0">₹0</span>
+                </div>
+            </div>
+
+            <!-- Total Cost Footer Card -->
+            <div class="p-4 md:p-5 rounded-xl border border-neon/50 bg-[#121c08] flex items-center justify-between shadow-[0_0_25px_rgba(163,253,0,0.25)]">
+                <span class="font-headline font-extrabold text-sm md:text-lg text-white">Total tool stack cost</span>
+                <span class="font-headline font-black text-xl md:text-3xl text-neon">₹0</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Real Social Proof -->
+    <section class="py-14 md:py-16 bg-black border-t border-[#1a1a1a] px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8 md:mb-10">
+                <span class="text-xs uppercase tracking-widest text-neon font-extrabold">Real Proof & Results</span>
+                <h2 class="font-headline font-black text-2xl md:text-3xl text-white mt-1">What Recent Attendees Say</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="tool-card p-5 md:p-6 rounded-2xl flex flex-col justify-between">
+                    <div class="flex text-neon text-sm mb-3">★ ★ ★ ★ ★</div>
+                    <p class="text-neutral-300 text-xs md:text-sm italic leading-relaxed mb-5">"The 15,000 Flow AI credit method alone was worth 100x the admission fee. I was able to generate 15+ cinematic videos for my project without spending a single rupee."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-neon text-black font-extrabold flex items-center justify-center text-xs">NB</div>
+                        <div>
+                            <p class="font-bold text-xs md:text-sm text-white">Nabhan</p>
+                            <p class="text-[11px] text-neutral-400">Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card p-5 md:p-6 rounded-2xl flex flex-col justify-between">
+                    <div class="flex text-neon text-sm mb-3">★ ★ ★ ★ ★</div>
+                    <p class="text-neutral-300 text-xs md:text-sm italic leading-relaxed mb-5">"Getting 1.5 years of Google Gemini Pro access plus the full session recording made this a total no-brainer. Hadhi explains everything step-by-step."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-neon text-black font-extrabold flex items-center justify-center text-xs">NF</div>
+                        <div>
+                            <p class="font-bold text-xs md:text-sm text-white">Niyaf</p>
+                            <p class="text-[11px] text-neutral-400">Digital Marketer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-14 md:py-16 px-4 md:px-8 bg-[#050505]">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-8 md:mb-10">
+                <span class="text-xs uppercase tracking-widest text-neutral-400 font-bold">Have Questions?</span>
+                <h2 class="font-headline font-black text-2xl md:text-3xl text-white mt-1">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="tool-card p-4 md:p-5 rounded-2xl">
+                    <h4 class="font-headline font-bold text-sm md:text-base text-white mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-neon text-base md:text-lg">schedule</span>
+                        When is the masterclass and what if I can't attend live?
+                    </h4>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed pl-6 md:pl-7">The session is live on <strong>Sunday, 16 August 2026 at 7:00 PM IST</strong> on Zoom. If you have a conflict or cannot make it live, <strong>every registered attendee receives the full HD recording + prompt toolkit</strong> to keep forever.</p>
+                </div>
+
+                <div class="tool-card p-4 md:p-5 rounded-2xl">
+                    <h4 class="font-headline font-bold text-sm md:text-base text-white mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-neon text-base md:text-lg">no_photography</span>
+                        Do I need any paid software, camera, or high-end PC?
+                    </h4>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed pl-6 md:pl-7">No! All tools taught (Flow AI, Gemini Pro, ChatGPT) run entirely in your web browser with 100% free tiers. You will learn the exact method to claim 15,000+ free Flow credits and 1.5 years of Gemini Pro.</p>
+                </div>
+
+                <div class="tool-card p-5 rounded-2xl">
+                    <h4 class="font-headline font-bold text-sm md:text-base text-white mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-neon text-base md:text-lg">school</span>
+                        I have zero video editing experience. Can I join?
+                    </h4>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed pl-6 md:pl-7">Yes! This masterclass is designed for complete beginners. If you can type simple prompts and click buttons, you can easily generate pro AI videos.</p>
+                </div>
+
+                <div class="tool-card p-5 rounded-2xl">
+                    <h4 class="font-headline font-bold text-sm md:text-base text-white mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-neon text-base md:text-lg">chat</span>
+                        How do I receive the webinar link after paying?
+                    </h4>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed pl-6 md:pl-7">After completing payment on the checkout page, send a quick screenshot of your payment to our WhatsApp support (<a href="https://wa.me/917356003301" class="text-neon underline">+91 73560 03301</a>). You will receive instant booking confirmation, and your private Zoom access link will be sent to you on <strong>15 August 2026</strong>.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a class="text-neon font-semibold inline-flex items-center gap-1.5 hover:underline text-xs" href="https://wa.me/917356003301" target="_blank" rel="noopener">
+                    <span>Need help with registration? Chat with support on WhatsApp (+91 73560 03301)</span>
+                    <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Floating Toast Notification for Price Drop (Configured for exactly 5s display) -->
+<div id="price-drop-toast" class="hidden fixed top-16 left-1/2 -translate-x-1/2 z-50 max-w-md w-[92%]">
+    <div class="bg-black border-2 border-neon p-3.5 rounded-2xl shadow-[0_0_35px_rgba(163,253,0,0.6)] flex items-center gap-3 text-white">
+        <div class="w-9 h-9 rounded-full bg-neon text-black flex items-center justify-center shrink-0 text-lg font-black">
+            🎉
+        </div>
+        <div class="flex flex-col gap-0.5">
+            <p class="text-[11px] font-black text-neon uppercase tracking-wider">Flash Discount Unlocked!</p>
+            <p class="text-xs font-semibold text-neutral-200 flex items-center gap-1.5 flex-wrap">
+                <span>Price dropped to <strong class="text-neon font-extrabold text-sm">₹99</strong> for the next</span>
+                <span class="countdown-timer font-mono font-bold tracking-wider px-2 py-0.5 rounded border timer-red-bg timer-red text-[11px]">10:00</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Sticky Bottom Mobile CTA Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-black/95 border-t border-[#222222] p-2.5 backdrop-blur-xl md:hidden flex items-center justify-between gap-2 shadow-2xl w-full max-w-full">
+    <div class="shrink-0">
+        <span id="sticky-price-label" class="text-[9px] text-neutral-400 uppercase tracking-wider block">Admission</span>
+        <div class="flex items-baseline gap-1" id="sticky-price-display">
+            <span class="text-base font-headline font-black text-white">₹199</span>
+        </div>
+    </div>
+    <a onclick="trackCheckoutClick()" class="cta-dynamic-btn px-4 py-2 rounded-xl font-headline font-black text-xs neon-btn flex items-center justify-center gap-1 shrink-0" href="/payment/qr/">
+        <span class="btn-text">Join for ₹199</span>
+        <span class="material-symbols-outlined text-xs font-bold">arrow_forward</span>
+    </a>
+</div>
+
+<!-- Footer with Legal Modal Triggers -->
+<footer class="bg-black py-8 border-t border-[#1c1c1c] text-center pb-20 md:pb-8">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-2">
+            <img src="./logo.png" alt="Raise AI Logo" class="h-8 object-contain brightness-110" />
+        </div>
+        <p class="text-neutral-400 text-xs">
+            © 2026 Raise AI. Empowering creators & marketers with AI.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4 text-xs text-neutral-400">
+            <a href="/terms/" class="hover:text-neon transition-colors underline">Terms of Service</a>
+            <a href="/privacy/" class="hover:text-neon transition-colors underline">Privacy Policy</a>
+            <a href="/refund/" class="hover:text-neon transition-colors underline">Refund Policy</a>
+            <a href="/delivery/" class="hover:text-neon transition-colors underline">Delivery Policy</a>
+            <a href="/contact/" class="hover:text-neon transition-colors underline">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Privacy Policy Modal -->
+<div id="privacy-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0d0d0d] border border-[#262626] rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 text-left relative shadow-2xl">
+        <button onclick="closeModal('privacy-modal')" class="absolute top-4 right-4 text-neutral-400 hover:text-white">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="text-xl font-headline font-bold text-white mb-4">Privacy Policy</h3>
+        <div class="text-xs text-neutral-300 space-y-3 leading-relaxed">
+            <p><strong>1. Information We Collect:</strong> When you register for the masterclass, we collect your name, phone number, and email address solely to send session join links, event reminders, recordings, and workshop materials.</p>
+            <p><strong>2. Payment Information:</strong> Payments are processed directly through secure UPI networks. We never store or collect your banking credentials or UPI PIN.</p>
+            <p><strong>3. Communications:</strong> We use WhatsApp and email to provide workshop access links, session recordings, and customer support. You may opt out of promotional messages at any time.</p>
+            <p><strong>4. Contact Us:</strong> For any privacy questions, contact our support team at <a href="https://wa.me/917356003301" class="text-neon underline">+91 73560 03301</a>.</p>
+        </div>
+        <button onclick="closeModal('privacy-modal')" class="mt-6 w-full py-2.5 rounded-xl bg-[#222222] hover:bg-[#333333] text-white font-bold text-xs">Close</button>
+    </div>
+</div>
+
+<!-- Terms of Service Modal -->
+<div id="terms-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#0d0d0d] border border-[#262626] rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 text-left relative shadow-2xl">
+        <button onclick="closeModal('terms-modal')" class="absolute top-4 right-4 text-neutral-400 hover:text-white">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <h3 class="text-xl font-headline font-bold text-white mb-4">Terms of Service</h3>
+        <div class="text-xs text-neutral-300 space-y-3 leading-relaxed">
+            <p><strong>1. Masterclass Access:</strong> Admission grants single-user access to the live Zoom session on Sunday, 16 August 2026 at 7:00 PM IST, plus lifetime access to the full HD recording and toolkit.</p>
+            <p><strong>2. Recording Delivery:</strong> The complete recorded masterclass and prompt resources will be delivered to your registered WhatsApp/email within 24 hours of session completion.</p>
+            <p><strong>3. Satisfaction Guarantee:</strong> If you face technical issues or are dissatisfied with the workshop content, reach out to our WhatsApp support (+91 73560 03301) for assistance.</p>
+        </div>
+        <button onclick="closeModal('terms-modal')" class="mt-6 w-full py-2.5 rounded-xl bg-[#222222] hover:bg-[#333333] text-white font-bold text-xs">Close</button>
+    </div>
+</div>
+
+<!-- 5-Second Price Drop & 10-Minute Countdown Logic -->
+<script>
+function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+}
+function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+}
+
+(function() {
+    const TEN_MINUTES_MS = 10 * 60 * 1000;
+    let timerInterval = null;
+    let endTime = null;
+
+    const timerContainers = document.querySelectorAll('.timer-container');
+    const timerElements = document.querySelectorAll('.countdown-timer');
+    const btnTexts = document.querySelectorAll('.btn-text');
+    const toast = document.getElementById('price-drop-toast');
+    const flashBanner = document.getElementById('flash-banner');
+    const subtitlePriceDisplay = document.getElementById('subtitle-price-display');
+    const heroBadgeTag = document.getElementById('hero-badge-tag');
+    const heroPriceDisplay = document.getElementById('hero-price-display');
+    const summaryPriceLabel = document.getElementById('summary-price-label');
+    const summaryPriceDisplay = document.getElementById('summary-price-display');
+    const stickyPriceLabel = document.getElementById('sticky-price-label');
+    const stickyPriceDisplay = document.getElementById('sticky-price-display');
+
+    function updateTimers() {
+        if (!endTime) return;
+        let remaining = endTime - Date.now();
+        if (remaining <= 0) {
+            endTime = Date.now() + TEN_MINUTES_MS;
+            localStorage.setItem('raise_offer_end_time', endTime);
+            remaining = TEN_MINUTES_MS;
+        }
+
+        const totalSec = Math.floor(remaining / 1000);
+        const minutes = Math.floor(totalSec / 60);
+        const seconds = totalSec % 60;
+        const formatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        
+        timerElements.forEach(el => {
+            el.textContent = formatted;
+        });
+    }
+
+    // Full-Screen Grand Confetti Blast Function
+    function triggerGrandPartyPopper() {
+        if (typeof confetti === 'function') {
+            const count = 220;
+            const defaults = {
+                origin: { y: 0.7 },
+                colors: ['#a3fd00', '#ffffff', '#ffd700', '#00e5ff', '#ff007f']
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, colors: ['#a3fd00', '#ffffff', '#ffd700'] });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 0.65 },
+                    colors: ['#a3fd00', '#ffffff', '#ffd700']
+                });
+                confetti({
+                    particleCount: 100,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 0.65 },
+                    colors: ['#a3fd00', '#ffffff', '#ffd700']
+                });
+            }, 250);
+        }
+    }
+
+    function triggerPriceDropAndCountdown() {
+        // Start 10-minute timer at the exact same moment the offer appears
+        endTime = Date.now() + TEN_MINUTES_MS;
+        localStorage.setItem('raise_offer_end_time', endTime);
+
+        // Make countdown containers visible and start running
+        timerContainers.forEach(container => {
+            container.classList.remove('hidden');
+        });
+        updateTimers();
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(updateTimers, 1000);
+
+        // Trigger celebratory confetti
+        triggerGrandPartyPopper();
+
+        // 1. Cross out ₹199 and show ₹99 on subtitle
+        if (subtitlePriceDisplay) {
+            subtitlePriceDisplay.innerHTML = '<span class="line-through text-neutral-500 mr-1 font-normal">₹199</span><strong class="text-neon font-black">₹99</strong>';
+        }
+
+        // 2. Cross out ₹199 and show ₹99 on Hero Standard Admission Badge
+        if (heroBadgeTag) {
+            heroBadgeTag.textContent = 'FLASH OFFER';
+            heroBadgeTag.className = 'bg-neon text-black px-2.5 py-0.5 rounded text-xs font-extrabold uppercase tracking-wide';
+        }
+        if (heroPriceDisplay) {
+            heroPriceDisplay.innerHTML = '<span class="line-through text-neutral-500 text-xl md:text-3xl mr-2">₹199</span><span class="text-white">₹99</span>';
+        }
+
+        // 3. Cross out ₹199 and show ₹99 in Summary section
+        if (summaryPriceLabel) {
+            summaryPriceLabel.innerHTML = '<span class="text-neon font-bold">Limited Time Flash Price</span>';
+        }
+        if (summaryPriceDisplay) {
+            summaryPriceDisplay.innerHTML = '<span class="line-through text-neutral-500 text-2xl md:text-4xl mr-2">₹199</span><span class="text-neon">₹99</span>';
+        }
+
+        // 4. Cross out ₹199 and show ₹99 in Sticky Mobile Bar
+        if (stickyPriceLabel) {
+            stickyPriceLabel.innerHTML = '<span class="text-neon font-bold">Flash Price</span>';
+        }
+        if (stickyPriceDisplay) {
+            stickyPriceDisplay.innerHTML = '<span class="text-xs text-neutral-500 line-through mr-1">₹199</span><span class="text-base font-headline font-black text-neon">₹99</span>';
+        }
+
+        // 5. Update all CTA registration buttons (only ₹99, no crossed 199)
+        btnTexts.forEach(btn => {
+            btn.textContent = 'Register Now for ₹99';
+        });
+
+        if (flashBanner) {
+            flashBanner.classList.remove('hidden');
+        }
+
+        // Pop-up banner stays for exactly 5 seconds
+        if (toast) {
+            toast.classList.remove('hidden');
+            toast.classList.add('toast-in');
+
+            setTimeout(() => {
+                toast.classList.remove('toast-in');
+                toast.classList.add('toast-out');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('toast-out');
+                }, 400);
+            }, 5000);
+        }
+    }
+
+    // Delay before price changes from ₹199 to ₹99 and countdown starts: Exactly 1 second
+    setTimeout(triggerPriceDropAndCountdown, 1000);
+})();
+</script>
+
+</body>
+</html>
