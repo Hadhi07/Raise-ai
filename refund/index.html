@@ -1,103 +1,99 @@
 <!DOCTYPE html>
-<html class="dark scroll-smooth" lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-<title>Refund and Cancellation Policy | Raise AI</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<script id="tailwind-config">
-tailwind.config = {
-    darkMode: "class",
-    theme: {
-        extend: {
-            colors: {
-                background: "#000000",
-                surface: "#080808",
-                "surface-card": "#0d0d0d",
-                neon: "#a3fd00",
-            },
-            fontFamily: {
-                sans: ["Inter", "sans-serif"],
-                headline: ["Montserrat", "sans-serif"],
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund & Cancellation Policy | Raise AI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563eb",
+                        accent: "#ff6a00",
+                        "bg-light": "#f8fafc",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        headline: ["Outfit", "sans-serif"],
+                    }
+                }
             }
         }
-    }
-}
-</script>
+    </script>
 </head>
-<body class="bg-black text-white font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-bg-light text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-primary selection:text-white">
 
-<!-- Top Bar / Header -->
-<header class="w-full z-40 bg-black/90 backdrop-blur-md border-b border-[#1a1a1a] sticky top-0">
-    <div class="max-w-5xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+<header class="w-full z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
         <a href="/" class="flex items-center gap-2">
-            <img src="/logo.png" alt="Raise AI Logo" class="h-9 md:h-11 w-auto object-contain brightness-110" />
+            <img src="/logo-home.jpg" alt="Raise AI Logo" class="h-10 md:h-12 w-auto object-contain mix-blend-multiply" onerror="this.src='/logo.png'">
         </a>
-        <a href="/webinar/" class="px-4 py-2 rounded-xl font-headline font-bold text-xs md:text-sm bg-neon text-black hover:bg-[#b5ff1a] transition-all">
-            Join Webinar
+        <a href="/replay/" class="px-5 py-2.5 rounded-xl font-headline font-bold text-sm bg-primary text-white hover:bg-blue-700 shadow-md hover:shadow-lg transition-all">
+            Watch Replay
         </a>
     </div>
 </header>
 
-<main class="flex-grow max-w-4xl mx-auto px-4 md:px-8 py-10 md:py-16 w-full">
-    <div class="mb-10 text-center">
-        <span class="text-xs uppercase tracking-widest text-neon font-extrabold">Consumer Protection</span>
-        <h1 class="font-headline text-3xl md:text-5xl font-black text-white mt-1">Refund &amp; Cancellation Policy</h1>
-        <p class="text-neutral-400 text-xs md:text-sm mt-2">Last updated: August 2026</p>
+<main class="flex-grow max-w-4xl mx-auto px-4 md:px-8 py-12 md:py-20 w-full">
+    <div class="mb-12 text-center">
+        <span class="text-xs md:text-sm uppercase tracking-[0.2em] text-accent font-extrabold bg-orange-100 px-3 py-1 rounded-full">Consumer Protection</span>
+        <h1 class="font-headline text-4xl md:text-5xl font-black text-slate-900 mt-6 tracking-tight">Refund & Cancellation Policy</h1>
+        <p class="text-slate-500 text-sm md:text-base mt-4 max-w-2xl mx-auto">Last updated: August 2026</p>
     </div>
 
-    <div class="bg-[#0a0a0a] border border-[#1f1f1f] rounded-2xl p-6 md:p-10 space-y-8 text-xs md:text-sm text-neutral-300 leading-relaxed">
+    <div class="bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm space-y-10 text-base text-slate-600 leading-relaxed">
         <section class="space-y-3">
-            <h2 class="font-headline font-bold text-base md:text-lg text-white">1. Legally Binding Agreement</h2>
+            <h2 class="font-headline font-bold text-xl text-slate-900">1. Legally Binding Agreement</h2>
             <p>Upon completing a Transaction, you are entering into a legally binding and enforceable agreement with us to purchase the product and/or service.</p>
         </section>
 
-        <section class="space-y-3 border-t border-[#1f1f1f] pt-6">
-            <h2 class="font-headline font-bold text-base md:text-lg text-white">2. Cancellation Policy</h2>
+        <section class="space-y-3">
+            <h2 class="font-headline font-bold text-xl text-slate-900">2. Cancellation Policy</h2>
             <p>After completing a Transaction, the User may cancel the Transaction unless it has been specifically provided for on the Platform. In which case, the cancellation will be subject to the terms mentioned on the Platform. We shall retain the discretion in approving any cancellation requests and we may ask for additional details before approving any requests.</p>
         </section>
 
-        <section class="space-y-3 border-t border-[#1f1f1f] pt-6">
-            <h2 class="font-headline font-bold text-base md:text-lg text-white">3. Replacement, Return &amp; Refund Conditions</h2>
+        <section class="space-y-3">
+            <h2 class="font-headline font-bold text-xl text-slate-900">3. Replacement, Return & Refund Conditions</h2>
             <p>Once you have received the product and/or service, the only event where you can request for a replacement or a return and a refund is if the product and/or service does not match the description as mentioned on the Platform.</p>
         </section>
 
-        <section class="space-y-3 border-t border-[#1f1f1f] pt-6">
-            <h2 class="font-headline font-bold text-base md:text-lg text-white">4. Refund Submission Timeline</h2>
+        <section class="space-y-3">
+            <h2 class="font-headline font-bold text-xl text-slate-900">4. Refund Submission Timeline</h2>
             <p>Any request for refund must be submitted within <strong>three (3) days</strong> from the date of the Transaction or such number of days prescribed on the Platform, which shall in no event be less than three days.</p>
         </section>
 
-        <section class="space-y-3 border-t border-[#1f1f1f] pt-6">
-            <h2 class="font-headline font-bold text-base md:text-lg text-white">5. How to Submit a Refund Claim</h2>
+        <section class="space-y-4 pt-6 border-t border-slate-100">
+            <h2 class="font-headline font-bold text-xl text-slate-900">5. How to Submit a Refund Claim</h2>
             <p>A User may submit a claim for a refund for a purchase made by raising a ticket with our support or contacting us via email at:</p>
-            <div class="p-4 bg-[#141414] rounded-xl border border-[#262626] space-y-2">
-                <p><strong>Merchant Email:</strong> <a href="mailto:seller+5dd73979d06344d2b70db168aae59a5e@instamojo.com" class="text-neon underline">seller+5dd73979d06344d2b70db168aae59a5e@instamojo.com</a></p>
-                <p><strong>Support Email:</strong> <a href="mailto:support@raiseai.in" class="text-neon underline">support@raiseai.in</a></p>
-                <p><strong>WhatsApp Support:</strong> <a href="https://wa.me/917356003301" target="_blank" rel="noopener" class="text-neon underline">+91 73560 03301</a></p>
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 space-y-3 shadow-sm font-medium">
+                <p><strong>Merchant Email:</strong> <a href="mailto:seller+5dd73979d06344d2b70db168aae59a5e@instamojo.com" class="text-primary hover:underline">seller+5dd73979d06344d2b70db168aae59a5e@instamojo.com</a></p>
+                <p><strong>Support Email:</strong> <a href="mailto:support@raiseai.in" class="text-primary hover:underline">support@raiseai.in</a></p>
+                <p><strong>WhatsApp Support:</strong> <a href="https://wa.me/917356003301" target="_blank" rel="noopener" class="text-primary hover:underline">+91 73560 03301</a></p>
             </div>
-            <p class="mt-2">When submitting a refund claim, please provide a clear and specific reason for the refund request, including the exact terms that have been violated, along with any proof, if required.</p>
+            <p class="mt-4">When submitting a refund claim, please provide a clear and specific reason for the refund request, including the exact terms that have been violated, along with any proof, if required.</p>
             <p>Whether a refund will be provided will be determined by us, and we may ask for additional details before approving any requests.</p>
         </section>
 
-        <section class="space-y-3 border-t border-[#1f1f1f] pt-6">
-            <h2 class="font-headline font-bold text-base md:text-lg text-white">6. Processing &amp; Settlement</h2>
+        <section class="space-y-3">
+            <h2 class="font-headline font-bold text-xl text-slate-900">6. Processing & Settlement</h2>
             <p>Once a refund is approved, the transaction amount will be refunded to the original payment instrument used during the transaction within 5 to 7 business days.</p>
         </section>
     </div>
 </main>
 
-<!-- Footer -->
-<footer class="bg-black py-8 border-t border-[#1c1c1c] text-center mt-auto">
-    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
-        <p>© 2026 Raise AI. All rights reserved.</p>
-        <div class="flex flex-wrap gap-4 justify-center">
-            <a href="/terms/" class="hover:text-neon transition-colors">Terms of Service</a>
-            <a href="/privacy/" class="hover:text-neon transition-colors">Privacy Policy</a>
-            <a href="/refund/" class="text-neon font-bold">Refund Policy</a>
-            <a href="/delivery/" class="hover:text-neon transition-colors">Delivery Policy</a>
-            <a href="/contact/" class="hover:text-neon transition-colors">Contact Us</a>
+<footer class="bg-white py-10 border-t border-slate-200 mt-auto">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-slate-500">
+        <p class="font-medium">© 2026 Raise AI. All rights reserved.</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-3 justify-center font-medium">
+            <a href="/terms/" class="hover:text-primary transition-colors">Terms of Service</a>
+            <a href="/privacy/" class="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="/refund/" class="text-primary font-bold">Refund Policy</a>
+            <a href="/delivery/" class="hover:text-primary transition-colors">Delivery Policy</a>
+            <a href="/contact/" class="hover:text-primary transition-colors">Contact Us</a>
         </div>
     </div>
 </footer>

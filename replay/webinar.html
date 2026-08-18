@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Masterclass | Raise AI</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- View 2: Video Player Page -->
+        <div id="video-view" class="view active">
+            <!-- (Player HTML remains identical to previous version, ensuring flawless playback) -->
+            <div class="player-container">
+                <div class="header-bar">
+                    <h2>AI Videography Masterclass by Hadhi Muhammed P</h2>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper" id="main-video-wrapper">
+                        <div id="youtube-player"></div>
+                        <!-- Blocks clicks on YouTube title to prevent leaving -->
+                        <div class="top-blocker" style="position: absolute; top: 0; left: 0; width: 100%; height: 45px; z-index: 10;"></div>
+                    </div>
+                </div>
+
+                <div id="unlock-container" style="margin-top: 3rem; text-align: center;">
+                    
+                    <!-- State 1: Before clicking Reveal QR -->
+                    <div id="pre-reveal-section" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+                        <p style="font-size: 1.1rem; font-weight: 600; color: #4b5563; margin-bottom: 0.5rem;">The video expires in:</p>
+                        <div id="countdown-timer" style="font-size: 3rem; font-family: 'Outfit', sans-serif; font-weight: 800; color: #111827; margin-bottom: 1rem; display: flex; gap: 0.5rem; justify-content: center; align-items: flex-start;">
+                            <div class="timer-block" style="text-align: center;">
+                                <span id="timer-days" style="display: block;">07</span>
+                                <span style="font-size: 0.9rem; font-weight: 500; color: #6b7280; text-transform: uppercase; letter-spacing: 1px;">Days</span>
+                            </div>
+                            <span style="align-self: start; margin-top: 5px;">:</span>
+                            <div class="timer-block" style="text-align: center;">
+                                <span id="timer-hours" style="display: block;">00</span>
+                                <span style="font-size: 0.9rem; font-weight: 500; color: #6b7280; text-transform: uppercase; letter-spacing: 1px;">Hours</span>
+                            </div>
+                            <span style="align-self: start; margin-top: 5px;">:</span>
+                            <div class="timer-block" style="text-align: center;">
+                                <span id="timer-minutes" style="display: block;">00</span>
+                                <span style="font-size: 0.9rem; font-weight: 500; color: #6b7280; text-transform: uppercase; letter-spacing: 1px;">Mins</span>
+                            </div>
+                            <span style="align-self: start; margin-top: 5px;">:</span>
+                            <div class="timer-block" style="text-align: center;">
+                                <span id="timer-seconds" style="display: block;">00</span>
+                                <span style="font-size: 0.9rem; font-weight: 500; color: #6b7280; text-transform: uppercase; letter-spacing: 1px;">Secs</span>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; width: 100%;">
+                            <button id="reveal-qr-btn" class="watch-replay-btn" style="padding: 1rem 2rem; font-size: 1.1rem; width: 100%; max-width: 400px; margin: 0;">
+                                Reveal the QR code for AI Mastery course
+                            </button>
+                            <a href="https://wa.me/917356003301?text=I%20have%20a%20question%20about%20the%20course" target="_blank" class="wa-btn" style="background: #10b981; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; width: 100%; max-width: 400px; text-align: center; display: inline-block;">
+                                Question about course
+                            </a>
+                            <a href="https://docs.google.com/document/d/1lLULpSsXvZMp-ki-URa60wQWeKr7vvgg_pFYRwCOgcs/edit?usp=sharing" target="_blank" class="assets-btn doc-access-btn" style="background: #2563EB; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; width: 100%; max-width: 400px; text-align: center; display: inline-block;">
+                                Get access to the assets
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- State 2: Hidden offer section until Revealed -->
+                    <div id="offer-section" class="offer-section hidden" style="margin-top: 1.5rem;">
+                        <div class="offer-header" style="margin-bottom: 1rem;">
+                            <h3 style="margin: 0; font-size: 1.25rem;">🎉 Your Exclusive Opportunity</h3>
+                        </div>
+                        
+                        <div class="offer-content" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <!-- Clear payment options description -->
+                            <div class="payment-options-desc" style="background: #f8fafc; padding: 1rem; border-radius: 12px; border: 2px solid #e2e8f0; text-align: left;">
+                                <h4 style="font-size: 1.1rem; font-weight: 800; margin-top: 0; margin-bottom: 0.5rem; color: #1e293b;">Choose Your Payment Option:</h4>
+                                <div>
+                                    <p style="font-size: 1rem; margin-bottom: 0.5rem;"><strong>Option 1:</strong> Pay <span style="color: #ff5e00; font-weight: 800;">₹500</span> now to lock your seat, and pay the balance of ₹3,949 within the next 7 days.</p>
+                                    <p style="font-size: 1rem; margin-bottom: 0;"><strong>Option 2:</strong> Pay <span style="color: #2563eb; font-weight: 800;">₹4,449</span> to join the course now in full.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-area" style="margin: 0;">
+                                <div class="qr-container" style="padding: 0;">
+                                    <img src="qr_code.png" alt="Payment QR Code" class="qr-code" style="width: 100%; max-width: 500px; height: auto; object-fit: contain; margin: 0 auto; display: block;">
+                                    <div class="upi-details copyable-upi" onclick="copyUPI()" style="cursor: pointer; position: relative; transition: all 0.2s; background: #eff6ff; padding: 0.75rem; border-radius: 8px; border: 1px dashed #3b82f6; display: flex; align-items: center; justify-content: center; margin-top: 1.5rem;" title="Click to copy">
+                                        <svg viewBox="0 0 24 24" width="20" height="20" fill="#3b82f6" style="margin-right: 10px;"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                        <div style="text-align: left;">
+                                            <p class="upi-id" id="upi-text-to-copy" style="margin: 0; font-weight: bold; color: #1e3a8a;">hadhip6252@sbi</p>
+                                            <p class="upi-name" style="margin: 0; font-size: 0.8rem; color: #64748b;">Hadhi Muhammed P, SBI</p>
+                                        </div>
+                                        <span id="copy-tooltip" style="position: absolute; right: 5px; top: -35px; background: #22c55e; color: white; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; opacity: 0; transform: scale(0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; white-space: nowrap; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Copied!</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; width: 100%;">
+                                <!-- WhatsApp Button -->
+                                <a href="https://wa.me/917356003301?text=Here%20is%20my%20screenshot%20for%20payment" target="_blank" class="wa-btn" style="background: #25D366; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; width: 100%; max-width: 400px; text-align: center; display: inline-block;">
+                                    Send your screenshot here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js?v=6"></script>
+</body>
+</html>
