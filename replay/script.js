@@ -2,6 +2,8 @@ let player;
 
 // Wait for API to load
 function onYouTubeIframeAPIReady() {
+    if (!document.getElementById('youtube-player')) return;
+    
     player = new YT.Player('youtube-player', {
         height: '100%',
         width: '100%',
@@ -80,6 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
 let countdownInterval;
 
 function startCountdownTimer() {
+    if (!document.getElementById('timer-days')) return;
+    
     const TIMER_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
     let endTime = localStorage.getItem('webinarTimerEndTime');
     
