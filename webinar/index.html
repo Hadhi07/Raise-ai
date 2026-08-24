@@ -838,14 +838,14 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 </div>
 
 <!-- Sticky Bottom Mobile CTA Bar -->
-<div class="fixed bottom-0 left-0 right-0 z-40 bg-black/95 border-t border-[#222222] p-2.5 backdrop-blur-xl md:hidden flex items-center justify-between gap-2 shadow-2xl w-full max-w-full">
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-black/95 border-t border-[#222222] px-3 pt-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] backdrop-blur-xl md:hidden flex items-center justify-between gap-2 shadow-2xl w-full max-w-full">
     <div class="shrink-0">
         <span id="sticky-price-label" class="text-[9px] text-neutral-400 uppercase tracking-wider block">Admission</span>
         <div class="flex items-baseline gap-1" id="sticky-price-display">
             <span class="text-base font-headline font-black text-white">₹199</span>
         </div>
     </div>
-    <a onclick="trackCheckoutClick()" class="cta-dynamic-btn px-4 py-2 rounded-xl font-headline font-black text-xs neon-btn flex items-center justify-center gap-1 shrink-0" href="/webinar/payment/">
+    <a onclick="trackCheckoutClick()" class="cta-dynamic-btn px-4 py-2 rounded-xl font-headline font-black text-xs bg-[#ff5500] text-white shadow-[0_0_20px_rgba(255,85,0,0.5)] flex items-center justify-center gap-1 shrink-0 transition-transform active:scale-95" href="/webinar/payment/">
         <span class="btn-text">Join for ₹199</span>
         <span class="material-symbols-outlined text-xs font-bold">arrow_forward</span>
     </a>
