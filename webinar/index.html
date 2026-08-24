@@ -257,104 +257,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <span>🔥</span> More than 100+ members joined previously!
             </div>
             
-            <h3 class="text-white font-bold text-sm md:text-base mb-3 uppercase tracking-wider text-neutral-400 mt-2">Testimonials</h3>
-            
-            <!-- Carousel Container -->
-            <div id="testimonial-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-4 w-full max-w-[350px] pb-4" style="scrollbar-width: none; -ms-overflow-style: none;">
-                <!-- Hide scrollbar for webkit in a style block if needed, but inline works for Firefox/IE. For webkit we just accept it or add a quick style class -->
-                <style>
-                    .no-scrollbar::-webkit-scrollbar { display: none; }
-                </style>
-                
-                <!-- Item 1: Image -->
-                <div class="snap-center shrink-0 w-full flex flex-col items-center justify-center no-scrollbar carousel-slide">
-                    <img src="/webinar/testimonial.png" alt="Members Testimonial" class="rounded-2xl w-full object-cover shadow-[0_0_20px_rgba(163,253,0,0.15)] border border-neon/20" />
-                </div>
-                
-                <!-- Item 2: Jithin -->
-                <div class="snap-center shrink-0 w-full flex flex-col justify-center px-1 carousel-slide">
-                    <div class="bg-[#111] border border-[#222] p-5 rounded-2xl shadow-lg w-full text-left">
-                        <span class="text-sm text-neutral-300 font-bold mb-4 flex items-center gap-2"><span class="text-neon text-xl">🎧</span> Hear from Jithin:</span>
-                        <audio controls class="w-full" style="height: 45px; border-radius: 8px;">
-                            <source src="/webinar/jithin-recording.mp3" type="audio/mpeg">
-                        </audio>
-                        <p class="text-[10px] text-neutral-500 mt-3 text-center">Swipe for more 👉</p>
-                    </div>
-                </div>
-                
-                <!-- Item 3: Vishnu -->
-                <div class="snap-center shrink-0 w-full flex flex-col justify-center px-1 carousel-slide">
-                    <div class="bg-[#111] border border-[#222] p-5 rounded-2xl shadow-lg w-full text-left">
-                        <span class="text-sm text-neutral-300 font-bold mb-4 flex items-center gap-2"><span class="text-neon text-xl">🎧</span> Hear from Vishnu:</span>
-                        <audio controls class="w-full" style="height: 45px; border-radius: 8px;">
-                            <source src="/webinar/vishnu-recording.mp3" type="audio/mpeg">
-                        </audio>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex gap-2 justify-center mt-1" id="carousel-dots">
-                <span class="w-2 h-2 rounded-full bg-neon/80 transition-colors duration-300"></span>
-                <span class="w-2 h-2 rounded-full bg-neutral-600 transition-colors duration-300"></span>
-                <span class="w-2 h-2 rounded-full bg-neutral-600 transition-colors duration-300"></span>
-            </div>
-
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    const carousel = document.getElementById("testimonial-carousel");
-                    const dots = document.getElementById("carousel-dots").children;
-                    const slides = carousel.querySelectorAll('.carousel-slide');
-                    let isUserInteracting = false;
-                    let currentIndex = 0;
-
-                    // Update dots based on scroll position
-                    carousel.addEventListener('scroll', () => {
-                        let slideWidth = slides[0].offsetWidth;
-                        let scrollLeft = carousel.scrollLeft;
-                        currentIndex = Math.round(scrollLeft / slideWidth);
-                        
-                        Array.from(dots).forEach((dot, index) => {
-                            if(index === currentIndex) {
-                                dot.classList.replace('bg-neutral-600', 'bg-neon/80');
-                            } else {
-                                dot.classList.replace('bg-neon/80', 'bg-neutral-600');
-                            }
-                        });
-                    });
-
-                    function startAutoScroll() {
-                        setInterval(() => {
-                            if(isUserInteracting) return;
-                            
-                            // Do not swipe if audio is playing!
-                            const audios = carousel.querySelectorAll('audio');
-                            let isPlaying = false;
-                            audios.forEach(a => { if(!a.paused) isPlaying = true; });
-                            if(isPlaying) return;
-
-                            currentIndex++;
-                            if (currentIndex >= slides.length) {
-                                currentIndex = 0;
-                            }
-                            
-                            // Scroll to new index
-                            const targetLeft = currentIndex * slides[0].offsetWidth;
-                            carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
-                            
-                        }, 3000);
-                    }
-
-                    // Pause interactions
-                    carousel.addEventListener('mouseenter', () => isUserInteracting = true);
-                    carousel.addEventListener('mouseleave', () => isUserInteracting = false);
-                    carousel.addEventListener('touchstart', () => isUserInteracting = true, {passive: true});
-                    carousel.addEventListener('touchend', () => {
-                        setTimeout(() => isUserInteracting = false, 2000);
-                    }, {passive: true});
-
-                    startAutoScroll();
-                });
-            </script>
+            <img src="/webinar/testimonial.png" alt="Members Testimonial" class="rounded-2xl max-w-full w-[350px] shadow-[0_0_20px_rgba(163,253,0,0.15)] border border-neon/20 mb-2" />
         </div>
 
         <!-- Standard Admission Price Badge -->
@@ -669,26 +572,44 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="tool-card p-5 md:p-6 rounded-2xl flex flex-col justify-between">
-                    <div class="flex text-neon text-sm mb-3">★ ★ ★ ★ ★</div>
-                    <p class="text-neutral-300 text-xs md:text-sm italic leading-relaxed mb-5">"The 15,000 Flow AI credit method alone was worth 100x the admission fee. I was able to generate 15+ cinematic videos for my project without spending a single rupee."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-full bg-neon text-black font-extrabold flex items-center justify-center text-xs">NB</div>
-                        <div>
-                            <p class="font-bold text-xs md:text-sm text-white">Nabhan</p>
-                            <p class="text-[11px] text-neutral-400">Content Creator</p>
+                <!-- Jithin Audio Testimonial -->
+                <div class="tool-card p-5 md:p-6 rounded-2xl flex flex-col justify-between border border-[#222] shadow-[0_0_20px_rgba(163,253,0,0.05)] bg-[#0a0a0a]">
+                    <div class="flex flex-col gap-4 w-full">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-neon/10 text-neon font-extrabold flex items-center justify-center text-xl shadow-[0_0_15px_rgba(163,253,0,0.2)] border border-neon/30">
+                                🎧
+                            </div>
+                            <div>
+                                <p class="font-bold text-base md:text-lg text-white">Hear from Jithin</p>
+                                <div class="flex text-neon text-sm mt-0.5">★ ★ ★ ★ ★</div>
+                            </div>
+                        </div>
+                        <p class="text-neutral-300 text-sm italic leading-relaxed">"Listen to how the AI video creation workflow completely transformed Jithin's process without needing any prior experience."</p>
+                        <div class="mt-2 w-full">
+                            <audio controls class="w-full" style="height: 45px; border-radius: 8px;">
+                                <source src="/webinar/jithin-recording.mp3" type="audio/mpeg">
+                            </audio>
                         </div>
                     </div>
                 </div>
 
-                <div class="tool-card p-5 md:p-6 rounded-2xl flex flex-col justify-between">
-                    <div class="flex text-neon text-sm mb-3">★ ★ ★ ★ ★</div>
-                    <p class="text-neutral-300 text-xs md:text-sm italic leading-relaxed mb-5">"Getting 1.5 years of Google Gemini Pro access plus the full session recording made this a total no-brainer. Hadhi explains everything step-by-step."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-full bg-neon text-black font-extrabold flex items-center justify-center text-xs">NF</div>
-                        <div>
-                            <p class="font-bold text-xs md:text-sm text-white">Niyaf</p>
-                            <p class="text-[11px] text-neutral-400">Digital Marketer</p>
+                <!-- Vishnu Audio Testimonial -->
+                <div class="tool-card p-5 md:p-6 rounded-2xl flex flex-col justify-between border border-[#222] shadow-[0_0_20px_rgba(163,253,0,0.05)] bg-[#0a0a0a]">
+                    <div class="flex flex-col gap-4 w-full">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-neon/10 text-neon font-extrabold flex items-center justify-center text-xl shadow-[0_0_15px_rgba(163,253,0,0.2)] border border-neon/30">
+                                🎧
+                            </div>
+                            <div>
+                                <p class="font-bold text-base md:text-lg text-white">Hear from Vishnu</p>
+                                <div class="flex text-neon text-sm mt-0.5">★ ★ ★ ★ ★</div>
+                            </div>
+                        </div>
+                        <p class="text-neutral-300 text-sm italic leading-relaxed">"Discover Vishnu's experience using the 100% free cloud tools and credit methods taught in the masterclass."</p>
+                        <div class="mt-2 w-full">
+                            <audio controls class="w-full" style="height: 45px; border-radius: 8px;">
+                                <source src="/webinar/vishnu-recording.mp3" type="audio/mpeg">
+                            </audio>
                         </div>
                     </div>
                 </div>
