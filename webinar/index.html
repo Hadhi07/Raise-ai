@@ -261,9 +261,11 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <div class="snap-center shrink-0 w-full flex flex-col justify-center px-1 carousel-slide">
                     <div class="bg-[#111] border border-[#222] p-5 rounded-2xl shadow-lg w-full text-left">
                         <span class="text-sm text-neutral-300 font-bold mb-4 flex items-center gap-2"><span class="text-neon text-xl">🎧</span> Hear from Jithin:</span>
-                        <audio controls playsinline preload="metadata" class="w-full" style="height: 45px; border-radius: 8px;">
-                            <source src="/webinar/jithin-recording.mp3" type="audio/mpeg">
-                        </audio>
+                        <div class="relative z-50">
+                            <audio controls playsinline preload="metadata" class="w-full relative z-50 pointer-events-auto" style="height: 45px; border-radius: 8px;">
+                                <source src="/webinar/jithin-recording.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
                         <p class="text-[10px] text-neutral-500 mt-3 text-center">Swipe for more 👉</p>
                     </div>
                 </div>
@@ -272,9 +274,11 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <div class="snap-center shrink-0 w-full flex flex-col justify-center px-1 carousel-slide">
                     <div class="bg-[#111] border border-[#222] p-5 rounded-2xl shadow-lg w-full text-left">
                         <span class="text-sm text-neutral-300 font-bold mb-4 flex items-center gap-2"><span class="text-neon text-xl">🎧</span> Hear from Vishnu:</span>
-                        <audio controls playsinline preload="metadata" class="w-full" style="height: 45px; border-radius: 8px;">
-                            <source src="/webinar/vishnu-recording.mp3" type="audio/mpeg">
-                        </audio>
+                        <div class="relative z-50">
+                            <audio controls playsinline preload="metadata" class="w-full relative z-50 pointer-events-auto" style="height: 45px; border-radius: 8px;">
+                                <source src="/webinar/vishnu-recording.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -336,6 +340,20 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     carousel.addEventListener('touchend', () => {
                         setTimeout(() => isUserInteracting = false, 2000);
                     }, {passive: true});
+                    
+                    // Stop iOS swipe interception on audio controls
+                    const audios = carousel.querySelectorAll('audio');
+                    audios.forEach(a => {
+                        a.addEventListener('touchstart', e => {
+                            isUserInteracting = true;
+                            e.stopPropagation();
+                        }, {passive: true});
+                        a.addEventListener('touchmove', e => e.stopPropagation(), {passive: true});
+                        a.addEventListener('touchend', e => {
+                            setTimeout(() => isUserInteracting = false, 2000);
+                            e.stopPropagation();
+                        }, {passive: true});
+                    });
 
                     startAutoScroll();
                 });
@@ -667,8 +685,8 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                             </div>
                         </div>
                         <p class="text-neutral-300 text-sm italic leading-relaxed">"Listen to how the AI video creation workflow completely transformed Jithin's process without needing any prior experience."</p>
-                        <div class="mt-2 w-full">
-                            <audio controls playsinline preload="metadata" class="w-full" style="height: 45px; border-radius: 8px;">
+                        <div class="mt-2 w-full relative z-50">
+                            <audio controls playsinline preload="metadata" class="w-full relative z-50 pointer-events-auto" style="height: 45px; border-radius: 8px;">
                                 <source src="/webinar/jithin-recording.mp3" type="audio/mpeg">
                             </audio>
                         </div>
@@ -688,8 +706,8 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                             </div>
                         </div>
                         <p class="text-neutral-300 text-sm italic leading-relaxed">"Discover Vishnu's experience using the 100% free cloud tools and credit methods taught in the masterclass."</p>
-                        <div class="mt-2 w-full">
-                            <audio controls playsinline preload="metadata" class="w-full" style="height: 45px; border-radius: 8px;">
+                        <div class="mt-2 w-full relative z-50">
+                            <audio controls playsinline preload="metadata" class="w-full relative z-50 pointer-events-auto" style="height: 45px; border-radius: 8px;">
                                 <source src="/webinar/vishnu-recording.mp3" type="audio/mpeg">
                             </audio>
                         </div>
