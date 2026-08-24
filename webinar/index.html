@@ -1094,23 +1094,46 @@ document.addEventListener("DOMContentLoaded", () => {
             totalTimeEl.textContent = formatTime(audio.duration);
         });
 
-        playBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+        const togglePlay = (e) => {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
             if (audio.paused) {
+                // Pause all other audios
                 document.querySelectorAll(".hidden-audio").forEach(a => {
                     if (a !== audio && !a.paused) {
                         a.pause();
-                        a.closest(".custom-audio-player").querySelector(".material-symbols-outlined").textContent = "play_arrow";
+                        const otherIcon = a.closest(".custom-audio-player").querySelector(".material-symbols-outlined");
+                        if (otherIcon) otherIcon.textContent = "play_arrow";
                     }
                 });
-                audio.play();
-                playIcon.textContent = "pause";
+                
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        playIcon.textContent = "pause";
+                    }).catch(err => {
+                        console.error("Audio playback failed:", err);
+                        alert("Could not play audio. Please ensure your phone isn't blocking media: " + err.message);
+                    });
+                } else {
+                    playIcon.textContent = "pause";
+                }
             } else {
                 audio.pause();
                 playIcon.textContent = "play_arrow";
             }
-        });
+        };
+
+        // Use click (which Safari touch translates to)
+        playBtn.addEventListener("click", togglePlay);
+
+        // Also explicitly handle touchstart for faster iOS response (preventing ghost clicks)
+        playBtn.addEventListener("touchstart", (e) => {
+            e.preventDefault(); // Prevents the subsequent 'click' event so it doesn't fire twice
+            togglePlay(e);
+        }, {passive: false});
 
         audio.addEventListener("timeupdate", () => {
             const percent = (audio.currentTime / audio.duration) * 100;
@@ -1125,18 +1148,22 @@ document.addEventListener("DOMContentLoaded", () => {
             audio.currentTime = 0;
         });
 
-        progressContainer.addEventListener("click", (e) => {
-            e.stopPropagation();
+        const handleSeek = (e) => {
+            if (e) {
+                e.stopPropagation();
+                // preventDefault only if it's a touch to prevent scrolling, but we need to calculate X
+            }
             const rect = progressContainer.getBoundingClientRect();
-            const pos = (e.clientX - rect.left) / progressContainer.offsetWidth;
-            audio.currentTime = pos * audio.duration;
-        });
-        
-        progressContainer.addEventListener("touchstart", (e) => e.stopPropagation(), {passive: true});
-        playBtn.addEventListener("touchstart", (e) => e.stopPropagation(), {passive: true});
+            // Get clientX from either mouse or touch event
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const pos = (clientX - rect.left) / progressContainer.offsetWidth;
+            audio.currentTime = Math.max(0, Math.min(1, pos)) * audio.duration;
+        };
+
+        progressContainer.addEventListener("click", handleSeek);
+        progressContainer.addEventListener("touchstart", handleSeek, {passive: true});
     });
 });
 </script>
-
 </body>
 </html>
