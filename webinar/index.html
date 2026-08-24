@@ -252,28 +252,51 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
         </div>
 
         <!-- Social Proof -->
-        <div class="flex flex-col items-center justify-center mb-6">
+        <div class="flex flex-col items-center justify-center mb-6 w-full">
             <div class="text-center text-neon font-bold text-sm md:text-base bg-neon/10 border border-neon/30 px-4 py-2 rounded-xl inline-flex items-center gap-2 shadow-[0_0_15px_rgba(163,253,0,0.2)] mb-4">
                 <span>🔥</span> More than 100+ members joined previously!
             </div>
-            <img src="/webinar/testimonial.png" alt="Members Testimonial" class="rounded-2xl max-w-full w-[350px] shadow-[0_0_20px_rgba(163,253,0,0.15)] border border-neon/20 mb-2" />
             
-            <!-- Audio Testimonials -->
-            <div class="flex flex-col gap-3 w-full max-w-[350px] mt-4">
-                <div class="bg-[#111] border border-[#222] p-3 rounded-xl shadow-lg">
-                    <span class="text-xs text-neutral-300 font-bold mb-2 flex items-center gap-1.5"><span class="text-neon text-base">🎧</span> Hear from Jithin:</span>
-                    <audio controls class="w-full" style="height: 40px; border-radius: 8px;">
-                        <source src="/webinar/jithin-recording.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+            <h3 class="text-white font-bold text-sm md:text-base mb-3 uppercase tracking-wider text-neutral-400 mt-2">Testimonials</h3>
+            
+            <!-- Carousel Container -->
+            <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 w-full max-w-[350px] pb-4" style="scrollbar-width: none; -ms-overflow-style: none;">
+                <!-- Hide scrollbar for webkit in a style block if needed, but inline works for Firefox/IE. For webkit we just accept it or add a quick style class -->
+                <style>
+                    .no-scrollbar::-webkit-scrollbar { display: none; }
+                </style>
+                
+                <!-- Item 1: Image -->
+                <div class="snap-center shrink-0 w-full flex flex-col items-center justify-center no-scrollbar">
+                    <img src="/webinar/testimonial.png" alt="Members Testimonial" class="rounded-2xl w-full object-cover shadow-[0_0_20px_rgba(163,253,0,0.15)] border border-neon/20" />
                 </div>
-                <div class="bg-[#111] border border-[#222] p-3 rounded-xl shadow-lg">
-                    <span class="text-xs text-neutral-300 font-bold mb-2 flex items-center gap-1.5"><span class="text-neon text-base">🎧</span> Hear from Vishnu:</span>
-                    <audio controls class="w-full" style="height: 40px; border-radius: 8px;">
-                        <source src="/webinar/vishnu-recording.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+                
+                <!-- Item 2: Jithin -->
+                <div class="snap-center shrink-0 w-full flex flex-col justify-center px-1">
+                    <div class="bg-[#111] border border-[#222] p-5 rounded-2xl shadow-lg w-full text-left">
+                        <span class="text-sm text-neutral-300 font-bold mb-4 flex items-center gap-2"><span class="text-neon text-xl">🎧</span> Hear from Jithin:</span>
+                        <audio controls class="w-full" style="height: 45px; border-radius: 8px;">
+                            <source src="/webinar/jithin-recording.mp3" type="audio/mpeg">
+                        </audio>
+                        <p class="text-[10px] text-neutral-500 mt-3 text-center">Swipe for more 👉</p>
+                    </div>
                 </div>
+                
+                <!-- Item 3: Vishnu -->
+                <div class="snap-center shrink-0 w-full flex flex-col justify-center px-1">
+                    <div class="bg-[#111] border border-[#222] p-5 rounded-2xl shadow-lg w-full text-left">
+                        <span class="text-sm text-neutral-300 font-bold mb-4 flex items-center gap-2"><span class="text-neon text-xl">🎧</span> Hear from Vishnu:</span>
+                        <audio controls class="w-full" style="height: 45px; border-radius: 8px;">
+                            <source src="/webinar/vishnu-recording.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex gap-2 justify-center mt-1">
+                <span class="w-2 h-2 rounded-full bg-neon/80"></span>
+                <span class="w-2 h-2 rounded-full bg-neutral-600"></span>
+                <span class="w-2 h-2 rounded-full bg-neutral-600"></span>
             </div>
         </div>
 
