@@ -238,17 +238,108 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             In this live 2-hour beginner webinar (admission <span id="subtitle-price-display"><strong class="text-white">₹199</strong></span>), learn Flow AI fundamentals from scratch, claim <strong class="text-neon">15,000+ free Flow credits</strong>, and unlock 1.5 years of Google Gemini Pro for free.
         </p>
 
-        <!-- Objection Remover Badges -->
-        <div class="flex flex-wrap items-center justify-center gap-2 mb-7 text-xs font-bold text-neutral-300">
-            <span class="bg-[#111111] border border-[#262626] px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                <span class="text-neon">✅</span> No camera needed
-            </span>
-            <span class="bg-[#111111] border border-[#262626] px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                <span class="text-neon">✅</span> 100% Free cloud tools
-            </span>
-            <span class="bg-[#111111] border border-[#262626] px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                <span class="text-neon">✅</span> Zero video editing experience needed
-            </span>
+        <!-- Social Proof (Carousel) -->
+        <div class="flex flex-col items-center justify-center mb-6 w-full">
+            <div class="text-center text-neon font-bold text-sm md:text-base bg-neon/10 border border-neon/30 px-4 py-2 rounded-xl inline-flex items-center gap-2 shadow-[0_0_15px_rgba(163,253,0,0.2)] mb-4">
+                <span>🔥</span> More than 100+ members joined previously!
+            </div>
+            
+            <h3 class="text-white font-bold text-sm md:text-base mb-3 uppercase tracking-wider text-neutral-400 mt-2">Testimonials</h3>
+            
+            <!-- Carousel Container -->
+            <div id="testimonial-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-4 w-full max-w-[350px] pb-4" style="scrollbar-width: none; -ms-overflow-style: none;">
+                <style>
+                    .no-scrollbar::-webkit-scrollbar { display: none; }
+                </style>
+                
+                <!-- Item 1: Image -->
+                <div class="snap-center shrink-0 w-full flex flex-col items-center justify-center no-scrollbar carousel-slide">
+                    <img src="/webinar/testimonial.png" alt="Members Testimonial" class="rounded-2xl w-full object-cover shadow-[0_0_20px_rgba(163,253,0,0.15)] border border-neon/20" />
+                </div>
+                
+                <!-- Item 2: Jithin -->
+                <div class="snap-center shrink-0 w-full flex flex-col justify-center px-1 carousel-slide">
+                    <div class="bg-[#111] border border-[#222] p-5 rounded-2xl shadow-lg w-full text-left">
+                        <span class="text-sm text-neutral-300 font-bold mb-4 flex items-center gap-2"><span class="text-neon text-xl">🎧</span> Hear from Jithin:</span>
+                        <audio controls class="w-full" style="height: 45px; border-radius: 8px;">
+                            <source src="/webinar/jithin-recording.mp3" type="audio/mpeg">
+                        </audio>
+                        <p class="text-[10px] text-neutral-500 mt-3 text-center">Swipe for more 👉</p>
+                    </div>
+                </div>
+                
+                <!-- Item 3: Vishnu -->
+                <div class="snap-center shrink-0 w-full flex flex-col justify-center px-1 carousel-slide">
+                    <div class="bg-[#111] border border-[#222] p-5 rounded-2xl shadow-lg w-full text-left">
+                        <span class="text-sm text-neutral-300 font-bold mb-4 flex items-center gap-2"><span class="text-neon text-xl">🎧</span> Hear from Vishnu:</span>
+                        <audio controls class="w-full" style="height: 45px; border-radius: 8px;">
+                            <source src="/webinar/vishnu-recording.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex gap-2 justify-center mt-1" id="carousel-dots">
+                <span class="w-2 h-2 rounded-full bg-neon/80 transition-colors duration-300"></span>
+                <span class="w-2 h-2 rounded-full bg-neutral-600 transition-colors duration-300"></span>
+                <span class="w-2 h-2 rounded-full bg-neutral-600 transition-colors duration-300"></span>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const carousel = document.getElementById("testimonial-carousel");
+                    const dots = document.getElementById("carousel-dots").children;
+                    const slides = carousel.querySelectorAll('.carousel-slide');
+                    let isUserInteracting = false;
+                    let currentIndex = 0;
+
+                    // Update dots based on scroll position
+                    carousel.addEventListener('scroll', () => {
+                        let slideWidth = slides[0].offsetWidth;
+                        let scrollLeft = carousel.scrollLeft;
+                        currentIndex = Math.round(scrollLeft / slideWidth);
+                        
+                        Array.from(dots).forEach((dot, index) => {
+                            if(index === currentIndex) {
+                                dot.classList.replace('bg-neutral-600', 'bg-neon/80');
+                            } else {
+                                dot.classList.replace('bg-neon/80', 'bg-neutral-600');
+                            }
+                        });
+                    });
+
+                    function startAutoScroll() {
+                        setInterval(() => {
+                            if(isUserInteracting) return;
+                            
+                            // Do not swipe if audio is playing!
+                            const audios = carousel.querySelectorAll('audio');
+                            let isPlaying = false;
+                            audios.forEach(a => { if(!a.paused) isPlaying = true; });
+                            if(isPlaying) return;
+
+                            currentIndex++;
+                            if (currentIndex >= slides.length) {
+                                currentIndex = 0;
+                            }
+                            
+                            const targetLeft = currentIndex * slides[0].offsetWidth;
+                            carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
+                            
+                        }, 3000);
+                    }
+
+                    // Pause interactions
+                    carousel.addEventListener('mouseenter', () => isUserInteracting = true);
+                    carousel.addEventListener('mouseleave', () => isUserInteracting = false);
+                    carousel.addEventListener('touchstart', () => isUserInteracting = true, {passive: true});
+                    carousel.addEventListener('touchend', () => {
+                        setTimeout(() => isUserInteracting = false, 2000);
+                    }, {passive: true});
+
+                    startAutoScroll();
+                });
+            </script>
         </div>
 
         <!-- Standard Admission Price Badge -->
