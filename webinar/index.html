@@ -404,6 +404,12 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
         </p>
 
         <!-- Visual Representation Block -->
+        <style>
+            @keyframes nudge-right {
+                0%, 100% { transform: translate(0, -50%); }
+                50% { transform: translate(5px, -50%); }
+            }
+        </style>
         <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
             <div class="bg-[#0a0a0a] border border-[#222222] p-6 rounded-2xl shadow-[0_0_20px_rgba(163,253,0,0.05)] flex flex-col justify-center">
                 <div class="w-12 h-12 rounded-full bg-white/5 text-white flex items-center justify-center font-bold text-xl mb-4">
@@ -415,7 +421,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             
             <div class="bg-[#0a0a0a] border border-[#222222] p-6 rounded-2xl shadow-[0_0_20px_rgba(163,253,0,0.05)] flex flex-col justify-center relative">
                 <!-- Connector Arrow for Desktop -->
-                <div class="hidden md:block absolute -left-4 top-1/2 -translate-y-1/2 text-neutral-600">
+                <div class="hidden md:block absolute -left-4 top-1/2 text-neutral-600" style="animation: nudge-right 1.5s infinite ease-in-out;">
                     <span class="material-symbols-outlined font-black text-3xl">arrow_forward_ios</span>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-white/5 text-white flex items-center justify-center font-bold text-xl mb-4">
@@ -427,7 +433,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 
             <div class="bg-[#0a0a0a] border border-neon/40 p-6 rounded-2xl shadow-[0_0_25px_rgba(163,253,0,0.15)] flex flex-col justify-center relative">
                 <!-- Connector Arrow for Desktop -->
-                <div class="hidden md:block absolute -left-4 top-1/2 -translate-y-1/2 text-neon/50">
+                <div class="hidden md:block absolute -left-4 top-1/2 text-neon/50" style="animation: nudge-right 1.5s infinite ease-in-out; animation-delay: 0.2s;">
                     <span class="material-symbols-outlined font-black text-3xl">arrow_forward_ios</span>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-neon/10 text-neon border border-neon/30 flex items-center justify-center font-bold text-xl mb-4">
