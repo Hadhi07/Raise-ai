@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>Day 5: Generating Consistent Characters | Raise AI Course</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    background: "#000000",
+                    surface: "#080808",
+                    neon: "#a3fd00",
+                },
+                fontFamily: {
+                    sans: ["Inter", "sans-serif"],
+                    headline: ["Montserrat", "sans-serif"],
+                }
+            }
+        }
+    }
+    </script>
+    <style>
+        body { background-color: #000; color: #fff; }
+        .material-symbols-outlined { font-variation-settings: "FILL" 1; vertical-align: middle; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 1rem; border: 1px solid #222; background: #0a0a0a; }
+        .video-container iframe, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="w-full z-40 bg-black/90 border-b border-[#1a1a1a] sticky top-0 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="/course/" class="text-neutral-400 hover:text-white transition flex items-center gap-1 text-sm font-semibold">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span> Back to Course
+                </a>
+            </div>
+            <a href="/" class="flex items-center">
+                <img src="/webinar/logo.png" alt="Raise AI Logo" class="h-7 md:h-8 object-contain brightness-110" />
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-4 md:px-8 py-8 md:py-12">
+        
+        <div class="text-neon text-sm font-extrabold tracking-widest uppercase mb-2">Day 5</div>
+        <h1 class="text-2xl md:text-4xl font-headline font-black mb-6">Generating Consistent Characters</h1>
+
+        <!-- Video Player Placeholder -->
+        <div class="video-container shadow-[0_0_30px_rgba(163,253,0,0.05)] mb-8">
+            <!-- Replace this div with actual video iframe or video tag -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-[#333]">
+                <span class="material-symbols-outlined text-6xl mb-2 text-[#444]">play_circle</span>
+                <p class="text-sm font-medium">Video Player Placeholder</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Lesson Info -->
+            <div class="flex-1">
+                <h2 class="text-xl font-headline font-bold mb-3 border-b border-[#222] pb-2">Lesson Overview</h2>
+                <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+                    Welcome to Day 5! In this foundational lesson, you will learn how to navigate the Flow interface, set up your first project, and understand the core timeline mechanics. We will be using entirely free tools.
+                </p>
+                <h3 class="text-lg font-bold mb-2">Key Takeaways:</h3>
+                <ul class="list-disc pl-5 text-sm text-neutral-300 space-y-2">
+                    <li>Interface navigation and workspace setup</li>
+                    <li>Importing and organizing assets</li>
+                    <li>Basic timeline controls and cutting</li>
+                </ul>
+            </div>
+
+            <!-- Tools & Actions Sidebar -->
+            <div class="w-full md:w-80 shrink-0">
+                <div class="bg-[#0a0a0a] border border-[#222] rounded-xl p-5 sticky top-24">
+                    <h3 class="font-headline font-bold text-white mb-4">Resources</h3>
+                    
+                    <a href="#" class="w-full flex items-center justify-between bg-white text-black px-4 py-3 rounded-lg font-bold text-sm hover:bg-neutral-200 transition mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-lg">build</span>
+                            Access Flow Tools
+                        </div>
+                        <span class="material-symbols-outlined text-sm">open_in_new</span>
+                    </a>
+
+                    <a href="#" class="w-full flex items-center justify-between bg-[#111] border border-[#333] text-white px-4 py-3 rounded-lg font-bold text-sm hover:bg-[#1a1a1a] hover:border-neon transition mb-6">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-lg">download</span>
+                            Download Practice Assets
+                        </div>
+                    </a>
+
+                    <div class="pt-4 border-t border-[#222] flex justify-between gap-3">
+                        <a href="/course/day-4.html" class="flex-1 bg-[#111] text-white py-2 rounded border border-[#333] hover:border-neon text-xs font-bold text-center transition">Previous Day</a>
+                        <a href="/course/day-6.html" class="flex-1 bg-neon text-black py-2 rounded text-xs font-bold text-center hover:bg-[#b5ff1a] transition">Next Day</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#050505] border-t border-[#111] py-8 text-center mt-auto">
+        <p class="text-neutral-500 text-xs">&copy; 2026 Raise AI. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
