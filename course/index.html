@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark scroll-smooth" lang="en">
 <head>
     <meta charset="utf-8">
@@ -36,7 +36,23 @@
         .course-card:hover { border-color: #a3fd00; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(163,253,0,0.1); }
     </style>
 </head>
-<body class="font-sans antialiased overflow-x-hidden min-h-screen flex flex-col">
+<body class="font-sans antialiased overflow-x-hidden min-h-screen flex flex-col" style="overflow-y: hidden;">
+
+    <!-- Password Overlay -->
+    <div id="password-overlay" class="fixed inset-0 z-50 bg-[#000000] flex flex-col items-center justify-center transition-opacity duration-300">
+        <div class="bg-[#111] border border-[#222] p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 text-center">
+            <div class="mb-6">
+                <span class="material-symbols-outlined text-5xl text-neon mb-2">lock</span>
+                <h2 class="text-2xl font-headline font-bold text-white">Course Access</h2>
+                <p class="text-neutral-400 text-sm mt-2">Please enter the password to view this course.</p>
+            </div>
+            <form id="password-form" class="flex flex-col gap-4">
+                <input type="password" id="course-password" placeholder="Enter password..." class="bg-black border border-[#333] text-white rounded-lg px-4 py-3 focus:outline-none focus:border-neon focus:ring-1 focus:ring-neon transition w-full text-center">
+                <p id="password-error" class="text-urgency text-xs font-semibold hidden">Incorrect password. Please try again.</p>
+                <button type="submit" class="bg-neon text-black font-bold py-3 px-4 rounded-lg hover:bg-[#b5ff1a] transition w-full">Unlock Course</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Header -->
     <header class="w-full z-40 bg-black/90 border-b border-[#1a1a1a] sticky top-0 backdrop-blur-md">
@@ -125,6 +141,22 @@
                 </div>
             `;
             grid.appendChild(card);
+        });
+        document.getElementById('password-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const pass = document.getElementById('course-password').value;
+            if (pass === 'AIP001') {
+                const overlay = document.getElementById('password-overlay');
+                overlay.style.opacity = '0';
+                document.body.style.overflowY = 'auto';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 300);
+            } else {
+                document.getElementById('password-error').classList.remove('hidden');
+                document.getElementById('course-password').classList.add('border-urgency');
+                document.getElementById('course-password').value = '';
+            }
         });
     </script>
 </body>
