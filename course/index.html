@@ -47,19 +47,19 @@
 </head>
 <body class="font-sans antialiased overflow-x-hidden min-h-screen flex flex-col" style="overflow-y: hidden;">
 
-    <!-- Password Overlay -->
-    <div id="password-overlay" class="fixed inset-0 z-50 bg-[#000000] flex flex-col items-center justify-center transition-opacity duration-300">
+    <!-- Access Overlay -->
+    <div id="access-overlay" class="fixed inset-0 z-50 bg-[#000000] flex flex-col items-center justify-center transition-opacity duration-300">
         <div class="bg-[#111] border border-[#222] p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 text-center">
             <div class="mb-6">
                 <span class="material-symbols-outlined text-5xl text-neon mb-2">lock</span>
                 <h2 class="text-2xl font-headline font-bold text-white">Course Access</h2>
-                <p class="text-neutral-400 text-sm mt-2">Please enter the password to view this course.</p>
+                <p class="text-neutral-400 text-sm mt-2">Please enter the access code to view this course.</p>
             </div>
-            <form id="password-form" class="flex flex-col gap-4">
-                <input type="text" id="course-password" placeholder="Enter password..." class="bg-black border border-[#333] text-white rounded-lg px-4 py-3 focus:outline-none focus:border-neon focus:ring-1 focus:ring-neon transition w-full text-center" style="-webkit-text-security: disc; text-security: disc;">
-                <p id="password-error" class="text-urgency text-xs font-semibold hidden">Incorrect password. Please try again.</p>
-                <button type="submit" class="bg-neon text-black font-bold py-3 px-4 rounded-lg hover:bg-[#b5ff1a] transition w-full">Unlock Course</button>
-            </form>
+            <div id="access-form" class="flex flex-col gap-4">
+                <input type="text" id="course-access-code" autocomplete="off" placeholder="Enter access code..." class="bg-black border border-[#333] text-white rounded-lg px-4 py-3 focus:outline-none focus:border-neon focus:ring-1 focus:ring-neon transition w-full text-center" style="-webkit-text-security: disc; text-security: disc;">
+                <p id="access-error" class="text-urgency text-xs font-semibold hidden">Incorrect access code. Please try again.</p>
+                <button type="button" id="unlock-btn" class="bg-neon text-black font-bold py-3 px-4 rounded-lg hover:bg-[#b5ff1a] transition w-full">Unlock Course</button>
+            </div>
         </div>
     </div>
 
@@ -159,28 +159,35 @@
         });
         // Check if already authenticated this session
         if (sessionStorage.getItem('course_authenticated') === 'true') {
-            const overlay = document.getElementById('password-overlay');
+            const overlay = document.getElementById('access-overlay');
             if (overlay) {
                 overlay.style.display = 'none';
                 document.body.style.overflowY = 'auto';
             }
         }
 
-        document.getElementById('password-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const pass = document.getElementById('course-password').value;
+        function attemptUnlock() {
+            const pass = document.getElementById('course-access-code').value;
             if (pass === 'AIP001') {
                 sessionStorage.setItem('course_authenticated', 'true');
-                const overlay = document.getElementById('password-overlay');
+                const overlay = document.getElementById('access-overlay');
                 overlay.style.opacity = '0';
                 document.body.style.overflowY = 'auto';
                 setTimeout(() => {
                     overlay.style.display = 'none';
                 }, 300);
             } else {
-                document.getElementById('password-error').classList.remove('hidden');
-                document.getElementById('course-password').classList.add('border-urgency');
-                document.getElementById('course-password').value = '';
+                document.getElementById('access-error').classList.remove('hidden');
+                document.getElementById('course-access-code').classList.add('border-urgency');
+                document.getElementById('course-access-code').value = '';
+            }
+        }
+
+        document.getElementById('unlock-btn').addEventListener('click', attemptUnlock);
+        document.getElementById('course-access-code').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                attemptUnlock();
             }
         });
     </script>
