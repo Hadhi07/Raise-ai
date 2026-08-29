@@ -40,6 +40,13 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "y7w4qe8w9w");
     </script>
+
+    <!-- Auth Check -->
+    <script>
+        if (sessionStorage.getItem('course_authenticated') !== 'true') {
+            window.location.href = '/course/index.html';
+        }
+    </script>
 </head>
 <body class="font-sans antialiased overflow-x-hidden min-h-screen flex flex-col">
 
