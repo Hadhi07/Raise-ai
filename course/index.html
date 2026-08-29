@@ -56,7 +56,7 @@
                 <p class="text-neutral-400 text-sm mt-2">Please enter the password to view this course.</p>
             </div>
             <form id="password-form" class="flex flex-col gap-4">
-                <input type="password" id="course-password" placeholder="Enter password..." class="bg-black border border-[#333] text-white rounded-lg px-4 py-3 focus:outline-none focus:border-neon focus:ring-1 focus:ring-neon transition w-full text-center">
+                <input type="text" id="course-password" placeholder="Enter password..." class="bg-black border border-[#333] text-white rounded-lg px-4 py-3 focus:outline-none focus:border-neon focus:ring-1 focus:ring-neon transition w-full text-center" style="-webkit-text-security: disc; text-security: disc;">
                 <p id="password-error" class="text-urgency text-xs font-semibold hidden">Incorrect password. Please try again.</p>
                 <button type="submit" class="bg-neon text-black font-bold py-3 px-4 rounded-lg hover:bg-[#b5ff1a] transition w-full">Unlock Course</button>
             </form>
@@ -114,31 +114,34 @@
 
     <script>
         const modules = [
-            { day: 1, title: "Introduction to Editing in Flow", duration: "45 mins" },
-            { day: 2, title: "Structuring Advanced Prompts", duration: "50 mins" },
-            { day: 3, title: "Controlling Camera Angles", duration: "40 mins" },
-            { day: 4, title: "Mastering Motion Physics", duration: "55 mins" },
-            { day: 5, title: "Generating Consistent Characters", duration: "60 mins" },
-            { day: 6, title: "Lip Syncing & Audio Fundamentals", duration: "45 mins" },
-            { day: 7, title: "Advanced Visual Effects", duration: "50 mins" },
-            { day: 8, title: "Upscaling and Enhancing Details", duration: "40 mins" },
-            { day: 9, title: "Creating the Final Compilation", duration: "65 mins" },
-            { day: 10, title: "Monetization & Client Delivery", duration: "45 mins" },
+            { day: 1, title: "Introduction to Editing in Flow", uploaded: true },
+            { day: 2, title: "Ideation - Visualisation and Scripting", uploaded: true },
+            { day: 3, title: "Controlling Camera Angles" },
+            { day: 4, title: "Mastering Motion Physics" },
+            { day: 5, title: "Generating Consistent Characters" },
+            { day: 6, title: "Lip Syncing & Audio Fundamentals" },
+            { day: 7, title: "Advanced Visual Effects" },
+            { day: 8, title: "Upscaling and Enhancing Details" },
+            { day: 9, title: "Creating the Final Compilation" },
+            { day: 10, title: "Monetization & Client Delivery" },
         ];
 
         const grid = document.getElementById("modules-grid");
         
         modules.forEach(m => {
             const card = document.createElement("a");
-            card.href = "/course/day-" + m.day + ".html";
-            card.className = "course-card rounded-2xl overflow-hidden block group";
+            if (m.uploaded) {
+                card.href = "/course/day-" + m.day + ".html";
+                card.className = "course-card rounded-2xl overflow-hidden block group relative hover:border-neon transition";
+            } else {
+                card.href = "javascript:void(0)";
+                card.className = "course-card rounded-2xl overflow-hidden block group relative opacity-60 cursor-not-allowed";
+            }
             
             card.innerHTML = `
                 <div class="aspect-video bg-[#1a1a1a] relative flex items-center justify-center border-b border-[#222]">
                     <span class="material-symbols-outlined text-4xl text-[#333] group-hover:text-neon transition">play_circle</span>
-                    <div class="absolute bottom-2 right-2 bg-black/80 px-2 py-0.5 rounded text-[10px] font-bold text-white border border-[#333]">
-                        ${m.duration}
-                    </div>
+                    ${m.uploaded ? '<div class="absolute top-2 left-2 bg-neon text-black px-2 py-0.5 rounded text-[10px] font-extrabold uppercase shadow-lg">Uploaded</div>' : ''}
                 </div>
                 <div class="p-5">
                     <div class="text-neon text-xs font-extrabold tracking-widest uppercase mb-1">Day ${m.day}</div>
@@ -151,10 +154,20 @@
             `;
             grid.appendChild(card);
         });
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('course_authenticated') === 'true') {
+            const overlay = document.getElementById('password-overlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+                document.body.style.overflowY = 'auto';
+            }
+        }
+
         document.getElementById('password-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const pass = document.getElementById('course-password').value;
             if (pass === 'AIP001') {
+                sessionStorage.setItem('course_authenticated', 'true');
                 const overlay = document.getElementById('password-overlay');
                 overlay.style.opacity = '0';
                 document.body.style.overflowY = 'auto';
