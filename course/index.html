@@ -140,16 +140,19 @@
             
             card.innerHTML = `
                 <div class="aspect-video bg-[#1a1a1a] relative flex items-center justify-center border-b border-[#222]">
-                    <span class="material-symbols-outlined text-4xl text-[#333] group-hover:text-neon transition">play_circle</span>
-                    ${m.uploaded ? '<div class="absolute top-2 left-2 bg-neon text-black px-2 py-0.5 rounded text-[10px] font-extrabold uppercase shadow-lg">Uploaded</div>' : ''}
+                    ${m.uploaded 
+                        ? '<div class="bg-neon text-black px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest shadow-[0_0_20px_rgba(163,253,0,0.4)] flex items-center gap-1.5 transform group-hover:scale-105 transition"><span class="material-symbols-outlined text-sm">play_arrow</span> UPLOADED</div>' 
+                        : '<span class="material-symbols-outlined text-4xl text-[#333] transition">play_circle</span>'}
                 </div>
                 <div class="p-5">
                     <div class="text-neon text-xs font-extrabold tracking-widest uppercase mb-1">Day ${m.day}</div>
                     <h3 class="text-lg font-bold text-white mb-2 leading-tight">${m.title}</h3>
-                    <div class="flex items-center text-xs text-neutral-400 font-medium">
-                        <span class="material-symbols-outlined text-[14px] mr-1">check_circle</span>
-                        Not Started
+                    ${m.uploaded ? '' : `
+                    <div class="flex items-center text-xs text-neutral-500 font-medium">
+                        <span class="material-symbols-outlined text-[14px] mr-1">lock</span>
+                        Locked
                     </div>
+                    `}
                 </div>
             `;
             grid.appendChild(card);
