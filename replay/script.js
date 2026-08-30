@@ -86,8 +86,8 @@ function startCountdownTimer() {
     
     // Set your absolute deadline here. 
     // Format: YYYY-MM-DDTHH:MM:SS+05:30 (for Indian Standard Time)
-    // Currently set to: August 25, 2026 at 11:59 PM IST
-    const deadlineString = '2026-08-25T23:59:59+05:30';
+    // Currently set to: September 07, 2026 at 11:59 PM IST
+    const deadlineString = '2026-09-07T23:59:59+05:30';
     const endTime = new Date(deadlineString).getTime();
     
     const daysEl = document.getElementById('timer-days');
