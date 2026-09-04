@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark scroll-smooth" lang="en">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-<title>Raise AI | Learn Flow AI Video Creation (30 Aug, 8:30 - 10:30 PM)</title>
+<title>Raise AI | Learn Flow AI Video Creation (6 Sep, 8:30 - 10:30 PM)</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="/webinar/webinar-date.js"></script>
 <!-- Canvas Confetti for celebration effect -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <!-- Modern Fonts: Montserrat for bold headlines, Inter for UI -->
@@ -195,7 +196,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 <!-- Top Bar: Real Date Urgency Banner with RED 10-Min Urgency Clock -->
 <div class="bg-black border-b border-[#1f1f1f] text-white py-2 px-3 text-center text-xs font-medium relative z-50 flex items-center justify-center gap-2 flex-wrap w-full">
     <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#a3fd00]/10 text-neon border border-neon/40 uppercase">⚡ LIVE WEBINAR</span>
-    <span class="text-neutral-300">Registration closes 6 September, 8:30 PM IST</span>
+    <span class="text-neutral-300">Registration closes <span class="dynamic-date" data-format="long">6 September</span>, 8:30 PM IST</span>
     <div class="hidden timer-container inline-flex items-center gap-1.5">
         <span class="text-neutral-500">•</span>
         <span class="text-neutral-300">Offer ends in:</span>
@@ -229,7 +230,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 
         <!-- Date & Time Bar -->
         <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-xs md:text-sm text-neutral-300 mb-5 font-semibold bg-[#0d0d0d] border border-[#222222] py-2 px-3.5 rounded-xl w-fit mx-auto">
-            <span class="flex items-center gap-1 text-white">🗓️ <strong>Sunday, 6 September 2026</strong></span>
+            <span class="flex items-center gap-1 text-white">🗓️ <strong><span class="dynamic-date" data-format="full">Sunday, 6 September 2026</span></strong></span>
             <span class="text-neutral-500">•</span>
             <span class="flex items-center gap-1 text-white">⏰ <strong>8:30 PM - 10:30 PM IST</strong></span>
             <span class="text-neutral-500">•</span>
@@ -551,11 +552,11 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <span class="text-neutral-200">Offer ends in:</span>
                 <span class="countdown-timer font-mono font-bold timer-red text-sm md:text-base tracking-wider">10:00</span>
                 <span class="text-neutral-500">|</span>
-                <span class="text-neon text-[11px] font-bold">Live 30 Aug, 8:30 - 10:30 PM</span>
+                <span class="text-neon text-[11px] font-bold">Live <span class="dynamic-date" data-format="short">6 Sep</span>, 8:30 - 10:30 PM</span>
             </div>
 
             <p class="text-xs text-neutral-400 font-medium mt-1">
-                🗓️ Sunday, 6 September, 8:30 PM - 10:30 PM • <strong class="text-neutral-200">Full recording sent to every attendee</strong>
+                🗓️ <span class="dynamic-date" data-format="long">6 September</span>, 8:30 PM - 10:30 PM • <strong class="text-neutral-200">Full recording sent to every attendee</strong>
             </p>
         </div>
 
@@ -564,13 +565,129 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
         </p>
     </section>
 
+    
+    <!-- Showcase Carousel Section -->
+    <section class="py-16 md:py-24 bg-black border-t border-[#1a1a1a] relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+            <!-- Header -->
+            <div class="text-center mb-10 md:mb-14">
+                <span class="text-[10px] md:text-xs font-black text-neon uppercase tracking-[0.25em] mb-4 block">Video Ads You'll Create</span>
+                <h2 class="font-headline font-black text-3xl md:text-5xl text-white mb-5 tracking-tight">
+                    Here's What You'll Be Able to <span class="text-neon italic font-serif font-medium tracking-normal">Create</span>
+                </h2>
+                <p class="text-neutral-400 text-sm md:text-base font-medium">Real output. Not mockups. This is what the workflow produces.</p>
+            </div>
+
+            <!-- Carousel Wrapper -->
+            <div class="relative w-full group/wrapper">
+                <!-- Navigation Buttons -->
+                <button id="showcase-prev" class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111] border border-[#333] text-white flex items-center justify-center opacity-0 group-hover/wrapper:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon shadow-xl hover:scale-110 hidden sm:flex">
+                    <span class="material-symbols-outlined font-bold text-xl">chevron_left</span>
+                </button>
+                <button id="showcase-next" class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111] border border-[#333] text-white flex items-center justify-center opacity-0 group-hover/wrapper:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon shadow-xl hover:scale-110 hidden sm:flex">
+                    <span class="material-symbols-outlined font-bold text-xl">chevron_right</span>
+                </button>
+
+                <!-- Carousel Track -->
+                <div id="showcase-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-8 pt-4 px-2 scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+                    <style>
+                        #showcase-carousel::-webkit-scrollbar { display: none; }
+                        /* Ensure native video controls don't look broken */
+                        video::-webkit-media-controls-enclosure {
+                            border-radius: 0;
+                            background: rgba(0,0,0,0.5);
+                        }
+                    </style>
+
+                    <!-- Item 1 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata">
+                            <source src="/webinar/Webinar%20videos/Video%20Project%20editing%20in%20real%20.mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const showcaseCarousel = document.getElementById("showcase-carousel");
+                    const prevBtn = document.getElementById("showcase-prev");
+                    const nextBtn = document.getElementById("showcase-next");
+
+                    // Horizontal scrolling logic
+                    if(prevBtn && nextBtn && showcaseCarousel) {
+                        const scrollAmount = window.innerWidth > 768 ? 600 : 280;
+                        prevBtn.addEventListener('click', () => {
+                            showcaseCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                        });
+                        nextBtn.addEventListener('click', () => {
+                            showcaseCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                        });
+                    }
+
+                    // Video Play & Native Controls logic
+                    const videos = document.querySelectorAll('.showcase-video');
+                    const overlays = document.querySelectorAll('.showcase-overlay');
+
+                    overlays.forEach((overlay, index) => {
+                        overlay.addEventListener('click', () => {
+                            const video = videos[index];
+
+                            // Stop all other videos and reset overlays
+                            videos.forEach((v, i) => {
+                                if(i !== index) {
+                                    v.pause();
+                                    v.removeAttribute('controls');
+                                    overlays[i].style.opacity = '1';
+                                    overlays[i].style.pointerEvents = 'auto';
+                                }
+                            });
+
+                            // Play this video
+                            overlay.style.opacity = '0';
+                            overlay.style.pointerEvents = 'none'; // allow clicking the video underneath
+                            video.setAttribute('controls', 'controls');
+                            
+                            // Let the user unmute via controls if they want, but try playing first
+                            video.play().catch(err => {
+                                console.log("Autoplay blocked, user interaction required:", err);
+                                // Since this is inside a click handler, it should succeed, 
+                                // but if it fails, mute it to ensure it starts visually
+                                video.muted = true;
+                                video.play();
+                            });
+                        });
+                    });
+                });
+            </script>
+
+            <!-- Date Banner -->
+            <div class="max-w-2xl mx-auto mt-6 md:mt-10 border border-[#222] bg-[#0a0a0a] rounded-2xl py-4 px-6 flex flex-wrap items-center justify-center gap-4 text-xs md:text-sm font-bold text-neutral-300 shadow-xl">
+                <span class="flex items-center gap-1.5 text-white"><span class="text-base">???</span> <span class="dynamic-date" data-format="full">Sunday, 6 September 2026</span></span>
+                <span class="text-[#333] hidden md:inline">|</span>
+                <span class="flex items-center gap-1.5 text-white"><span class="text-base">?</span> 8:30 PM - 10:30 PM IST</span>
+                <span class="text-[#333] hidden md:inline">|</span>
+                <span class="flex items-center gap-1.5 text-neon"><span class="text-base">??</span> Live Online (Google Meet)</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Section Divider Quote & Workflow Infographic -->
     <section class="py-12 md:py-16 border-y border-[#181818] bg-[#050505] text-center px-4">
         <h2 class="font-headline text-xl sm:text-3xl md:text-4xl font-black text-white mb-2">
             Everything taught is practical & actionable.
         </h2>
         <p class="font-headline text-lg sm:text-2xl font-bold text-neon mb-10">
-            Master the complete workflow on 6th September.
+            Master the complete workflow on <span class="dynamic-date" data-format="long">6 September</span>.
         </p>
 
         <!-- Visual Representation Block -->
@@ -1093,7 +1210,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                         <span class="material-symbols-outlined text-neon text-base md:text-lg">schedule</span>
                         When is the masterclass and what if I can't attend live?
                     </h4>
-                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed pl-6 md:pl-7">The session is live on <strong>Sunday, 6 September 2026 at 8:30 PM - 10:30 PM IST</strong> on Zoom. If you have a conflict or cannot make it live, <strong>every registered attendee receives the full HD recording + prompt toolkit</strong> to keep forever.</p>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed pl-6 md:pl-7">The session is live on <strong><span class="dynamic-date" data-format="full">Sunday, 6 September 2026</span> at 8:30 PM - 10:30 PM IST</strong> on Zoom. If you have a conflict or cannot make it live, <strong>every registered attendee receives the full HD recording + prompt toolkit</strong> to keep forever.</p>
                 </div>
 
                 <div class="tool-card p-4 md:p-5 rounded-2xl">
@@ -1117,7 +1234,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                         <span class="material-symbols-outlined text-neon text-base md:text-lg">chat</span>
                         How do I receive the webinar link after paying?
                     </h4>
-                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed pl-6 md:pl-7">After completing payment on the checkout page, send a quick screenshot of your payment to our WhatsApp support (<a href="https://wa.me/917356003301" class="text-neon underline">+91 73560 03301</a>). You will receive instant booking confirmation, and your private Zoom access link will be sent to you on <strong>6 September 2026</strong>.</p>
+                    <p class="text-xs md:text-sm text-neutral-300 leading-relaxed pl-6 md:pl-7">After completing payment on the checkout page, send a quick screenshot of your payment to our WhatsApp support (<a href="https://wa.me/917356003301" class="text-neon underline">+91 73560 03301</a>). You will receive instant booking confirmation, and your private Zoom access link will be sent to you on <strong><span class="dynamic-date" data-format="long_year">6 September 2026</span></strong>.</p>
                 </div>
             </div>
 
@@ -1205,7 +1322,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
         </button>
         <h3 class="text-xl font-headline font-bold text-white mb-4">Terms of Service</h3>
         <div class="text-xs text-neutral-300 space-y-3 leading-relaxed">
-            <p><strong>1. Masterclass Access:</strong> Admission grants single-user access to the live Zoom session on Sunday, 6 September 2026 at 8:30 PM - 10:30 PM IST, plus lifetime access to the full HD recording and toolkit.</p>
+            <p><strong>1. Masterclass Access:</strong> Admission grants single-user access to the live Zoom session on <span class="dynamic-date" data-format="full">Sunday, 6 September 2026</span> at 8:30 PM - 10:30 PM IST, plus lifetime access to the full HD recording and toolkit.</p>
             <p><strong>2. Recording Delivery:</strong> The complete recorded masterclass and prompt resources will be delivered to your registered WhatsApp/email within 24 hours of session completion.</p>
             <p><strong>3. Satisfaction Guarantee:</strong> If you face technical issues or are dissatisfied with the workshop content, reach out to our WhatsApp support (+91 73560 03301) for assistance.</p>
         </div>
