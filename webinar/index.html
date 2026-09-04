@@ -602,7 +602,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <!-- Item 1 -->
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata">
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
                             <source src="/webinar/Webinar%20videos/Character_wearing_clothes_discus._202608302136.mp4#t=0.5" type="video/mp4">
                         </video>
                         
@@ -617,7 +617,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <!-- Item 2 -->
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata">
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
                             <source src="/webinar/Webinar%20videos/Create_sunscreen_commercial_B-roll_1080p_202609021711_erasio.mp4#t=0.5" type="video/mp4">
                         </video>
                         
@@ -632,7 +632,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <!-- Item 3 -->
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata">
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
                             <source src="/webinar/Webinar%20videos/Creating_sunscreen_product_comme._202609020459.mp4#t=0.5" type="video/mp4">
                         </video>
                         
@@ -647,7 +647,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <!-- Item 4 -->
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata">
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
                             <source src="/webinar/Webinar%20videos/Video%20Project%202%20(1).mp4#t=0.5" type="video/mp4">
                         </video>
                         
@@ -662,7 +662,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <!-- Item 5 -->
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata">
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
                             <source src="/webinar/Webinar%20videos/Video%20Project%205.mp4#t=0.5" type="video/mp4">
                         </video>
                         
@@ -677,7 +677,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <!-- Item 6 -->
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata">
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
                             <source src="/webinar/Webinar%20videos/Video%20Project%20editing%20in%20real%20.mp4#t=0.5" type="video/mp4">
                         </video>
                         
@@ -713,6 +713,13 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     const videos = document.querySelectorAll('.showcase-video');
                     const overlays = document.querySelectorAll('.showcase-overlay');
 
+                    // iOS/Mobile thumbnail extraction hack: jump to 2 seconds to force rendering a frame
+                    videos.forEach((v) => {
+                        v.addEventListener('loadedmetadata', () => {
+                            v.currentTime = 2.0; 
+                        });
+                    });
+
                     overlays.forEach((overlay, index) => {
                         overlay.addEventListener('click', () => {
                             const video = videos[index];
@@ -727,20 +734,22 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                 }
                             });
 
-                            // Play this video
+                            // Play selected video automatically MUTED
                             overlay.style.opacity = '0';
-                            overlay.style.pointerEvents = 'none'; // allow clicking the video underneath
+                            overlay.style.pointerEvents = 'none';
+                            video.muted = true; // Force mute on start
+                            video.currentTime = 0; // Restart video from beginning when played
                             video.setAttribute('controls', 'controls');
                             
-                            // Let the user unmute via controls if they want, but try playing first
-                            video.play().catch(err => {
-                                console.log("Autoplay blocked, user interaction required:", err);
-                                // Since this is inside a click handler, it should succeed, 
-                                // but if it fails, mute it to ensure it starts visually
-                                video.muted = true;
-                                video.play();
-                            });
+                            // Play the video
+                            const playPromise = video.play();
+                            if (playPromise !== undefined) {
+                                playPromise.catch(error => {
+                                    console.log("Autoplay prevented:", error);
+                                });
+                            }
                         });
+                    });
                     });
                 });
             </script>
