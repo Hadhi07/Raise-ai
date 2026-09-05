@@ -220,6 +220,236 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 </header>
 
 <main class="relative w-full max-w-full overflow-hidden">
+
+    <!-- Showcase Carousel Section -->
+    <section class="py-16 md:py-24 bg-black border-t border-[#1a1a1a] relative overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+            <!-- Header -->
+            <div class="text-center mb-10 md:mb-14">
+                <span class="text-[10px] md:text-xs font-black text-neon uppercase tracking-[0.25em] mb-4 block">Video Ads You'll Create</span>
+                <h2 class="font-headline font-black text-3xl md:text-5xl text-white mb-5 tracking-tight">
+                    Here's What You'll Be Able to <span class="text-neon italic font-serif font-medium tracking-normal">Create</span>
+                </h2>
+                <p class="text-neutral-400 text-sm md:text-base font-medium">Real output. Not mockups. This is what the workflow produces.</p>
+            </div>
+
+            <!-- Carousel Wrapper -->
+            <div class="relative w-full group/wrapper">
+                <!-- Navigation Buttons -->
+                <button id="showcase-prev" class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111] border border-[#333] text-white flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon shadow-xl hover:scale-110 flex">
+                    <span class="material-symbols-outlined font-bold text-xl">chevron_left</span>
+                </button>
+                <button id="showcase-next" class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111] border border-[#333] text-white flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon shadow-xl hover:scale-110 flex">
+                    <span class="material-symbols-outlined font-bold text-xl">chevron_right</span>
+                </button>
+
+                <!-- Carousel Track -->
+                <div id="showcase-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-8 pt-4 px-2 scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+                    <style>
+                        #showcase-carousel::-webkit-scrollbar { display: none; }
+                        /* Ensure native video controls don't look broken */
+                        video::-webkit-media-controls-enclosure {
+                            border-radius: 0;
+                            background: rgba(0,0,0,0.5);
+                        }
+                    </style>
+
+                    <!-- Item 1 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
+                            <source src="/webinar/Webinar%20videos/Video%20Project%202%20(1).mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
+                            <source src="/webinar/Webinar%20videos/Video%20Project%205.mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
+                            <source src="/webinar/Webinar%20videos/Video%20Project%20editing%20in%20real.mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
+                            <source src="/webinar/Webinar%20videos/Character_wearing_clothes_discus_202608302136.mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
+                            <source src="/webinar/Webinar%20videos/Create_sunscreen_commercial_B-roll_1080p_202609021711_erasio.mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
+                            <source src="/webinar/Webinar%20videos/Creating_sunscreen_product_comme_202609020459.mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 7 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
+                            <source src="/webinar/Webinar%20videos/AI_advertisement_video_productio%E2%80%A6_202609050255_erasio.mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Item 8 -->
+                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
+                        <!-- Video Element -->
+                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
+                            <source src="/webinar/Webinar%20videos/AI_ad_conference_meeting_Malayalam_202609050255_erasio%20(1).mp4" type="video/mp4">
+                        </video>
+                        
+                        <!-- Play Overlay -->
+                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
+                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    const showcaseCarousel = document.getElementById("showcase-carousel");
+                    const prevBtn = document.getElementById("showcase-prev");
+                    const nextBtn = document.getElementById("showcase-next");
+
+                    // Horizontal scrolling logic
+                    if(prevBtn && nextBtn && showcaseCarousel) {
+                        const scrollAmount = window.innerWidth > 768 ? 600 : 280;
+                        prevBtn.addEventListener('click', () => {
+                            showcaseCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                        });
+                        nextBtn.addEventListener('click', () => {
+                            showcaseCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                        });
+                    }
+
+                    // Video Play & Native Controls logic
+                    const videos = document.querySelectorAll('.showcase-video');
+                    const overlays = document.querySelectorAll('.showcase-overlay');
+
+                    // iOS/Mobile thumbnail extraction hack: jump to 2 seconds to force rendering a frame
+                    videos.forEach((v) => {
+                        v.addEventListener('loadedmetadata', () => {
+                            v.currentTime = 2.0; 
+                        });
+                    });
+
+                    overlays.forEach((overlay, index) => {
+                        overlay.addEventListener('click', () => {
+                            const video = videos[index];
+
+                            // Stop all other videos and reset overlays
+                            videos.forEach((v, i) => {
+                                if(i !== index) {
+                                    v.pause();
+                                    v.removeAttribute('controls');
+                                    overlays[i].style.opacity = '1';
+                                    overlays[i].style.pointerEvents = 'auto';
+                                }
+                            });
+
+                            // Play selected video automatically MUTED
+                            overlay.style.opacity = '0';
+                            overlay.style.pointerEvents = 'none';
+                            video.muted = true; // Force mute on start
+                            video.currentTime = 0; // Restart video from beginning when played
+                            video.setAttribute('controls', 'controls');
+                            
+                            // Play the video
+                            const playPromise = video.play();
+                            if (playPromise !== undefined) {
+                                playPromise.catch(error => {
+                                    console.log("Autoplay prevented:", error);
+                                });
+                            }
+                        });
+                    });
+                });
+            </script>
+
+            <!-- Date Banner -->
+            <div class="max-w-2xl mx-auto mt-6 md:mt-10 border border-[#222] bg-[#0a0a0a] rounded-2xl py-4 px-6 flex flex-wrap items-center justify-center gap-4 text-xs md:text-sm font-bold text-neutral-300 shadow-xl">
+                <span class="flex items-center gap-1.5 text-white"><span class="text-base">🗓️</span> <span class="dynamic-date" data-format="full">Sunday, 6 September 2026</span></span>
+                <span class="text-[#333] hidden md:inline">|</span>
+                <span class="flex items-center gap-1.5 text-white"><span class="text-base">⏰</span> 8:30 PM - 10:30 PM IST</span>
+                <span class="text-[#333] hidden md:inline">|</span>
+                <span class="flex items-center gap-1.5 text-neon"><span class="text-base">💻</span> Live Online (Zoom)</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Hero Section -->
     <section class="relative pt-8 pb-14 md:pt-16 md:pb-24 px-4 md:px-8 max-w-4xl mx-auto text-center">
         <!-- Live Badge -->
@@ -559,235 +789,6 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
         </p>
     </section>
 
-    
-    <!-- Showcase Carousel Section -->
-    <section class="py-16 md:py-24 bg-black border-t border-[#1a1a1a] relative overflow-hidden">
-        <div class="max-w-[1400px] mx-auto px-4 md:px-8">
-            <!-- Header -->
-            <div class="text-center mb-10 md:mb-14">
-                <span class="text-[10px] md:text-xs font-black text-neon uppercase tracking-[0.25em] mb-4 block">Video Ads You'll Create</span>
-                <h2 class="font-headline font-black text-3xl md:text-5xl text-white mb-5 tracking-tight">
-                    Here's What You'll Be Able to <span class="text-neon italic font-serif font-medium tracking-normal">Create</span>
-                </h2>
-                <p class="text-neutral-400 text-sm md:text-base font-medium">Real output. Not mockups. This is what the workflow produces.</p>
-            </div>
-
-            <!-- Carousel Wrapper -->
-            <div class="relative w-full group/wrapper">
-                <!-- Navigation Buttons -->
-                <button id="showcase-prev" class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111] border border-[#333] text-white flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon shadow-xl hover:scale-110 flex">
-                    <span class="material-symbols-outlined font-bold text-xl">chevron_left</span>
-                </button>
-                <button id="showcase-next" class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#111] border border-[#333] text-white flex items-center justify-center opacity-80 hover:opacity-100 transition-all duration-300 hover:bg-neon hover:text-black hover:border-neon shadow-xl hover:scale-110 flex">
-                    <span class="material-symbols-outlined font-bold text-xl">chevron_right</span>
-                </button>
-
-                <!-- Carousel Track -->
-                <div id="showcase-carousel" class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 pb-8 pt-4 px-2 scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
-                    <style>
-                        #showcase-carousel::-webkit-scrollbar { display: none; }
-                        /* Ensure native video controls don't look broken */
-                        video::-webkit-media-controls-enclosure {
-                            border-radius: 0;
-                            background: rgba(0,0,0,0.5);
-                        }
-                    </style>
-
-                    <!-- Item 1 -->
-                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
-                        <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Video%20Project%202%20(1).mp4" type="video/mp4">
-                        </video>
-                        
-                        <!-- Play Overlay -->
-                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
-                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
-                        <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Video%20Project%205.mp4" type="video/mp4">
-                        </video>
-                        
-                        <!-- Play Overlay -->
-                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
-                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
-                        <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Video%20Project%20editing%20in%20real.mp4" type="video/mp4">
-                        </video>
-                        
-                        <!-- Play Overlay -->
-                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
-                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
-                        <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Character_wearing_clothes_discus_202608302136.mp4" type="video/mp4">
-                        </video>
-                        
-                        <!-- Play Overlay -->
-                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
-                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item 5 -->
-                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
-                        <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Create_sunscreen_commercial_B-roll_1080p_202609021711_erasio.mp4" type="video/mp4">
-                        </video>
-                        
-                        <!-- Play Overlay -->
-                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
-                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item 6 -->
-                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
-                        <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Creating_sunscreen_product_comme_202609020459.mp4" type="video/mp4">
-                        </video>
-                        
-                        <!-- Play Overlay -->
-                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
-                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 7 -->
-                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
-                        <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/AI_advertisement_video_productio%E2%80%A6_202609050255_erasio.mp4" type="video/mp4">
-                        </video>
-                        
-                        <!-- Play Overlay -->
-                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
-                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Item 8 -->
-                    <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
-                        <!-- Video Element -->
-                        <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/AI_ad_conference_meeting_Malayalam_202609050255_erasio%20(1).mp4" type="video/mp4">
-                        </video>
-                        
-                        <!-- Play Overlay -->
-                        <div class="showcase-overlay absolute inset-0 flex flex-col justify-center items-center cursor-pointer transition-opacity duration-300 z-10">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover/card:opacity-60 transition-opacity pointer-events-none"></div>
-                            <div class="relative w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex flex items-center justify-center group-hover/card:bg-neon group-hover/card:border-neon group-hover/card:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                                <span class="material-symbols-outlined text-white group-hover/card:text-black text-3xl ml-1">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    const showcaseCarousel = document.getElementById("showcase-carousel");
-                    const prevBtn = document.getElementById("showcase-prev");
-                    const nextBtn = document.getElementById("showcase-next");
-
-                    // Horizontal scrolling logic
-                    if(prevBtn && nextBtn && showcaseCarousel) {
-                        const scrollAmount = window.innerWidth > 768 ? 600 : 280;
-                        prevBtn.addEventListener('click', () => {
-                            showcaseCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                        });
-                        nextBtn.addEventListener('click', () => {
-                            showcaseCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                        });
-                    }
-
-                    // Video Play & Native Controls logic
-                    const videos = document.querySelectorAll('.showcase-video');
-                    const overlays = document.querySelectorAll('.showcase-overlay');
-
-                    // iOS/Mobile thumbnail extraction hack: jump to 2 seconds to force rendering a frame
-                    videos.forEach((v) => {
-                        v.addEventListener('loadedmetadata', () => {
-                            v.currentTime = 2.0; 
-                        });
-                    });
-
-                    overlays.forEach((overlay, index) => {
-                        overlay.addEventListener('click', () => {
-                            const video = videos[index];
-
-                            // Stop all other videos and reset overlays
-                            videos.forEach((v, i) => {
-                                if(i !== index) {
-                                    v.pause();
-                                    v.removeAttribute('controls');
-                                    overlays[i].style.opacity = '1';
-                                    overlays[i].style.pointerEvents = 'auto';
-                                }
-                            });
-
-                            // Play selected video automatically MUTED
-                            overlay.style.opacity = '0';
-                            overlay.style.pointerEvents = 'none';
-                            video.muted = true; // Force mute on start
-                            video.currentTime = 0; // Restart video from beginning when played
-                            video.setAttribute('controls', 'controls');
-                            
-                            // Play the video
-                            const playPromise = video.play();
-                            if (playPromise !== undefined) {
-                                playPromise.catch(error => {
-                                    console.log("Autoplay prevented:", error);
-                                });
-                            }
-                        });
-                    });
-                });
-            </script>
-
-            <!-- Date Banner -->
-            <div class="max-w-2xl mx-auto mt-6 md:mt-10 border border-[#222] bg-[#0a0a0a] rounded-2xl py-4 px-6 flex flex-wrap items-center justify-center gap-4 text-xs md:text-sm font-bold text-neutral-300 shadow-xl">
-                <span class="flex items-center gap-1.5 text-white"><span class="text-base">🗓️</span> <span class="dynamic-date" data-format="full">Sunday, 6 September 2026</span></span>
-                <span class="text-[#333] hidden md:inline">|</span>
-                <span class="flex items-center gap-1.5 text-white"><span class="text-base">⏰</span> 8:30 PM - 10:30 PM IST</span>
-                <span class="text-[#333] hidden md:inline">|</span>
-                <span class="flex items-center gap-1.5 text-neon"><span class="text-base">💻</span> Live Online (Zoom)</span>
-            </div>
-        </div>
-    </section>
 
     <!-- Section Divider Quote & Workflow Infographic -->
     <section class="py-12 md:py-16 border-y border-[#181818] bg-[#050505] text-center px-4">
