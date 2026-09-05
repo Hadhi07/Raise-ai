@@ -2,7 +2,7 @@
 <html class="dark scroll-smooth" lang="en">
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Raise AI | Learn Flow AI Video Creation (6 Sep, 8:30 - 10:30 PM)</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="/webinar/webinar-date.js"></script>
@@ -627,7 +627,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
                         <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Video%20Project%20editing%20in%20real%20.mp4" type="video/mp4">
+                            <source src="/webinar/Webinar%20videos/Video%20Project%20editing%20in%20real.mp4" type="video/mp4">
                         </video>
                         
                         <!-- Play Overlay -->
@@ -642,7 +642,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
                         <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Character_wearing_clothes_discus._202608302136.mp4" type="video/mp4">
+                            <source src="/webinar/Webinar%20videos/Character_wearing_clothes_discus_202608302136.mp4" type="video/mp4">
                         </video>
                         
                         <!-- Play Overlay -->
@@ -672,7 +672,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                     <div class="snap-center shrink-0 w-[240px] md:w-[280px] aspect-[9/16] relative rounded-2xl overflow-hidden group/card border border-[#222] hover:border-neon/50 transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(163,253,0,0.15)] bg-black">
                         <!-- Video Element -->
                         <video class="showcase-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" muted>
-                            <source src="/webinar/Webinar%20videos/Creating_sunscreen_product_comme._202609020459.mp4" type="video/mp4">
+                            <source src="/webinar/Webinar%20videos/Creating_sunscreen_product_comme_202609020459.mp4" type="video/mp4">
                         </video>
                         
                         <!-- Play Overlay -->
@@ -753,7 +753,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <span class="text-[#333] hidden md:inline">|</span>
                 <span class="flex items-center gap-1.5 text-white"><span class="text-base">⏰</span> 8:30 PM - 10:30 PM IST</span>
                 <span class="text-[#333] hidden md:inline">|</span>
-                <span class="flex items-center gap-1.5 text-neon"><span class="text-base">💻</span> Live Online (Google Meet)</span>
+                <span class="flex items-center gap-1.5 text-neon"><span class="text-base">💻</span> Live Online (Zoom)</span>
             </div>
         </div>
     </section>
@@ -1287,7 +1287,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 </main>
 
 <!-- Floating Toast Notification for Price Drop (Configured for exactly 5s display) -->
-<div id="price-drop-toast" class="hidden fixed top-16 left-1/2 -translate-x-1/2 z-50 max-w-md w-[92%]">
+<div id="price-drop-toast" class="hidden fixed top-4 left-1/2 -translate-x-1/2 z-50 max-w-md w-[92%]">
     <div class="bg-black border-2 border-neon p-3.5 rounded-2xl shadow-[0_0_35px_rgba(163,253,0,0.6)] flex items-center gap-3 text-white">
         <div class="w-9 h-9 rounded-full bg-neon text-black flex items-center justify-center shrink-0 text-lg font-black">
             🎉
@@ -1456,8 +1456,13 @@ function closeModal(id) {
 
     function triggerPriceDropAndCountdown() {
         // Start 10-minute timer at the exact same moment the offer appears
-        endTime = Date.now() + TEN_MINUTES_MS;
-        localStorage.setItem('raise_offer_end_time', endTime);
+        const storedEndTime = localStorage.getItem('raise_offer_end_time');
+        if (storedEndTime && parseInt(storedEndTime, 10) > Date.now()) {
+            endTime = parseInt(storedEndTime, 10);
+        } else {
+            endTime = Date.now() + TEN_MINUTES_MS;
+            localStorage.setItem('raise_offer_end_time', endTime);
+        }
 
         // Make countdown containers visible and start running
         timerContainers.forEach(container => {
@@ -1526,7 +1531,7 @@ function closeModal(id) {
     }
 
     // Delay before price changes from ₹199 to ₹99 and countdown starts: Exactly 1 second
-    setTimeout(triggerPriceDropAndCountdown, 1000);
+    setTimeout(triggerPriceDropAndCountdown, 0);
 })();
 </script>
 
@@ -1621,5 +1626,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
+    <!-- UTM & Ad Parameter Preservation Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentParams = window.location.search;
+        if (currentParams) {
+            document.querySelectorAll('a[href="/webinar/payment/"]').forEach(cta => {
+                cta.href = '/webinar/payment/' + currentParams;
+            });
+        }
+    });
+    </script>
 </body>
 </html>
