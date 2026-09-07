@@ -85,10 +85,10 @@ function startCountdownTimer() {
     if (!document.getElementById('timer-days')) return;
     
     // Set a 7-day evergreen deadline for each visitor
-    let endTime = localStorage.getItem('webinar3_deadline');
+    let endTime = localStorage.getItem('webinar3_deadline_reset1');
     if (!endTime) {
         endTime = Date.now() + (7 * 24 * 60 * 60 * 1000); // 7 days from now
-        localStorage.setItem('webinar3_deadline', endTime);
+        localStorage.setItem('webinar3_deadline_reset1', endTime);
     } else {
         endTime = parseInt(endTime, 10);
     }

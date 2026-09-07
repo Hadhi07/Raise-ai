@@ -84,11 +84,14 @@ let countdownInterval;
 function startCountdownTimer() {
     if (!document.getElementById('timer-days')) return;
     
-    // Set your absolute deadline here. 
-    // Format: YYYY-MM-DDTHH:MM:SS+05:30 (for Indian Standard Time)
-    // Currently set to: September 07, 2026 at 11:59 PM IST
-    const deadlineString = '2026-09-07T23:59:59+05:30';
-    const endTime = new Date(deadlineString).getTime();
+    // Set a 7-day evergreen deadline for each visitor
+    let endTime = localStorage.getItem('webinar_deadline_reset1');
+    if (!endTime) {
+        endTime = Date.now() + (7 * 24 * 60 * 60 * 1000); // 7 days from now
+        localStorage.setItem('webinar_deadline_reset1', endTime);
+    } else {
+        endTime = parseInt(endTime, 10);
+    }
     
     const daysEl = document.getElementById('timer-days');
     const hoursEl = document.getElementById('timer-hours');
