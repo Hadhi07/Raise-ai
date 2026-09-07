@@ -1,16 +1,22 @@
 (function() {
     function getNextWebinarDate() {
         const now = new Date();
+        const targetDate = new Date(2026, 8, 20, 20, 0, 0); // Sept 20, 2026 at 8:00 PM
+        
+        // If we are before Sept 20th at 8:00 PM, always return Sept 20th
+        if (now < targetDate) {
+            return new Date(2026, 8, 20);
+        }
+        
+        // Otherwise, fallback to the automatic "next Sunday" logic
         let day = now.getDay();
         let daysUntilSunday = (7 - day) % 7;
         
-        // If it is Sunday and the time is 8:00 PM (20:00) or later, jump to next Sunday
         if (day === 0 && now.getHours() >= 20) {
             daysUntilSunday = 7;
         }
         
-        const nextSunday = new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilSunday);
-        return nextSunday;
+        return new Date(now.getFullYear(), now.getMonth(), now.getDate() + daysUntilSunday);
     }
 
     function formatDate(date, formatType) {
