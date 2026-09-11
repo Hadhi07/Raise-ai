@@ -34,7 +34,27 @@
                     </div>
                 </div>
 
-                <div id="unlock-container" style="margin-top: 3rem; text-align: center;">
+                <!-- Scroll Indicator for Mobile -->
+                <div class="scroll-indicator" style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; animation: bounce 2s infinite;">
+                    <p style="font-size: 1rem; font-weight: 700; color: #2563EB; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px;">Scroll down for tools & access</p>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                    </svg>
+                </div>
+                <style>
+                    @keyframes bounce {
+                        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+                        40% {transform: translateY(-10px);}
+                        60% {transform: translateY(-5px);}
+                    }
+                    @media (min-width: 768px) {
+                        .scroll-indicator {
+                            display: none !important;
+                        }
+                    }
+                </style>
+
+                <div id="unlock-container" style="margin-top: 1.5rem; text-align: center;">
                     
                     <!-- State 1: Before clicking Reveal QR -->
                     <div id="pre-reveal-section" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
