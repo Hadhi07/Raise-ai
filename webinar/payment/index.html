@@ -215,7 +215,7 @@ function fallbackCopyTextToClipboard(text) {
 
 function handleTouchGPay(e) {
     if (e) e.preventDefault();
-    const upiId = 'hadhip6252@sbi';
+    const upiId = 'hadhinoushad43@okaxis';
     copyToClipboard(upiId);
     
     // Show a green toast notification
@@ -246,7 +246,7 @@ function handleTouchGPay(e) {
 }
 
 async function downloadQRAndShowGuide() {
-    const qrUrl = './qr-code.png';
+    const qrUrl = './qr-code.jpg';
     const fileName = 'Raise-AI-Payment-QR.png';
     let successEvent = 'QR_Code_Downloaded';
 
@@ -335,14 +335,14 @@ async function downloadQRAndShowGuide() {
 }
 
 function openGPayModal() {
-    const upiId = 'hadhip6252@sbi';
+    const upiId = 'hadhinoushad43@okaxis';
     copyToClipboard(upiId);
     openModal('gpay-modal');
     trackPurchaseEvent('GPay_Visual_Modal_Open');
 }
 
 function openAllAppsModal() {
-    const upiId = 'hadhip6252@sbi';
+    const upiId = 'hadhinoushad43@okaxis';
     copyToClipboard(upiId);
     showCopyToast();
     openModal('all-apps-modal');
@@ -354,7 +354,7 @@ function handleCopyAndOpenModal() {
 }
 
 function copyModalUPI(textId = 'modal-copy-text', iconId = 'modal-copy-icon', statusId = 'modal-copy-status') {
-    const upiId = 'hadhip6252@sbi';
+    const upiId = 'hadhinoushad43@okaxis';
     copyToClipboard(upiId);
     const btnText = document.getElementById(textId);
     const btnIcon = document.getElementById(iconId);
@@ -370,13 +370,13 @@ function copyModalUPI(textId = 'modal-copy-text', iconId = 'modal-copy-icon', st
 }
 
 function handleGPayHomeLaunch(e) {
-    const upiId = 'hadhip6252@sbi';
+    const upiId = 'hadhinoushad43@okaxis';
     copyToClipboard(upiId);
     trackPurchaseEvent('Launch_GPay_Home');
     
     if (e && e.currentTarget) {
         // Universal native UPI link - opens native payment app on device, no web login required
-        e.currentTarget.href = 'upi://pay?pa=hadhip6252@sbi&pn=Hadhi&cu=INR';
+        e.currentTarget.href = 'upi://pay?pa=hadhinoushad43@okaxis&pn=Hadhi&cu=INR';
     }
 }
 
@@ -389,7 +389,7 @@ function launchApp(app) {
 }
 
 function launchOtherUPI() {
-    const upiId = 'hadhip6252@sbi';
+    const upiId = 'hadhinoushad43@okaxis';
     copyToClipboard(upiId);
     trackPurchaseEvent('Launch_Other_UPI');
     
@@ -412,10 +412,10 @@ function launchOtherUPI() {
 }
 
 function payViaGooglePay() {
-    const upiId = 'hadhip6252@sbi';
+    const upiId = 'hadhinoushad43@okaxis';
     copyToClipboard(upiId);
     trackGPayClick();
-    window.location.href = 'upi://pay?pa=hadhip6252@sbi&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar';
+    window.location.href = 'upi://pay?pa=hadhinoushad43@okaxis&pn=Hadhi&am=99.00&cu=INR&tn=Ai%20Webinar';
 }
 
 function showCopyToast() {
@@ -530,7 +530,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             <div class="relative w-56 h-56 md:w-64 md:h-64 bg-white p-2 rounded-xl border-2 border-neutral-700 shadow-inner">
                 <!-- Animated Scan Line -->
                 <div class="scan-line absolute left-2 right-2 h-0.5 bg-neon shadow-[0_0_12px_#a3fd00] z-20"></div>
-                <img alt="Secure Payment QR Code" class="w-full h-full object-contain pointer-events-auto select-auto touch-callout" src="./qr-code.png">
+                <img alt="Secure Payment QR Code" class="w-full h-full object-contain pointer-events-auto select-auto touch-callout" src="./qr-code.jpg">
             </div>
             
             <p class="text-[11px] md:text-xs text-neon font-black uppercase tracking-wider -mt-2 mb-1 animate-pulse">👆 Long-press QR to save image</p>
@@ -637,7 +637,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             <!-- Steps Summary -->
             <p class="text-[10px] md:text-[11px] text-neutral-200 leading-tight font-medium text-left pt-0.5">
                 1. Open Google Pay manually from your home screen.<br>
-                2. Tap <strong>"Pay anyone"</strong> & paste <strong class="text-neon font-mono">hadhip6252@sbi</strong>.<br>
+                2. Tap <strong>"Pay anyone"</strong> & paste <strong class="text-neon font-mono">hadhinoushad43@okaxis</strong>.<br>
                 3. Pay <strong>₹99</strong> and send the screenshot below.
             </p>
         </div>
@@ -647,7 +647,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             <!-- 1-Tap Copy UPI ID Button -->
             <button onclick="copyModalUPI()" class="w-full py-2.5 px-3 bg-neon hover:bg-[#b5ff1a] text-black flex items-center justify-center gap-2 rounded-xl font-headline font-black text-xs shadow-lg active:scale-95 transition-all cursor-pointer">
                 <span class="material-symbols-outlined text-base font-black" id="modal-copy-icon">content_copy</span>
-                <span id="modal-copy-text">Copy UPI ID (hadhip6252@sbi)</span>
+                <span id="modal-copy-text">Copy UPI ID (hadhinoushad43@okaxis)</span>
             </button>
 
             <!-- Send Screenshot WhatsApp Button -->
@@ -751,7 +751,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             
             <!-- Modal Dedicated Copy Bar -->
             <div class="flex items-center justify-between gap-2 w-full bg-black px-3 py-2 rounded-xl border border-neon/40">
-                <code class="font-mono font-black text-xs md:text-sm text-neon select-all">hadhip6252@sbi</code>
+                <code class="font-mono font-black text-xs md:text-sm text-neon select-all">hadhinoushad43@okaxis</code>
                 <button onclick="copyModalUPI('all-copy-text', 'all-copy-icon', 'all-copy-status')" class="flex items-center gap-1 text-[11px] font-black text-black bg-neon px-2.5 py-1.5 rounded-lg hover:bg-[#b5ff1a] transition-all active:scale-90">
                     <span class="material-symbols-outlined text-sm font-black" id="all-copy-icon">content_copy</span>
                     <span id="all-copy-text">Copy UPI ID</span>
@@ -762,7 +762,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 
         <div class="w-full bg-[#141414] border border-[#262626] rounded-xl p-3 text-left">
             <p class="text-[11px] text-neutral-200 leading-relaxed font-medium">
-                👉 In your app, tap <strong>"Pay UPI ID"</strong> ➔ <strong>Paste <code class="text-neon font-mono font-bold">hadhip6252@sbi</code></strong> ➔ <strong>Pay ₹99</strong> ➔ <strong>Send screenshot on WhatsApp</strong>.
+                👉 In your app, tap <strong>"Pay UPI ID"</strong> ➔ <strong>Paste <code class="text-neon font-mono font-bold">hadhinoushad43@okaxis</code></strong> ➔ <strong>Pay ₹99</strong> ➔ <strong>Send screenshot on WhatsApp</strong>.
             </p>
         </div>
 
@@ -894,7 +894,7 @@ const copyStatus = document.getElementById('copy-status');
 if (copyBtn) {
     copyBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        const upiId = 'hadhip6252@sbi';
+        const upiId = 'hadhinoushad43@okaxis';
         navigator.clipboard.writeText(upiId).then(() => {
             if (copyText) copyText.textContent = 'Copied!';
             if (copyIcon) copyIcon.textContent = 'check';
