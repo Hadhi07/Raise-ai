@@ -18,7 +18,43 @@
     }, true);
 })();
 </script>
-<link rel="stylesheet" href="/assets/tw-funnel.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                background: "#000000",
+                surface: "#0a0a0a",
+                neon: "#a3fd00",
+                urgency: "#ff2a40"
+            },
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                headline: ['Montserrat', 'sans-serif']
+            },
+            animation: {
+                'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'float': 'float 6s ease-in-out infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'glitch': 'glitch 1s linear infinite'
+            },
+            keyframes: {
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' },
+                },
+                glitch: {
+                    '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                    '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                    '62%': { transform: 'translate(0,0) skew(5deg)' },
+                }
+            }
+        }
+    }
+}
+</script>
 <script src="/webinar/webinar-date.js"></script>
 <!-- Canvas Confetti for celebration effect -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
