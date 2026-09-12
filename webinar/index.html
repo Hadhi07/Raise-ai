@@ -4,35 +4,28 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Raise AI | Learn Flow AI Video Creation (20 Sep, 8:30 - 10:30 PM)</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Suppress known-harmless Instagram/Facebook in-app WebView bridge noise so it doesn't drown out real errors. Genuine errors are left untouched. -->
+<script>
+(function () {
+    var NOISE = /(java object is gone|messageHandlers|ReactNativeWebView|invoke .*postMessage|postMessage.*java|webkit\.messageHandlers)/i;
+    function isNoise(msg) { return !!msg && NOISE.test(String(msg)); }
+    window.addEventListener('error', function (e) {
+        if (isNoise(e && e.message)) { e.stopImmediatePropagation(); e.preventDefault(); }
+    }, true);
+    window.addEventListener('unhandledrejection', function (e) {
+        var r = e && e.reason;
+        if (isNoise(r && (r.message || r))) { e.stopImmediatePropagation(); e.preventDefault(); }
+    }, true);
+})();
+</script>
+<link rel="stylesheet" href="/assets/tw-funnel.css">
 <script src="/webinar/webinar-date.js"></script>
 <!-- Canvas Confetti for celebration effect -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <!-- Modern Fonts: Montserrat for bold headlines, Inter for UI -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<script id="tailwind-config">
-tailwind.config = {
-    darkMode: "class",
-    theme: {
-        extend: {
-            colors: {
-                background: "#000000",
-                surface: "#080808",
-                "surface-card": "#0d0d0d",
-                "surface-card-hover": "#141414",
-                neon: "#a3fd00",
-                "neon-glow": "rgba(163, 253, 0, 0.4)",
-                urgency: "#ff2a40",
-            },
-            fontFamily: {
-                sans: ["Inter", "sans-serif"],
-                headline: ["Montserrat", "sans-serif"],
-            }
-        }
-    }
-}
-</script>
 <style>
 * {
     box-sizing: border-box;
@@ -153,6 +146,13 @@ body {
 .toast-out {
     animation: bannerSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+/* Reserve layout space for elements revealed by JS on load (prevents CLS) */
+.reveal-reserve {
+    visibility: hidden;
+}
+.reveal-reserve.reveal-shown {
+    visibility: visible;
+}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -190,14 +190,39 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "y7w4qe8w9w");
 </script>
+
+<!-- Prefetch the payment page and its assets so it loads instantly when clicked -->
+<link rel="prefetch" href="/webinar/payment/index.html">
+<link rel="prefetch" href="/webinar/payment/qr-code.jpg">
+<link rel="prefetch" href="/webinar/payment/gpay-guide.png">
 </head>
 <body class="bg-black text-white font-sans selection:bg-neon selection:text-black antialiased overflow-x-hidden w-full">
+
+<!-- In-App Browser Warning Banner (Instagram / Facebook WebView) -->
+<script>
+(function () {
+    var ua = navigator.userAgent || navigator.vendor || '';
+    var isInApp = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|Messenger|Line\/|Snapchat/i.test(ua);
+    if (!isInApp) return;
+    var isIOS = /iPad|iPhone|iPod/i.test(ua);
+    var howTo = isIOS
+        ? 'tap the <strong>&#8943;</strong> menu (top-right) &rarr; <strong>&ldquo;Open in Safari / Chrome&rdquo;</strong>'
+        : 'tap the <strong>&#8942;</strong> menu (top-right) &rarr; <strong>&ldquo;Open in browser&rdquo;</strong>';
+    document.write(
+        '<div id="inapp-banner" style="position:relative;z-index:60;background:#1a0507;border-bottom:1px solid rgba(255,42,64,0.45);color:#ffb3bc;padding:10px 40px 10px 16px;font:600 12px/1.45 Inter,system-ui,sans-serif;text-align:center;">' +
+            '&#9888; For a smooth UPI checkout later, ' + howTo + '.' +
+            '<button type="button" aria-label="Dismiss" onclick="var b=document.getElementById(\'inapp-banner\');if(b)b.parentNode.removeChild(b);" ' +
+                'style="position:absolute;top:50%;right:10px;transform:translateY(-50%);background:none;border:0;color:#ff2a40;font-size:18px;line-height:1;cursor:pointer;padding:4px;">&times;</button>' +
+        '</div>'
+    );
+})();
+</script>
 
 <!-- Top Bar: Real Date Urgency Banner with RED 10-Min Urgency Clock -->
 <div class="bg-black border-b border-[#1f1f1f] text-white py-2 px-3 text-center text-xs font-medium relative z-50 flex items-center justify-center gap-2 flex-wrap w-full">
     <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#a3fd00]/10 text-neon border border-neon/40 uppercase">⚡ LIVE WEBINAR</span>
     <span class="text-neutral-300">Registration closes <span class="dynamic-date" data-format="long">20 Sep</span>, 8:30 PM IST</span>
-    <div class="hidden timer-container inline-flex items-center gap-1.5">
+    <div class="reveal-reserve timer-container inline-flex items-center gap-1.5">
         <span class="text-neutral-500">•</span>
         <span class="text-neutral-300">Offer ends in:</span>
         <span class="countdown-timer font-mono font-bold tracking-wider px-2.5 py-0.5 rounded border timer-red-bg timer-red">10:00</span>
@@ -208,10 +233,10 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 <header class="w-full z-40 bg-black/90 border-b border-[#1a1a1a] relative">
     <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
         <a href="./" class="flex items-center gap-2">
-            <img src="/webinar/logo.png" alt="Raise AI Logo" class="h-9 md:h-11 w-auto object-contain brightness-110" />
+            <img src="/webinar/logo.png" alt="Raise AI Logo" width="256" height="170" decoding="async" class="h-9 md:h-11 w-auto object-contain brightness-110" />
         </a>
         <div class="flex items-center gap-3">
-            <a onclick="trackCheckoutClick()" class="cta-dynamic-btn px-4 md:px-6 py-2 rounded-xl font-headline font-extrabold text-xs md:text-sm neon-btn flex items-center gap-1.5 shrink-0" href="/webinar/payment/">
+            <a onclick="trackCheckoutClick(); this.style.pointerEvents='none'; this.innerHTML='<span class=\'material-symbols-outlined animate-spin\'>progress_activity</span> Loading Checkout...'; setTimeout(()=>this.style.pointerEvents='auto', 3000);" class="cta-dynamic-btn px-4 md:px-6 py-2 rounded-xl font-headline font-extrabold text-xs md:text-sm neon-btn flex items-center gap-1.5 shrink-0" href="/webinar/payment/">
                 <span class="btn-text">Join Webinar — ₹199</span>
                 <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
             </a>
@@ -280,7 +305,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                     <span class="total-time">0:00</span>
                                 </div>
                             </div>
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-43-25_1%20(4).m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -304,7 +329,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                     <span class="total-time">0:00</span>
                                 </div>
                             </div>
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/jithin-recording.m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -328,7 +353,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                     <span class="total-time">0:00</span>
                                 </div>
                             </div>
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/vishnu-recording.m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -353,7 +378,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                     <span class="total-time">0:00</span>
                                 </div>
                             </div>
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-43-25_1%20(1).m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -379,7 +404,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                     <span class="total-time">0:00</span>
                                 </div>
                             </div>
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-43-25_1%20(2).m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -405,7 +430,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                     <span class="total-time">0:00</span>
                                 </div>
                             </div>
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-43-25_1%20(3).m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -431,7 +456,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                     <span class="total-time">0:00</span>
                                 </div>
                             </div>
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-56-01_1.m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -528,20 +553,20 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 <span id="hero-badge-tag" class="bg-[#e11d48] text-white px-2.5 py-0.5 rounded text-xs font-extrabold uppercase tracking-wide">STANDARD ADMISSION</span>
                 <span id="hero-price-display" class="font-headline font-black text-2xl md:text-4xl text-white">₹199</span>
             </div>
-            <div id="flash-banner" class="hidden mt-2 text-xs font-extrabold text-neon bg-neon/10 border border-neon/30 px-3 py-1 rounded-full animate-bounce">
+            <div id="flash-banner" class="reveal-reserve mt-2 text-xs font-extrabold text-neon bg-neon/10 border border-neon/30 px-3 py-1 rounded-full animate-bounce">
                 🎉 Flash ₹99 Price Unlocked on Registration Buttons!
             </div>
         </div>
 
         <!-- CTA Button & RED 10-Minute Countdown Directly Under CTA -->
         <div class="max-w-md mx-auto flex flex-col items-center gap-3 mb-4 w-full">
-            <a onclick="trackCheckoutClick()" class="cta-dynamic-btn w-full py-4 px-6 rounded-xl font-headline font-black text-base md:text-xl neon-btn flex items-center justify-center gap-2 shadow-2xl" href="/webinar/payment/">
+            <a onclick="trackCheckoutClick(); this.style.pointerEvents='none'; this.innerHTML='<span class=\'material-symbols-outlined animate-spin\'>progress_activity</span> Loading Checkout...'; setTimeout(()=>this.style.pointerEvents='auto', 3000);" class="cta-dynamic-btn w-full py-4 px-6 rounded-xl font-headline font-black text-base md:text-xl neon-btn flex items-center justify-center gap-2 shadow-2xl" href="/webinar/payment/">
                 <span class="btn-text">Register for Live Session — ₹199</span>
                 <span class="material-symbols-outlined text-2xl font-bold">arrow_forward</span>
             </a>
 
             <!-- RED 10-Minute Countdown Clock near CTA -->
-            <div class="hidden timer-container flex items-center justify-center gap-2 timer-red-bg border py-2 px-4 rounded-xl text-xs md:text-sm font-semibold w-full">
+            <div class="reveal-reserve timer-container flex items-center justify-center gap-2 timer-red-bg border py-2 px-4 rounded-xl text-xs md:text-sm font-semibold w-full">
                 <span class="material-symbols-outlined text-base timer-red">schedule</span>
                 <span class="text-neutral-200">Offer ends in:</span>
                 <span class="countdown-timer font-mono font-bold timer-red text-sm md:text-base tracking-wider">10:00</span>
@@ -769,7 +794,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             </div>
         </div>
     </section>
-
+
 
     <!-- Section Divider Quote & Workflow Infographic -->
     <section class="py-12 md:py-16 border-y border-[#181818] bg-[#050505] text-center px-4">
@@ -921,13 +946,13 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                 </div>
             </div>
 
-            <a onclick="trackCheckoutClick()" class="cta-dynamic-btn w-full py-3.5 md:py-4 px-6 rounded-xl font-headline font-black text-base md:text-lg neon-btn flex items-center justify-center gap-2 group mt-2" href="/webinar/payment/">
+            <a onclick="trackCheckoutClick(); this.style.pointerEvents='none'; this.innerHTML='<span class=\'material-symbols-outlined animate-spin\'>progress_activity</span> Loading Checkout...'; setTimeout(()=>this.style.pointerEvents='auto', 3000);" class="cta-dynamic-btn w-full py-3.5 md:py-4 px-6 rounded-xl font-headline font-black text-base md:text-lg neon-btn flex items-center justify-center gap-2 group mt-2" href="/webinar/payment/">
                 <span class="btn-text">Register Now for ₹199</span>
                 <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform font-bold">payments</span>
             </a>
 
             <!-- RED 10-Minute Urgency Timer near CTA -->
-            <div class="hidden timer-container mt-4 timer-red font-semibold text-xs md:text-sm flex items-center justify-center gap-2 timer-red-bg border px-4 py-2.5 rounded-xl w-full">
+            <div class="reveal-reserve timer-container mt-4 timer-red font-semibold text-xs md:text-sm flex items-center justify-center gap-2 timer-red-bg border px-4 py-2.5 rounded-xl w-full">
                 <span class="material-symbols-outlined text-base timer-red">schedule</span>
                 <span class="text-neutral-200">Special Offer Ends In:</span>
                 <span class="countdown-timer font-mono font-bold timer-red text-sm md:text-base tracking-wider">10:00</span>
@@ -1069,7 +1094,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                 </div>
                             </div>
                             
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-43-25_1%20(4).m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -1097,7 +1122,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                 </div>
                             </div>
                             
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/jithin-recording.m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -1125,7 +1150,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                 </div>
                             </div>
                             
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/vishnu-recording.m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -1153,7 +1178,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                 </div>
                             </div>
                             
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-43-25_1%20(1).m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -1181,7 +1206,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                 </div>
                             </div>
                             
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-43-25_1%20(2).m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -1209,7 +1234,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                 </div>
                             </div>
                             
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-43-25_1%20(3).m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -1237,7 +1262,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
                                 </div>
                             </div>
                             
-                            <audio playsinline preload="metadata" class="hidden-audio hidden">
+                            <audio playsinline preload="none" class="hidden-audio hidden">
                                 <source src="/webinar/ScreenRecording_08-30-2026%2023-56-01_1.m4a" type="audio/mp4">
                             </audio>
                         </div>
@@ -1323,7 +1348,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
             <span class="text-base font-headline font-black text-white">₹199</span>
         </div>
     </div>
-    <a onclick="trackCheckoutClick()" class="cta-dynamic-btn px-4 py-2 rounded-xl font-headline font-black text-xs neon-btn flex items-center justify-center gap-1 shrink-0 transition-transform active:scale-95" href="/webinar/payment/">
+    <a onclick="trackCheckoutClick(); this.style.pointerEvents='none'; this.innerHTML='<span class=\'material-symbols-outlined animate-spin\'>progress_activity</span> Loading Checkout...'; setTimeout(()=>this.style.pointerEvents='auto', 3000);" class="cta-dynamic-btn px-4 py-2 rounded-xl font-headline font-black text-xs neon-btn flex items-center justify-center gap-1 shrink-0 transition-transform active:scale-95" href="/webinar/payment/">
         <span class="btn-text">Join for ₹199</span>
         <span class="material-symbols-outlined text-xs font-bold">arrow_forward</span>
     </a>
@@ -1333,7 +1358,7 @@ src="https://www.facebook.com/tr?id=2034324397452606&ev=PageView&noscript=1"
 <footer class="bg-black py-8 border-t border-[#1c1c1c] text-center pb-20 md:pb-8">
     <div class="max-w-6xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="flex items-center gap-2">
-            <img src="/webinar/logo.png" alt="Raise AI Logo" class="h-8 object-contain brightness-110" />
+            <img src="/webinar/logo.png" alt="Raise AI Logo" width="256" height="170" loading="lazy" decoding="async" class="h-8 object-contain brightness-110" />
         </div>
         <p class="text-neutral-400 text-xs">
             © 2026 Raise AI. Empowering creators & marketers with AI.
@@ -1477,9 +1502,9 @@ function closeModal(id) {
             localStorage.setItem('raise_offer_end_time', endTime);
         }
 
-        // Make countdown containers visible and start running
+        // Make countdown containers visible and start running (space already reserved via .reveal-reserve to avoid layout shift)
         timerContainers.forEach(container => {
-            container.classList.remove('hidden');
+            container.classList.add('reveal-shown');
         });
         updateTimers();
         if (timerInterval) clearInterval(timerInterval);
@@ -1524,7 +1549,7 @@ function closeModal(id) {
         });
 
         if (flashBanner) {
-            flashBanner.classList.remove('hidden');
+            flashBanner.classList.add('reveal-shown');
         }
 
         // Pop-up banner stays for exactly 5 seconds
